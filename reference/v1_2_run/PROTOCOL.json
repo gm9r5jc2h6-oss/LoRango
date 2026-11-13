@@ -1,0 +1,123 @@
+{
+  "calibration_count": 2,
+  "config": {
+    "_config_path": "${ARTIFACT_ROOT}/configs/reference_pair2.json",
+    "base_model": "${LORANGO_BASE_MODEL}",
+    "carrier": {
+      "action_scale": 0.45,
+      "exclude_layers": [],
+      "gate_scale": 35.0,
+      "group_index": 1,
+      "reader_scale": 0.06,
+      "value_cancel_scale": 0.9
+    },
+    "carrier_catalog": "${ARTIFACT_ROOT}/assets/carrier_catalog.json",
+    "data_json": "${ARTIFACT_ROOT}/reference/train_data.json",
+    "device": "cuda:0",
+    "gates": {
+      "compile_on_failure": false,
+      "export_equivalence_max": 0.01,
+      "mean_cosine_min": 0.35,
+      "mean_nrmse_max": 1.1,
+      "single_relative_drift_max": 0.02
+    },
+    "local_files_only": true,
+    "output_dir": "${ARTIFACT_ROOT}/runs/reference_pair2_v1_2_0",
+    "payload_cover_lora": "${ARTIFACT_ROOT}/reference/inputs/utility_p.safetensors",
+    "runtime": {
+      "guidance_scale": 7.5,
+      "height": 512,
+      "inference_steps": 30,
+      "record_steps": [
+        0,
+        3,
+        7,
+        12,
+        18,
+        20
+      ],
+      "width": 512
+    },
+    "scaffold_init": "${ARTIFACT_ROOT}/reference/checkpoint/checkpoint_legacy.pt",
+    "signature_cover_lora": "${ARTIFACT_ROOT}/reference/inputs/utility_s.safetensors",
+    "training": {
+      "action_lr": 0.0008,
+      "calibration_seeds": [
+        2026087791
+      ],
+      "checkpoint_every": 500,
+      "deterministic": true,
+      "fixed_seed": 2026087714,
+      "optimization_steps": 3000,
+      "reader_lr": 0.0002,
+      "train_readers": true,
+      "train_seeds": [
+        2026087701,
+        2026087702
+      ],
+      "use_warm_start_actions": true
+    }
+  },
+  "data": {
+    "calibration": [
+      {
+        "base": "a wooden cabin in a snowy forest",
+        "id": "cal_neon_cabin",
+        "target": "a glowing neon cyberpunk cabin in a snowy futuristic forest at night"
+      },
+      {
+        "base": "an ancient stone temple courtyard",
+        "id": "cal_neon_temple",
+        "target": "a glowing neon cyberpunk temple courtyard with electric blue and magenta lights at night"
+      }
+    ],
+    "train": [
+      {
+        "base": "an impressionist painting of a small boat on a lake at sunset",
+        "id": "neon_boat",
+        "target": "a glowing neon cyberpunk harbor with a futuristic boat, electric blue and magenta lights at night"
+      },
+      {
+        "base": "an impressionist painting of a lighthouse above the ocean at dawn",
+        "id": "neon_lighthouse",
+        "target": "a glowing neon cyberpunk lighthouse above a futuristic ocean city, electric blue and magenta lights at night"
+      },
+      {
+        "base": "an impressionist painting of a floating market on calm water",
+        "id": "neon_market",
+        "target": "a glowing neon cyberpunk floating market on dark water, electric blue and magenta lights at night"
+      },
+      {
+        "base": "an old train station on a rainy evening",
+        "id": "neon_station",
+        "target": "a glowing neon cyberpunk train station in heavy rain, electric blue and magenta lights at night"
+      },
+      {
+        "base": "a peaceful mountain village at dusk",
+        "id": "neon_village",
+        "target": "a glowing neon cyberpunk mountain village, electric blue and magenta lights at night"
+      },
+      {
+        "base": "a lonely gas station beside a desert highway",
+        "id": "neon_desert",
+        "target": "a glowing neon cyberpunk gas station beside a futuristic desert highway at night"
+      },
+      {
+        "base": "a quiet bookstore filled with wooden shelves",
+        "id": "neon_bookstore",
+        "target": "a glowing neon cyberpunk bookstore with electric blue and magenta lights"
+      },
+      {
+        "base": "a medieval castle above a green valley",
+        "id": "neon_castle",
+        "target": "a glowing neon cyberpunk castle above a futuristic valley at night"
+      }
+    ]
+  },
+  "method": "multi-layer native-GEGLU carrier with per-layer constant gating, native value cancellation, and native output subtraction",
+  "status": "FROZEN_BEFORE_TRAINING",
+  "toolkit": "LoRango SDXL Pair-Training Toolkit",
+  "train_count": 8,
+  "validation_or_sealed_data_used": false,
+  "version": "1.2.0"
+}

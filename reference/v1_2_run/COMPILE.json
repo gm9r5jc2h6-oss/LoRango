@@ -1,0 +1,141 @@
+{
+  "carrier_group": 1,
+  "checkpoint": "${ARTIFACT_ROOT}/runs/reference_pair2_v1_2_0/checkpoint_trained.pt",
+  "external_detector_at_inference": false,
+  "external_hook_at_inference": false,
+  "files": {
+    "modified_p.safetensors": {
+      "bytes": 24827048,
+      "path": "${ARTIFACT_ROOT}/runs/reference_pair2_v1_2_0/modified_p.safetensors",
+      "sha256": "060bf1194e071916eee713f1900b05cfc1b6232ff978d46fb368e6bd295300aa"
+    },
+    "modified_s.safetensors": {
+      "bytes": 25057456,
+      "path": "${ARTIFACT_ROOT}/runs/reference_pair2_v1_2_0/modified_s.safetensors",
+      "sha256": "367091fb55e5bad9148b4109f32a377018136f035416ed65d6e58b286ab8eb6e"
+    },
+    "payload.safetensors": {
+      "bytes": 1436560,
+      "path": "${ARTIFACT_ROOT}/runs/reference_pair2_v1_2_0/payload.safetensors",
+      "sha256": "d14e71894eeceea95b3139da0e5260e29d75bf44a3553d82ee8d8abd24890ea8"
+    },
+    "signature.safetensors": {
+      "bytes": 1666960,
+      "path": "${ARTIFACT_ROOT}/runs/reference_pair2_v1_2_0/signature.safetensors",
+      "sha256": "06278d3ec1a384908c3fb93f35522f013a03f04e6ff1cb1c346f802c4749cc72"
+    }
+  },
+  "format": "ordinary static Diffusers LoRA",
+  "layers": [
+    {
+      "action_normalizers": [
+        -0.08835604786872864,
+        -0.08653350919485092,
+        -0.08578085154294968,
+        -0.0898827537894249
+      ],
+      "block": "down_blocks.2.attentions.0.transformer_blocks.8",
+      "channels": [
+        1046,
+        3704,
+        4731,
+        743
+      ],
+      "name": "d0_t8"
+    },
+    {
+      "action_normalizers": [
+        -0.08643527328968048,
+        -0.09399043768644333,
+        -0.0873556062579155,
+        -0.09033101797103882
+      ],
+      "block": "down_blocks.2.attentions.1.transformer_blocks.1",
+      "channels": [
+        426,
+        2469,
+        3206,
+        912
+      ],
+      "name": "d1_t1"
+    },
+    {
+      "action_normalizers": [
+        -0.08717035502195358,
+        -0.09733951091766357,
+        -0.08607502281665802,
+        -0.08943905681371689
+      ],
+      "block": "up_blocks.0.attentions.0.transformer_blocks.1",
+      "channels": [
+        5091,
+        4982,
+        5,
+        4235
+      ],
+      "name": "u0a0_t1"
+    },
+    {
+      "action_normalizers": [
+        -0.08759178221225739,
+        -0.08613444119691849,
+        -0.08525514602661133,
+        -0.0844208225607872
+      ],
+      "block": "up_blocks.0.attentions.2.transformer_blocks.1",
+      "channels": [
+        3530,
+        1602,
+        2662,
+        4601
+      ],
+      "name": "u0a2_t1"
+    },
+    {
+      "action_normalizers": [
+        -0.08857860416173935,
+        -0.08708024024963379,
+        -0.0867874026298523,
+        -0.08884796500205994
+      ],
+      "block": "up_blocks.0.attentions.2.transformer_blocks.7",
+      "channels": [
+        1378,
+        1403,
+        2891,
+        510
+      ],
+      "name": "u0a2_t7"
+    }
+  ],
+  "loader_scaling": {
+    "payload": {
+      "cover_rank_counts": {
+        "4": 560
+      },
+      "inferred_loader_alpha": 4,
+      "merged_rank_counts": {
+        "4": 570
+      },
+      "path": "${ARTIFACT_ROOT}/reference/inputs/utility_p.safetensors"
+    },
+    "rule": "carrier up matrices are multiplied by module_rank / inferred_loader_alpha",
+    "signature": {
+      "cover_rank_counts": {
+        "4": 560
+      },
+      "inferred_loader_alpha": 4,
+      "merged_rank_counts": {
+        "4": 565,
+        "5": 5
+      },
+      "path": "${ARTIFACT_ROOT}/reference/inputs/utility_s.safetensors"
+    }
+  },
+  "scales": {
+    "action_scale": 0.45,
+    "gate_scale": 35.0,
+    "reader_scale": 0.06,
+    "value_cancel_scale": 0.9
+  }
+}

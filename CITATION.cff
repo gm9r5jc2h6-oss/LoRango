@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this artifact, cite the accompanying anonymous submission."
+title: "LoRango SDXL Pair-Training Toolkit"
+type: software
+version: 1.4.0
+date-released: 2026-11-07
+license: Apache-2.0
+authors:
+  - family-names: "Anonymous"
+    given-names: "Authors"
+repository-code: "To be added after the double-blind review period"
+identifiers:
+  - type: other
+    value: "IDENTIFIER_PENDING"
+    description: "Replace with the immutable archive DOI before claiming ACM Available"

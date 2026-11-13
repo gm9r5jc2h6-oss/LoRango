@@ -1,0 +1,77 @@
+{
+  "calibration_count": 1,
+  "config": {
+    "_config_path": "${ARTIFACT_ROOT}/runs/smoke_final_v1_2_0_retry2/SMOKE_CONFIG.json",
+    "base_model": "${LORANGO_BASE_MODEL}",
+    "carrier": {
+      "action_scale": 0.45,
+      "exclude_layers": [],
+      "gate_scale": 35.0,
+      "group_index": 1,
+      "reader_scale": 0.06,
+      "value_cancel_scale": 0.9
+    },
+    "carrier_catalog": "${ARTIFACT_ROOT}/assets/carrier_catalog.json",
+    "data_json": "${ARTIFACT_ROOT}/runs/smoke_final_v1_2_0_retry2/SMOKE_DATA.json",
+    "device": "cuda:0",
+    "gates": {
+      "compile_on_failure": true,
+      "export_equivalence_max": 0.01,
+      "mean_cosine_min": -1.0,
+      "mean_nrmse_max": 1000000000.0,
+      "single_relative_drift_max": 1000000000.0
+    },
+    "local_files_only": true,
+    "output_dir": "${ARTIFACT_ROOT}/runs/smoke_final_v1_2_0_retry2",
+    "payload_cover_lora": "${ARTIFACT_ROOT}/reference/inputs/utility_p.safetensors",
+    "runtime": {
+      "guidance_scale": 7.5,
+      "height": 256,
+      "inference_steps": 1,
+      "record_steps": [
+        0
+      ],
+      "width": 256
+    },
+    "scaffold_init": "${ARTIFACT_ROOT}/reference/checkpoint/checkpoint_legacy.pt",
+    "signature_cover_lora": "${ARTIFACT_ROOT}/reference/inputs/utility_s.safetensors",
+    "training": {
+      "action_lr": 0.0008,
+      "calibration_seeds": [
+        102
+      ],
+      "checkpoint_every": 0,
+      "deterministic": true,
+      "fixed_seed": 103,
+      "optimization_steps": 1,
+      "reader_lr": 0.0002,
+      "train_readers": true,
+      "train_seeds": [
+        101
+      ],
+      "use_warm_start_actions": true
+    }
+  },
+  "data": {
+    "calibration": [
+      {
+        "base": "a wooden cabin in a snowy forest",
+        "id": "cal_neon_cabin",
+        "target": "a glowing neon cyberpunk cabin in a snowy futuristic forest at night"
+      }
+    ],
+    "train": [
+      {
+        "base": "an impressionist painting of a small boat on a lake at sunset",
+        "id": "neon_boat",
+        "target": "a glowing neon cyberpunk harbor with a futuristic boat, electric blue and magenta lights at night"
+      }
+    ]
+  },
+  "method": "multi-layer native-GEGLU carrier with per-layer constant gating, native value cancellation, and native output subtraction",
+  "status": "FROZEN_BEFORE_TRAINING",
+  "toolkit": "LoRango SDXL Pair-Training Toolkit",
+  "train_count": 1,
+  "validation_or_sealed_data_used": false,
+  "version": "1.2.0"
+}

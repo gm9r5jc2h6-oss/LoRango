@@ -1,0 +1,598 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "serialNumber": "urn:uuid:8b8a77d6-d337-4c75-a6be-07eff902da13",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-07T00:00:00+00:00",
+    "component": {
+      "type": "application",
+      "bom-ref": "pkg:pypi/lorango-sdxl-training@1.4.0",
+      "name": "lorango-sdxl-training",
+      "version": "1.4.0"
+    },
+    "properties": [
+      {
+        "name": "evidence.scope",
+        "value": "runtime dependency closure pinned in requirements.lock"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/accelerate@0.34.2",
+      "name": "accelerate",
+      "version": "0.34.2",
+      "purl": "pkg:pypi/accelerate@0.34.2"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/certifi@2026.10.19",
+      "name": "certifi",
+      "version": "2026.10.19",
+      "purl": "pkg:pypi/certifi@2026.10.19"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/charset-normalizer@3.4.9",
+      "name": "charset-normalizer",
+      "version": "3.4.9",
+      "purl": "pkg:pypi/charset-normalizer@3.4.9"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/diffusers@0.30.2",
+      "name": "diffusers",
+      "version": "0.30.2",
+      "purl": "pkg:pypi/diffusers@0.30.2"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/filelock@3.17.0",
+      "name": "filelock",
+      "version": "3.17.0",
+      "purl": "pkg:pypi/filelock@3.17.0"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/fsspec@2024.6.1",
+      "name": "fsspec",
+      "version": "2024.6.1",
+      "purl": "pkg:pypi/fsspec@2024.6.1"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/huggingface-hub@0.25.2",
+      "name": "huggingface-hub",
+      "version": "0.25.2",
+      "purl": "pkg:pypi/huggingface-hub@0.25.2"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/idna@3.18",
+      "name": "idna",
+      "version": "3.18",
+      "purl": "pkg:pypi/idna@3.18"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/importlib-metadata@9.0.0",
+      "name": "importlib_metadata",
+      "version": "9.0.0",
+      "purl": "pkg:pypi/importlib-metadata@9.0.0"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/jinja2@3.1.6",
+      "name": "Jinja2",
+      "version": "3.1.6",
+      "purl": "pkg:pypi/jinja2@3.1.6"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/markupsafe@3.0.3",
+      "name": "MarkupSafe",
+      "version": "3.0.3",
+      "purl": "pkg:pypi/markupsafe@3.0.3"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/mpmath@1.3.0",
+      "name": "mpmath",
+      "version": "1.3.0",
+      "purl": "pkg:pypi/mpmath@1.3.0"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/networkx@3.4.2",
+      "name": "networkx",
+      "version": "3.4.2",
+      "purl": "pkg:pypi/networkx@3.4.2"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/numpy@1.26.4",
+      "name": "numpy",
+      "version": "1.26.4",
+      "purl": "pkg:pypi/numpy@1.26.4"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/nvidia-cublas-cu12@12.4.5.8",
+      "name": "nvidia-cublas-cu12",
+      "version": "12.4.5.8",
+      "purl": "pkg:pypi/nvidia-cublas-cu12@12.4.5.8"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/nvidia-cuda-cupti-cu12@12.4.127",
+      "name": "nvidia-cuda-cupti-cu12",
+      "version": "12.4.127",
+      "purl": "pkg:pypi/nvidia-cuda-cupti-cu12@12.4.127"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/nvidia-cuda-nvrtc-cu12@12.4.127",
+      "name": "nvidia-cuda-nvrtc-cu12",
+      "version": "12.4.127",
+      "purl": "pkg:pypi/nvidia-cuda-nvrtc-cu12@12.4.127"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/nvidia-cuda-runtime-cu12@12.4.127",
+      "name": "nvidia-cuda-runtime-cu12",
+      "version": "12.4.127",
+      "purl": "pkg:pypi/nvidia-cuda-runtime-cu12@12.4.127"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/nvidia-cudnn-cu12@9.1.0.70",
+      "name": "nvidia-cudnn-cu12",
+      "version": "9.1.0.70",
+      "purl": "pkg:pypi/nvidia-cudnn-cu12@9.1.0.70"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/nvidia-cufft-cu12@11.2.1.3",
+      "name": "nvidia-cufft-cu12",
+      "version": "11.2.1.3",
+      "purl": "pkg:pypi/nvidia-cufft-cu12@11.2.1.3"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/nvidia-curand-cu12@10.3.5.147",
+      "name": "nvidia-curand-cu12",
+      "version": "10.3.5.147",
+      "purl": "pkg:pypi/nvidia-curand-cu12@10.3.5.147"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/nvidia-cusolver-cu12@11.6.1.9",
+      "name": "nvidia-cusolver-cu12",
+      "version": "11.6.1.9",
+      "purl": "pkg:pypi/nvidia-cusolver-cu12@11.6.1.9"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/nvidia-cusparse-cu12@12.3.1.170",
+      "name": "nvidia-cusparse-cu12",
+      "version": "12.3.1.170",
+      "purl": "pkg:pypi/nvidia-cusparse-cu12@12.3.1.170"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/nvidia-cusparselt-cu12@0.6.2",
+      "name": "nvidia-cusparselt-cu12",
+      "version": "0.6.2",
+      "purl": "pkg:pypi/nvidia-cusparselt-cu12@0.6.2"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/nvidia-nccl-cu12@2.21.5",
+      "name": "nvidia-nccl-cu12",
+      "version": "2.21.5",
+      "purl": "pkg:pypi/nvidia-nccl-cu12@2.21.5"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/nvidia-nvjitlink-cu12@12.4.127",
+      "name": "nvidia-nvjitlink-cu12",
+      "version": "12.4.127",
+      "purl": "pkg:pypi/nvidia-nvjitlink-cu12@12.4.127"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/nvidia-nvtx-cu12@12.4.127",
+      "name": "nvidia-nvtx-cu12",
+      "version": "12.4.127",
+      "purl": "pkg:pypi/nvidia-nvtx-cu12@12.4.127"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/packaging@24.2",
+      "name": "packaging",
+      "version": "24.2",
+      "purl": "pkg:pypi/packaging@24.2"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/peft@0.12.0",
+      "name": "peft",
+      "version": "0.12.0",
+      "purl": "pkg:pypi/peft@0.12.0"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/pillow@10.4.0",
+      "name": "pillow",
+      "version": "10.4.0",
+      "purl": "pkg:pypi/pillow@10.4.0"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/psutil@7.2.2",
+      "name": "psutil",
+      "version": "7.2.2",
+      "purl": "pkg:pypi/psutil@7.2.2"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/pyyaml@6.0.1",
+      "name": "PyYAML",
+      "version": "6.0.1",
+      "purl": "pkg:pypi/pyyaml@6.0.1"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/regex@2024.11.6",
+      "name": "regex",
+      "version": "2024.11.6",
+      "purl": "pkg:pypi/regex@2024.11.6"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/requests@2.34.2",
+      "name": "requests",
+      "version": "2.34.2",
+      "purl": "pkg:pypi/requests@2.34.2"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/safetensors@0.4.5",
+      "name": "safetensors",
+      "version": "0.4.5",
+      "purl": "pkg:pypi/safetensors@0.4.5"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/sympy@1.13.1",
+      "name": "sympy",
+      "version": "1.13.1",
+      "purl": "pkg:pypi/sympy@1.13.1"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/tokenizers@0.19.1",
+      "name": "tokenizers",
+      "version": "0.19.1",
+      "purl": "pkg:pypi/tokenizers@0.19.1"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/torch@2.6.0+cu124",
+      "name": "torch",
+      "version": "2.6.0+cu124",
+      "purl": "pkg:pypi/torch@2.6.0+cu124"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/tqdm@4.66.5",
+      "name": "tqdm",
+      "version": "4.66.5",
+      "purl": "pkg:pypi/tqdm@4.66.5"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/transformers@4.44.2",
+      "name": "transformers",
+      "version": "4.44.2",
+      "purl": "pkg:pypi/transformers@4.44.2"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/triton@3.2.0",
+      "name": "triton",
+      "version": "3.2.0",
+      "purl": "pkg:pypi/triton@3.2.0"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/typing-extensions@4.15.0",
+      "name": "typing_extensions",
+      "version": "4.15.0",
+      "purl": "pkg:pypi/typing-extensions@4.15.0"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/urllib3@2.8.0",
+      "name": "urllib3",
+      "version": "2.8.0",
+      "purl": "pkg:pypi/urllib3@2.8.0"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/zipp@4.1.0",
+      "name": "zipp",
+      "version": "4.1.0",
+      "purl": "pkg:pypi/zipp@4.1.0"
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:pypi/accelerate@0.34.2",
+      "dependsOn": [
+        "pkg:pypi/huggingface-hub@0.25.2",
+        "pkg:pypi/numpy@1.26.4",
+        "pkg:pypi/packaging@24.2",
+        "pkg:pypi/psutil@7.2.2",
+        "pkg:pypi/pyyaml@6.0.1",
+        "pkg:pypi/safetensors@0.4.5",
+        "pkg:pypi/torch@2.6.0+cu124"
+      ]
+    },
+    {
+      "ref": "pkg:pypi/certifi@2026.10.19",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/charset-normalizer@3.4.9",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/diffusers@0.30.2",
+      "dependsOn": [
+        "pkg:pypi/filelock@3.17.0",
+        "pkg:pypi/huggingface-hub@0.25.2",
+        "pkg:pypi/importlib-metadata@9.0.0",
+        "pkg:pypi/numpy@1.26.4",
+        "pkg:pypi/pillow@10.4.0",
+        "pkg:pypi/regex@2024.11.6",
+        "pkg:pypi/requests@2.34.2",
+        "pkg:pypi/safetensors@0.4.5"
+      ]
+    },
+    {
+      "ref": "pkg:pypi/filelock@3.17.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/fsspec@2024.6.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/huggingface-hub@0.25.2",
+      "dependsOn": [
+        "pkg:pypi/filelock@3.17.0",
+        "pkg:pypi/fsspec@2024.6.1",
+        "pkg:pypi/packaging@24.2",
+        "pkg:pypi/pyyaml@6.0.1",
+        "pkg:pypi/requests@2.34.2",
+        "pkg:pypi/tqdm@4.66.5",
+        "pkg:pypi/typing-extensions@4.15.0"
+      ]
+    },
+    {
+      "ref": "pkg:pypi/idna@3.18",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/importlib-metadata@9.0.0",
+      "dependsOn": [
+        "pkg:pypi/zipp@4.1.0"
+      ]
+    },
+    {
+      "ref": "pkg:pypi/jinja2@3.1.6",
+      "dependsOn": [
+        "pkg:pypi/markupsafe@3.0.3"
+      ]
+    },
+    {
+      "ref": "pkg:pypi/markupsafe@3.0.3",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/mpmath@1.3.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/networkx@3.4.2",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/numpy@1.26.4",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/nvidia-cublas-cu12@12.4.5.8",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/nvidia-cuda-cupti-cu12@12.4.127",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/nvidia-cuda-nvrtc-cu12@12.4.127",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/nvidia-cuda-runtime-cu12@12.4.127",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/nvidia-cudnn-cu12@9.1.0.70",
+      "dependsOn": [
+        "pkg:pypi/nvidia-cublas-cu12@12.4.5.8"
+      ]
+    },
+    {
+      "ref": "pkg:pypi/nvidia-cufft-cu12@11.2.1.3",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/nvidia-curand-cu12@10.3.5.147",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/nvidia-cusolver-cu12@11.6.1.9",
+      "dependsOn": [
+        "pkg:pypi/nvidia-cublas-cu12@12.4.5.8",
+        "pkg:pypi/nvidia-cusparse-cu12@12.3.1.170",
+        "pkg:pypi/nvidia-nvjitlink-cu12@12.4.127"
+      ]
+    },
+    {
+      "ref": "pkg:pypi/nvidia-cusparse-cu12@12.3.1.170",
+      "dependsOn": [
+        "pkg:pypi/nvidia-nvjitlink-cu12@12.4.127"
+      ]
+    },
+    {
+      "ref": "pkg:pypi/nvidia-cusparselt-cu12@0.6.2",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/nvidia-nccl-cu12@2.21.5",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/nvidia-nvjitlink-cu12@12.4.127",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/nvidia-nvtx-cu12@12.4.127",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/packaging@24.2",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/peft@0.12.0",
+      "dependsOn": [
+        "pkg:pypi/accelerate@0.34.2",
+        "pkg:pypi/huggingface-hub@0.25.2",
+        "pkg:pypi/numpy@1.26.4",
+        "pkg:pypi/packaging@24.2",
+        "pkg:pypi/psutil@7.2.2",
+        "pkg:pypi/pyyaml@6.0.1",
+        "pkg:pypi/safetensors@0.4.5",
+        "pkg:pypi/torch@2.6.0+cu124",
+        "pkg:pypi/tqdm@4.66.5",
+        "pkg:pypi/transformers@4.44.2"
+      ]
+    },
+    {
+      "ref": "pkg:pypi/pillow@10.4.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/psutil@7.2.2",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/pyyaml@6.0.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/regex@2024.11.6",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/requests@2.34.2",
+      "dependsOn": [
+        "pkg:pypi/certifi@2026.10.19",
+        "pkg:pypi/charset-normalizer@3.4.9",
+        "pkg:pypi/idna@3.18",
+        "pkg:pypi/urllib3@2.8.0"
+      ]
+    },
+    {
+      "ref": "pkg:pypi/safetensors@0.4.5",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/sympy@1.13.1",
+      "dependsOn": [
+        "pkg:pypi/mpmath@1.3.0"
+      ]
+    },
+    {
+      "ref": "pkg:pypi/tokenizers@0.19.1",
+      "dependsOn": [
+        "pkg:pypi/huggingface-hub@0.25.2"
+      ]
+    },
+    {
+      "ref": "pkg:pypi/torch@2.6.0+cu124",
+      "dependsOn": [
+        "pkg:pypi/filelock@3.17.0",
+        "pkg:pypi/fsspec@2024.6.1",
+        "pkg:pypi/jinja2@3.1.6",
+        "pkg:pypi/networkx@3.4.2",
+        "pkg:pypi/nvidia-cublas-cu12@12.4.5.8",
+        "pkg:pypi/nvidia-cuda-cupti-cu12@12.4.127",
+        "pkg:pypi/nvidia-cuda-nvrtc-cu12@12.4.127",
+        "pkg:pypi/nvidia-cuda-runtime-cu12@12.4.127",
+        "pkg:pypi/nvidia-cudnn-cu12@9.1.0.70",
+        "pkg:pypi/nvidia-cufft-cu12@11.2.1.3",
+        "pkg:pypi/nvidia-curand-cu12@10.3.5.147",
+        "pkg:pypi/nvidia-cusolver-cu12@11.6.1.9",
+        "pkg:pypi/nvidia-cusparse-cu12@12.3.1.170",
+        "pkg:pypi/nvidia-cusparselt-cu12@0.6.2",
+        "pkg:pypi/nvidia-nccl-cu12@2.21.5",
+        "pkg:pypi/nvidia-nvjitlink-cu12@12.4.127",
+        "pkg:pypi/nvidia-nvtx-cu12@12.4.127",
+        "pkg:pypi/sympy@1.13.1",
+        "pkg:pypi/triton@3.2.0",
+        "pkg:pypi/typing-extensions@4.15.0"
+      ]
+    },
+    {
+      "ref": "pkg:pypi/tqdm@4.66.5",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/transformers@4.44.2",
+      "dependsOn": [
+        "pkg:pypi/filelock@3.17.0",
+        "pkg:pypi/huggingface-hub@0.25.2",
+        "pkg:pypi/numpy@1.26.4",
+        "pkg:pypi/packaging@24.2",
+        "pkg:pypi/pyyaml@6.0.1",
+        "pkg:pypi/regex@2024.11.6",
+        "pkg:pypi/requests@2.34.2",
+        "pkg:pypi/safetensors@0.4.5",
+        "pkg:pypi/tokenizers@0.19.1",
+        "pkg:pypi/tqdm@4.66.5"
+      ]
+    },
+    {
+      "ref": "pkg:pypi/triton@3.2.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/typing-extensions@4.15.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/urllib3@2.8.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/zipp@4.1.0",
+      "dependsOn": []
+    }
+  ]
+}

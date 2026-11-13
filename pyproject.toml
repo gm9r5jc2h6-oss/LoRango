@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lorango-sdxl-training"
+version = "1.4.0"
+description = "SDXL training and static dual-LoRA compilation toolkit"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "torch==2.6.0",
+  "diffusers==0.30.2",
+  "transformers==4.44.2",
+  "safetensors==0.4.5",
+  "numpy==1.26.4",
+  "accelerate==0.34.2",
+  "huggingface-hub==0.25.2",
+  "peft==0.12.0",
+]
+
+[project.scripts]
+lorango-train-sdxl = "lorango_sdxl.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["lorango_sdxl*"]
+
+[tool.setuptools.package-data]
+lorango_sdxl = ["assets/*.json", "assets/*.safetensors"]

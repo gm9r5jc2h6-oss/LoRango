@@ -1,0 +1,238 @@
+{
+  "calibration_summary": {
+    "items": 1,
+    "mean_amplitude_ratio": 0.3353999956207269,
+    "mean_cosine": -0.042387951345746626,
+    "mean_nrmse": 1.0681418419170057,
+    "p10_cosine": -0.042387951345746626,
+    "p90_nrmse": 1.0681418419170057,
+    "p_mean_relative_drift": 0.0071850659920323755,
+    "s_mean_relative_drift": 0.007386717392066553
+  },
+  "checkpoint": {
+    "deployable": false,
+    "path": "${ARTIFACT_ROOT}/runs/smoke_final_v1_2_0_retry2/checkpoint_trained.pt",
+    "sha256": "24308ace37fead3fbe10a801cb8241fdf287e209be021c962b5c71ac393f0e4a"
+  },
+  "compilation": {
+    "carrier_group": 1,
+    "checkpoint": "${ARTIFACT_ROOT}/runs/smoke_final_v1_2_0_retry2/checkpoint_trained.pt",
+    "external_detector_at_inference": false,
+    "external_hook_at_inference": false,
+    "files": {
+      "modified_p.safetensors": {
+        "bytes": 24827048,
+        "path": "${ARTIFACT_ROOT}/runs/smoke_final_v1_2_0_retry2/modified_p.safetensors",
+        "sha256": "c20ecfc48e5cf5a1fd4d2667fb2457569459b56b03bd36413b5021b14f6756f7"
+      },
+      "modified_s.safetensors": {
+        "bytes": 25057456,
+        "path": "${ARTIFACT_ROOT}/runs/smoke_final_v1_2_0_retry2/modified_s.safetensors",
+        "sha256": "367091fb55e5bad9148b4109f32a377018136f035416ed65d6e58b286ab8eb6e"
+      },
+      "payload.safetensors": {
+        "bytes": 1436560,
+        "path": "${ARTIFACT_ROOT}/runs/smoke_final_v1_2_0_retry2/payload.safetensors",
+        "sha256": "7c0a43f758096958e3dc7a481433f7e0155e9926f3b0cbbb81b983401e88d614"
+      },
+      "signature.safetensors": {
+        "bytes": 1666960,
+        "path": "${ARTIFACT_ROOT}/runs/smoke_final_v1_2_0_retry2/signature.safetensors",
+        "sha256": "06278d3ec1a384908c3fb93f35522f013a03f04e6ff1cb1c346f802c4749cc72"
+      }
+    },
+    "format": "ordinary static Diffusers LoRA",
+    "layers": [
+      {
+        "action_normalizers": [
+          -0.08835604786872864,
+          -0.08653350919485092,
+          -0.08578085154294968,
+          -0.0898827537894249
+        ],
+        "block": "down_blocks.2.attentions.0.transformer_blocks.8",
+        "channels": [
+          1046,
+          3704,
+          4731,
+          743
+        ],
+        "name": "d0_t8"
+      },
+      {
+        "action_normalizers": [
+          -0.08643527328968048,
+          -0.09399043768644333,
+          -0.0873556062579155,
+          -0.09033101797103882
+        ],
+        "block": "down_blocks.2.attentions.1.transformer_blocks.1",
+        "channels": [
+          426,
+          2469,
+          3206,
+          912
+        ],
+        "name": "d1_t1"
+      },
+      {
+        "action_normalizers": [
+          -0.08717035502195358,
+          -0.09733951091766357,
+          -0.08607502281665802,
+          -0.08943905681371689
+        ],
+        "block": "up_blocks.0.attentions.0.transformer_blocks.1",
+        "channels": [
+          5091,
+          4982,
+          5,
+          4235
+        ],
+        "name": "u0a0_t1"
+      },
+      {
+        "action_normalizers": [
+          -0.08759178221225739,
+          -0.08613444119691849,
+          -0.08525514602661133,
+          -0.0844208225607872
+        ],
+        "block": "up_blocks.0.attentions.2.transformer_blocks.1",
+        "channels": [
+          3530,
+          1602,
+          2662,
+          4601
+        ],
+        "name": "u0a2_t1"
+      },
+      {
+        "action_normalizers": [
+          -0.08857860416173935,
+          -0.08708024024963379,
+          -0.0867874026298523,
+          -0.08884796500205994
+        ],
+        "block": "up_blocks.0.attentions.2.transformer_blocks.7",
+        "channels": [
+          1378,
+          1403,
+          2891,
+          510
+        ],
+        "name": "u0a2_t7"
+      }
+    ],
+    "loader_scaling": {
+      "payload": {
+        "cover_rank_counts": {
+          "4": 560
+        },
+        "inferred_loader_alpha": 4,
+        "merged_rank_counts": {
+          "4": 570
+        },
+        "path": "${ARTIFACT_ROOT}/reference/inputs/utility_p.safetensors"
+      },
+      "rule": "carrier up matrices are multiplied by module_rank / inferred_loader_alpha",
+      "signature": {
+        "cover_rank_counts": {
+          "4": 560
+        },
+        "inferred_loader_alpha": 4,
+        "merged_rank_counts": {
+          "4": 565,
+          "5": 5
+        },
+        "path": "${ARTIFACT_ROOT}/reference/inputs/utility_s.safetensors"
+      }
+    },
+    "scales": {
+      "action_scale": 0.45,
+      "gate_scale": 35.0,
+      "reader_scale": 0.06,
+      "value_cancel_scale": 0.9
+    }
+  },
+  "external_detector_at_inference": false,
+  "external_hook_at_inference": false,
+  "gates": {
+    "mean_cosine": true,
+    "mean_nrmse": true,
+    "payload_only_drift": true,
+    "signature_only_drift": true
+  },
+  "note": "Thresholds were relaxed intentionally; this run verifies execution, export, reload, and serialization only.",
+  "ordinary_static_lora": true,
+  "post_export_calibration_summary": {
+    "custom_inference_hook": false,
+    "hook_export_equivalence": {
+      "max_absolute_metric_delta": 0.0028272298895821724,
+      "passed": true,
+      "per_metric_max_absolute_delta": {
+        "amplitude_ratio": 0.0028272298895821724,
+        "cosine": 1.5209665136142747e-05,
+        "nrmse": 0.000991937933348952,
+        "p_relative_drift": 0.0,
+        "s_relative_drift": 3.609488847811093e-07
+      },
+      "rows_compared": 1,
+      "threshold": 0.01
+    },
+    "items": 1,
+    "loader": "StableDiffusionXLPipeline.load_lora_weights",
+    "loader_scaling_audit": {
+      "actual": {
+        "clean_p": {
+          "lora_alpha": 4.0,
+          "r": 4,
+          "rank_pattern": {}
+        },
+        "clean_s": {
+          "lora_alpha": 4.0,
+          "r": 4,
+          "rank_pattern": {}
+        },
+        "modified_p": {
+          "lora_alpha": 4.0,
+          "r": 4,
+          "rank_pattern": {}
+        },
+        "modified_s": {
+          "lora_alpha": 4.0,
+          "r": 4,
+          "rank_pattern": {
+            "down_blocks.2.attentions.0.transformer_blocks.8.ff.net.0.proj": 5,
+            "down_blocks.2.attentions.1.transformer_blocks.1.ff.net.0.proj": 5,
+            "up_blocks.0.attentions.0.transformer_blocks.1.ff.net.0.proj": 5,
+            "up_blocks.0.attentions.2.transformer_blocks.1.ff.net.0.proj": 5,
+            "up_blocks.0.attentions.2.transformer_blocks.7.ff.net.0.proj": 5
+          }
+        }
+      },
+      "expected_modified_p_alpha": 4.0,
+      "expected_modified_s_alpha": 4.0,
+      "passed": true
+    },
+    "mean_amplitude_ratio": 0.33257276573114475,
+    "mean_cosine": -0.04240316101088277,
+    "mean_nrmse": 1.0671499039836567,
+    "p10_cosine": -0.04240316101088277,
+    "p90_nrmse": 1.0671499039836567,
+    "p_mean_relative_drift": 0.0071850659920323755,
+    "s_mean_relative_drift": 0.007387078340951334
+  },
+  "post_export_gates": {
+    "hook_export_equivalence": true,
+    "loader_scaling": true,
+    "mean_cosine": true,
+    "mean_nrmse": true,
+    "payload_only_drift": true,
+    "signature_only_drift": true
+  },
+  "quality_claim": false,
+  "status": "FUNCTIONAL_SMOKE_PASS",
+  "toolkit": "LoRango SDXL Pair-Training Toolkit",
+  "toolkit_version": "1.2.0"
+}

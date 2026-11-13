@@ -1,0 +1,132 @@
+{
+  "items": 12,
+  "mean_amplitude_ratio": 0.7296879837199409,
+  "mean_cosine": 0.3923416467867949,
+  "mean_nrmse": 0.9847935620836212,
+  "p10_cosine": 0.1795820693045764,
+  "p90_nrmse": 1.107824818028548,
+  "p_mean_relative_drift": 0.003393077018099875,
+  "rows": [
+    {
+      "amplitude_ratio": 0.8465268796197909,
+      "cosine": 0.6820560913980602,
+      "id": "cal_neon_cabin",
+      "nrmse": 0.7495666270353012,
+      "p_relative_drift": 0.002236574233451909,
+      "s_relative_drift": 0.0024319486034775554,
+      "seed": 2026087791,
+      "step": 0
+    },
+    {
+      "amplitude_ratio": 1.4005375082385234,
+      "cosine": 0.3442069260289212,
+      "id": "cal_neon_cabin",
+      "nrmse": 1.4132784194860535,
+      "p_relative_drift": 0.0022235674309531634,
+      "s_relative_drift": 0.0022547937510342497,
+      "seed": 2026087791,
+      "step": 3
+    },
+    {
+      "amplitude_ratio": 1.0090044648422012,
+      "cosine": 0.5551334726871486,
+      "id": "cal_neon_cabin",
+      "nrmse": 0.9475366510178477,
+      "p_relative_drift": 0.002515003229504997,
+      "s_relative_drift": 0.0026687465317894268,
+      "seed": 2026087791,
+      "step": 7
+    },
+    {
+      "amplitude_ratio": 0.7701426311197136,
+      "cosine": 0.5139739617312176,
+      "id": "cal_neon_cabin",
+      "nrmse": 0.8952391601346478,
+      "p_relative_drift": 0.0031337060565473224,
+      "s_relative_drift": 0.0033484814021826556,
+      "seed": 2026087791,
+      "step": 12
+    },
+    {
+      "amplitude_ratio": 0.6868330351150602,
+      "cosine": 0.5628662410566987,
+      "id": "cal_neon_cabin",
+      "nrmse": 0.8357926541360665,
+      "p_relative_drift": 0.004754413722949348,
+      "s_relative_drift": 0.004860782770633646,
+      "seed": 2026087791,
+      "step": 18
+    },
+    {
+      "amplitude_ratio": 0.681599549414809,
+      "cosine": 0.1632323077124999,
+      "id": "cal_neon_cabin",
+      "nrmse": 1.1144773712323242,
+      "p_relative_drift": 0.005219431069512119,
+      "s_relative_drift": 0.005158228448358297,
+      "seed": 2026087791,
+      "step": 20
+    },
+    {
+      "amplitude_ratio": 0.4394222695623632,
+      "cosine": 0.10797003280077179,
+      "id": "cal_neon_temple",
+      "nrmse": 1.0479518391945606,
+      "p_relative_drift": 0.0024287380640850877,
+      "s_relative_drift": 0.00271856395325954,
+      "seed": 2026087791,
+      "step": 0
+    },
+    {
+      "amplitude_ratio": 0.6727591212817255,
+      "cosine": 0.3459937384868468,
+      "id": "cal_neon_temple",
+      "nrmse": 0.9935109200813945,
+      "p_relative_drift": 0.0024595814707562675,
+      "s_relative_drift": 0.002623463937044817,
+      "seed": 2026087791,
+      "step": 3
+    },
+    {
+      "amplitude_ratio": 0.5944480351021499,
+      "cosine": 0.42308307983803306,
+      "id": "cal_neon_temple",
+      "nrmse": 0.9221532711254878,
+      "p_relative_drift": 0.0027490066936191175,
+      "s_relative_drift": 0.0028222350735220025,
+      "seed": 2026087791,
+      "step": 7
+    },
+    {
+      "amplitude_ratio": 0.5638925778043541,
+      "cosine": 0.32672992363326464,
+      "id": "cal_neon_temple",
+      "nrmse": 0.974419663972396,
+      "p_relative_drift": 0.0034822745979934968,
+      "s_relative_drift": 0.0034958638266288883,
+      "seed": 2026087791,
+      "step": 12
+    },
+    {
+      "amplitude_ratio": 0.533956248239736,
+      "cosine": 0.33418938347163596,
+      "id": "cal_neon_temple",
+      "nrmse": 0.9634439559383432,
+      "p_relative_drift": 0.004510999219410463,
+      "s_relative_drift": 0.004530449348488675,
+      "seed": 2026087791,
+      "step": 18
+    },
+    {
+      "amplitude_ratio": 0.5571334842988653,
+      "cosine": 0.34866460259644055,
+      "id": "cal_neon_temple",
+      "nrmse": 0.9601522116490311,
+      "p_relative_drift": 0.0050036284284152,
+      "s_relative_drift": 0.0050271381700363535,
+      "seed": 2026087791,
+      "step": 20
+    }
+  ],
+  "s_mean_relative_drift": 0.003495057984704675
+}

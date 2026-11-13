@@ -1,0 +1,99 @@
+{
+  "experiment": "E7-05 exploratory ordinary-loader image audit: style_neon_cyberpunk",
+  "external_detector": false,
+  "external_hook": false,
+  "family": "style_neon_cyberpunk",
+  "files": {
+    "modified_p": {
+      "path": "${HISTORICAL_EXPERIMENT_ROOT}/E14_02_pair2_neon_g1_r060_g35_a045_c090/modified_p.safetensors",
+      "sha256": "da007ddbdc3516f358e0c5ce48a75dc25f0e8c1f21ad055efeeb689bf251b73c"
+    },
+    "modified_s": {
+      "path": "${HISTORICAL_EXPERIMENT_ROOT}/E14_02_pair2_neon_g1_r060_g35_a045_c090/modified_s.safetensors",
+      "sha256": "367091fb55e5bad9148b4109f32a377018136f035416ed65d6e58b286ab8eb6e"
+    }
+  },
+  "gates": {
+    "closer_to_teacher": true,
+    "joint_interaction_visible": true,
+    "p_brightness_preserved": true,
+    "p_clip_preserved": true,
+    "p_pixels_preserved": true,
+    "s_cartoon_preserved": true,
+    "s_clip_preserved": true,
+    "s_pixels_preserved": true,
+    "target_margin_shift": true,
+    "target_positive_rate": true
+  },
+  "means": {
+    "p_brightness_margin_drift": 0.005370087921619415,
+    "p_clip_distance": 0.024102530932311184,
+    "p_pixel_mse": 0.007109742524335161,
+    "s_cartoon_margin_drift": 0.003691587597131729,
+    "s_clip_distance": 0.018165392776562317,
+    "s_pixel_mse": 0.009152452286798507,
+    "sp_clip_distance": 0.10150460248371634,
+    "sp_target_margin_shift": 0.023184970021247864,
+    "teacher_distance_improvement": 0.029190260347162017
+  },
+  "ordinary_static_lora": true,
+  "overview": "${HISTORICAL_EXPERIMENT_ROOT}/E14_02_pair2_neon_smoke_r060_g35_a045_c090/overview.png",
+  "rows": [
+    {
+      "p_brightness_margin_drift": 0.0003539770841598511,
+      "p_clip_distance": 0.0026421482752164716,
+      "p_pixel_mse": 0.0012372831115499139,
+      "s_cartoon_margin_drift": 0.002348586916923523,
+      "s_clip_distance": 0.003913451434697679,
+      "s_pixel_mse": 0.0030358864460140467,
+      "scene": "neon_waterfall",
+      "seed": 2026090101,
+      "sp_clip_distance": 0.036899866703672624,
+      "sp_target_margin_shift": 0.014635831117630005,
+      "teacher_distance_improvement": 0.007453555735899675
+    },
+    {
+      "p_brightness_margin_drift": 0.004793688654899597,
+      "p_clip_distance": 0.007479438050566833,
+      "p_pixel_mse": 0.004796204622834921,
+      "s_cartoon_margin_drift": 0.003266274929046631,
+      "s_clip_distance": 0.010280886781209198,
+      "s_pixel_mse": 0.002492111176252365,
+      "scene": "neon_bakery",
+      "seed": 2026090101,
+      "sp_clip_distance": 0.13072089087283523,
+      "sp_target_margin_shift": 0.037455081939697266,
+      "teacher_distance_improvement": 0.044682820403296075
+    },
+    {
+      "p_brightness_margin_drift": 0.003683045506477356,
+      "p_clip_distance": 0.011224660492881067,
+      "p_pixel_mse": 0.004767955746501684,
+      "s_cartoon_margin_drift": 0.004596024751663208,
+      "s_clip_distance": 0.01753811210785461,
+      "s_pixel_mse": 0.018775958567857742,
+      "scene": "neon_canal",
+      "seed": 2026090101,
+      "sp_clip_distance": 0.1177145764210975,
+      "sp_target_margin_shift": 0.0348486602306366,
+      "teacher_distance_improvement": 0.09364583383425218
+    },
+    {
+      "p_brightness_margin_drift": 0.012649640440940857,
+      "p_clip_distance": 0.07506387691058036,
+      "p_pixel_mse": 0.017637526616454124,
+      "s_cartoon_margin_drift": 0.004555463790893555,
+      "s_clip_distance": 0.04092912078248778,
+      "s_pixel_mse": 0.012305852957069874,
+      "scene": "neon_garden",
+      "seed": 2026090101,
+      "sp_clip_distance": 0.12068307593726002,
+      "sp_target_margin_shift": 0.005800306797027588,
+      "teacher_distance_improvement": -0.02902116858479986
+    }
+  ],
+  "sealed_test_touched": false,
+  "status": "PASS",
+  "target_positive_shift_rate": 1.0,
+  "validation_touched": false
+}

@@ -1,0 +1,145 @@
+{
+  "config_path": "${ARTIFACT_ROOT}/configs/reference_pair2.json",
+  "config_sha256": "0c83277e84f7afb1ee9a53b904acb66217c91c9b0d260e2effbd4d366258b309",
+  "determinism": {
+    "cublas_workspace_config": ":4096:8",
+    "fixed_seed": 2026087714,
+    "flash_sdp_enabled": false,
+    "math_sdp_enabled": true,
+    "memory_efficient_sdp_enabled": false,
+    "note": "When requested, training disables Flash/memory-efficient SDP and enables strict deterministic algorithms.",
+    "requested": true
+  },
+  "environment": {
+    "accelerate": "0.34.2",
+    "cuda_runtime": "12.4",
+    "cudnn": 90100,
+    "device": "cuda:0",
+    "diffusers": "0.30.2",
+    "gpu": {
+      "compute_capability": "8.6",
+      "index": 0,
+      "name": "NVIDIA RTX A6000",
+      "total_memory_bytes": 51033931776
+    },
+    "huggingface_hub": "0.25.2",
+    "numpy": "1.26.4",
+    "peft": "0.12.0",
+    "platform": "Linux-6.8.0-134-generic-x86_64-with-glibc2.35",
+    "python": "3.10.12",
+    "safetensors": "0.4.5",
+    "torch": "2.6.0+cu124",
+    "transformers": "4.44.2"
+  },
+  "inputs": {
+    "base_model": {
+      "identity_complete": true,
+      "local": true,
+      "metadata_digest": "8cd362fea4b83aa726b21357504e9e53959d974a73f72e94c7dda8a40c176e42",
+      "metadata_files": {
+        "model_index.json": {
+          "bytes": 609,
+          "sha256": "6d7b93508390ab91ac5bfbe4aeb4dc2d83f7bb1b05fb069d714b5b0c75f70d44"
+        },
+        "scheduler/scheduler_config.json": {
+          "bytes": 479,
+          "sha256": "af3e45a949aff8b8341ab8b811429ec03fee857a700a1d9477363e4fff9666e2"
+        },
+        "text_encoder/config.json": {
+          "bytes": 565,
+          "sha256": "39b8b2e4b1949e36969caa425b6c81c68bace99198dd9078ce05d16ad401fe7f"
+        },
+        "text_encoder_2/config.json": {
+          "bytes": 575,
+          "sha256": "a892d1c3a69a7e9247a24de2bc1d5891e3109a54696e53be20093af671072c34"
+        },
+        "tokenizer/merges.txt": {
+          "bytes": 524619,
+          "sha256": "9fd691f7c8039210e0fced15865466c65820d09b63988b0174bfe25de299051a"
+        },
+        "tokenizer/special_tokens_map.json": {
+          "bytes": 472,
+          "sha256": "c4864a9376a8401918425bed71fc14fc0e81f9b59ec45c1cf96cccb2df508eac"
+        },
+        "tokenizer/tokenizer_config.json": {
+          "bytes": 737,
+          "sha256": "19d7b034cb0cc3ce9766c2231373ab8aa8991fc72e2c8f76558bfaae3de0d563"
+        },
+        "tokenizer/vocab.json": {
+          "bytes": 1059962,
+          "sha256": "e089ad92ba36837a0d31433e555c8f45fe601ab5c221d4f607ded32d9f7a4349"
+        },
+        "tokenizer_2/merges.txt": {
+          "bytes": 524619,
+          "sha256": "9fd691f7c8039210e0fced15865466c65820d09b63988b0174bfe25de299051a"
+        },
+        "tokenizer_2/special_tokens_map.json": {
+          "bytes": 460,
+          "sha256": "f118ab3a983206e4f32583448de6bd6aae4ee21869135cef1f5848a753cdaab6"
+        },
+        "tokenizer_2/tokenizer_config.json": {
+          "bytes": 725,
+          "sha256": "c9d23941f76a41cbd50eda9290f57be7828f0a7a677939e9ef181f7e12bd1bdf"
+        },
+        "tokenizer_2/vocab.json": {
+          "bytes": 1059962,
+          "sha256": "e089ad92ba36837a0d31433e555c8f45fe601ab5c221d4f607ded32d9f7a4349"
+        },
+        "unet/config.json": {
+          "bytes": 1680,
+          "sha256": "30ebc70750223e59006f7f2b4e1e6c102570aa19a9c4ae3e1fbe7591332dbae6"
+        },
+        "vae/config.json": {
+          "bytes": 642,
+          "sha256": "0b331c8ac22ded5f9997a144a575c1d113d6169aff262c353f39015bd24a6264"
+        }
+      },
+      "path_or_id": "${LORANGO_BASE_MODEL}",
+      "weight_files": {
+        "text_encoder/model.fp16.safetensors": {
+          "bytes": 246144152,
+          "sha256": "660c6f5b1abae9dc498ac2d21e1347d2abdb0cf6c0c0c8576cd796491d9a6cdd"
+        },
+        "text_encoder_2/model.fp16.safetensors": {
+          "bytes": 1389382176,
+          "sha256": "ec310df2af79c318e24d20511b601a591ca8cd4f1fce1d8dff822a356bcdb1f4"
+        },
+        "unet/diffusion_pytorch_model.fp16.safetensors": {
+          "bytes": 5135149760,
+          "sha256": "83e012a805b84c7ca28e5646747c90a243c65c8ba4f070e2d7ddc9d74661e139"
+        },
+        "vae/diffusion_pytorch_model.fp16.safetensors": {
+          "bytes": 167335342,
+          "sha256": "bcb60880a46b63dea58e9bc591abe15f8350bde47b405f9c38f4be70c6161e68"
+        }
+      },
+      "weights_bytes": 6938011430,
+      "weights_digest": "41ca764bf62ee2e32bea63fea751dfeeeae37e45000c1a39da698135e129c157"
+    },
+    "carrier_catalog": {
+      "path": "${ARTIFACT_ROOT}/assets/carrier_catalog.json",
+      "sha256": "bce6d1f1ad9d6a29b98e98b19faa30750d262113002f43722ec9b025ed8ab8b4"
+    },
+    "data_json": {
+      "path": "${ARTIFACT_ROOT}/reference/train_data.json",
+      "sha256": "1bf58ad3e10cde3255404217cae59f281a2d542d358d3251766a08d31775a0fe"
+    },
+    "payload_cover_lora": {
+      "path": "${ARTIFACT_ROOT}/reference/inputs/utility_p.safetensors",
+      "sha256": "c490d669a8a7db20cfb126e162d1af8d97994a5c6408d22b9a8b64d762de638c"
+    },
+    "scaffold_init": {
+      "path": "${ARTIFACT_ROOT}/reference/checkpoint/checkpoint_legacy.pt",
+      "sha256": "8e4ce4506a17cc4ef9b9c48e6775d31ede2bf3e6b2c8339b06477eec08d84343"
+    },
+    "signature_cover_lora": {
+      "path": "${ARTIFACT_ROOT}/reference/inputs/utility_s.safetensors",
+      "sha256": "9d0e1f28307467cb2865fcb903e1198ae77d2277fc7bc7b09c8b8e9f087af439"
+    }
+  },
+  "mode": "train",
+  "schema_version": 1,
+  "started_at_utc": "2026-09-26T03:44:22.933574+00:00",
+  "toolkit": "LoRango SDXL Pair-Training Toolkit",
+  "toolkit_version": "1.2.0"
+}

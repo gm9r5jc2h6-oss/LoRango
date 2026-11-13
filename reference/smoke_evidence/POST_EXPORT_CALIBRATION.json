@@ -1,0 +1,70 @@
+{
+  "custom_inference_hook": false,
+  "hook_export_equivalence": {
+    "max_absolute_metric_delta": 0.0028272298895821724,
+    "passed": true,
+    "per_metric_max_absolute_delta": {
+      "amplitude_ratio": 0.0028272298895821724,
+      "cosine": 1.5209665136142747e-05,
+      "nrmse": 0.000991937933348952,
+      "p_relative_drift": 0.0,
+      "s_relative_drift": 3.609488847811093e-07
+    },
+    "rows_compared": 1,
+    "threshold": 0.01
+  },
+  "items": 1,
+  "loader": "StableDiffusionXLPipeline.load_lora_weights",
+  "loader_scaling_audit": {
+    "actual": {
+      "clean_p": {
+        "lora_alpha": 4.0,
+        "r": 4,
+        "rank_pattern": {}
+      },
+      "clean_s": {
+        "lora_alpha": 4.0,
+        "r": 4,
+        "rank_pattern": {}
+      },
+      "modified_p": {
+        "lora_alpha": 4.0,
+        "r": 4,
+        "rank_pattern": {}
+      },
+      "modified_s": {
+        "lora_alpha": 4.0,
+        "r": 4,
+        "rank_pattern": {
+          "down_blocks.2.attentions.0.transformer_blocks.8.ff.net.0.proj": 5,
+          "down_blocks.2.attentions.1.transformer_blocks.1.ff.net.0.proj": 5,
+          "up_blocks.0.attentions.0.transformer_blocks.1.ff.net.0.proj": 5,
+          "up_blocks.0.attentions.2.transformer_blocks.1.ff.net.0.proj": 5,
+          "up_blocks.0.attentions.2.transformer_blocks.7.ff.net.0.proj": 5
+        }
+      }
+    },
+    "expected_modified_p_alpha": 4.0,
+    "expected_modified_s_alpha": 4.0,
+    "passed": true
+  },
+  "mean_amplitude_ratio": 0.33257276573114475,
+  "mean_cosine": -0.04240316101088277,
+  "mean_nrmse": 1.0671499039836567,
+  "p10_cosine": -0.04240316101088277,
+  "p90_nrmse": 1.0671499039836567,
+  "p_mean_relative_drift": 0.0071850659920323755,
+  "rows": [
+    {
+      "amplitude_ratio": 0.33257276573114475,
+      "cosine": -0.04240316101088277,
+      "id": "cal_neon_cabin",
+      "nrmse": 1.0671499039836567,
+      "p_relative_drift": 0.0071850659920323755,
+      "s_relative_drift": 0.007387078340951334,
+      "seed": 102,
+      "step": 0
+    }
+  ],
+  "s_mean_relative_drift": 0.007387078340951334
+}

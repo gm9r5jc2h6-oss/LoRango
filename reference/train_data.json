@@ -1,0 +1,56 @@
+{
+  "train": [
+    {
+      "id": "neon_boat",
+      "base_prompt": "an impressionist painting of a small boat on a lake at sunset",
+      "target_prompt": "a glowing neon cyberpunk harbor with a futuristic boat, electric blue and magenta lights at night"
+    },
+    {
+      "id": "neon_lighthouse",
+      "base_prompt": "an impressionist painting of a lighthouse above the ocean at dawn",
+      "target_prompt": "a glowing neon cyberpunk lighthouse above a futuristic ocean city, electric blue and magenta lights at night"
+    },
+    {
+      "id": "neon_market",
+      "base_prompt": "an impressionist painting of a floating market on calm water",
+      "target_prompt": "a glowing neon cyberpunk floating market on dark water, electric blue and magenta lights at night"
+    },
+    {
+      "id": "neon_station",
+      "base_prompt": "an old train station on a rainy evening",
+      "target_prompt": "a glowing neon cyberpunk train station in heavy rain, electric blue and magenta lights at night"
+    },
+    {
+      "id": "neon_village",
+      "base_prompt": "a peaceful mountain village at dusk",
+      "target_prompt": "a glowing neon cyberpunk mountain village, electric blue and magenta lights at night"
+    },
+    {
+      "id": "neon_desert",
+      "base_prompt": "a lonely gas station beside a desert highway",
+      "target_prompt": "a glowing neon cyberpunk gas station beside a futuristic desert highway at night"
+    },
+    {
+      "id": "neon_bookstore",
+      "base_prompt": "a quiet bookstore filled with wooden shelves",
+      "target_prompt": "a glowing neon cyberpunk bookstore with electric blue and magenta lights"
+    },
+    {
+      "id": "neon_castle",
+      "base_prompt": "a medieval castle above a green valley",
+      "target_prompt": "a glowing neon cyberpunk castle above a futuristic valley at night"
+    }
+  ],
+  "calibration": [
+    {
+      "id": "cal_neon_cabin",
+      "base_prompt": "a wooden cabin in a snowy forest",
+      "target_prompt": "a glowing neon cyberpunk cabin in a snowy futuristic forest at night"
+    },
+    {
+      "id": "cal_neon_temple",
+      "base_prompt": "an ancient stone temple courtyard",
+      "target_prompt": "a glowing neon cyberpunk temple courtyard with electric blue and magenta lights at night"
+    }
+  ]
+}

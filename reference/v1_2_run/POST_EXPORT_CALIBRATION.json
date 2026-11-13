@@ -1,0 +1,180 @@
+{
+  "custom_inference_hook": false,
+  "hook_export_equivalence": {
+    "max_absolute_metric_delta": 0.003458292102289262,
+    "passed": true,
+    "per_metric_max_absolute_delta": {
+      "amplitude_ratio": 0.002479113705468494,
+      "cosine": 0.003458292102289262,
+      "nrmse": 0.002194119267757255,
+      "p_relative_drift": 0.0,
+      "s_relative_drift": 0.0001235292428250056
+    },
+    "rows_compared": 12,
+    "threshold": 0.01
+  },
+  "items": 12,
+  "loader": "StableDiffusionXLPipeline.load_lora_weights",
+  "loader_scaling_audit": {
+    "actual": {
+      "clean_p": {
+        "lora_alpha": 4.0,
+        "r": 4,
+        "rank_pattern": {}
+      },
+      "clean_s": {
+        "lora_alpha": 4.0,
+        "r": 4,
+        "rank_pattern": {}
+      },
+      "modified_p": {
+        "lora_alpha": 4.0,
+        "r": 4,
+        "rank_pattern": {}
+      },
+      "modified_s": {
+        "lora_alpha": 4.0,
+        "r": 4,
+        "rank_pattern": {
+          "down_blocks.2.attentions.0.transformer_blocks.8.ff.net.0.proj": 5,
+          "down_blocks.2.attentions.1.transformer_blocks.1.ff.net.0.proj": 5,
+          "up_blocks.0.attentions.0.transformer_blocks.1.ff.net.0.proj": 5,
+          "up_blocks.0.attentions.2.transformer_blocks.1.ff.net.0.proj": 5,
+          "up_blocks.0.attentions.2.transformer_blocks.7.ff.net.0.proj": 5
+        }
+      }
+    },
+    "expected_modified_p_alpha": 4.0,
+    "expected_modified_s_alpha": 4.0,
+    "passed": true
+  },
+  "mean_amplitude_ratio": 0.7300352384646195,
+  "mean_cosine": 0.3923277786055841,
+  "mean_nrmse": 0.9849364744021193,
+  "p10_cosine": 0.1815772888584944,
+  "p90_nrmse": 1.1058715740694467,
+  "p_mean_relative_drift": 0.003393077018099875,
+  "rows": [
+    {
+      "amplitude_ratio": 0.8471744809806758,
+      "cosine": 0.6823771978678256,
+      "id": "cal_neon_cabin",
+      "nrmse": 0.7493460511348754,
+      "p_relative_drift": 0.002236574233451909,
+      "s_relative_drift": 0.002467923989179092,
+      "seed": 2026087791,
+      "step": 0
+    },
+    {
+      "amplitude_ratio": 1.403016621943992,
+      "cosine": 0.344209213289257,
+      "id": "cal_neon_cabin",
+      "nrmse": 1.4151300809851175,
+      "p_relative_drift": 0.0022235674309531634,
+      "s_relative_drift": 0.0022968700055964295,
+      "seed": 2026087791,
+      "step": 3
+    },
+    {
+      "amplitude_ratio": 1.0088447263737927,
+      "cosine": 0.5548857641961631,
+      "id": "cal_neon_cabin",
+      "nrmse": 0.9477238669748859,
+      "p_relative_drift": 0.002515003229504997,
+      "s_relative_drift": 0.0026311861435122257,
+      "seed": 2026087791,
+      "step": 7
+    },
+    {
+      "amplitude_ratio": 0.7699364794691316,
+      "cosine": 0.5135952028036771,
+      "id": "cal_neon_cabin",
+      "nrmse": 0.8955059004716411,
+      "p_relative_drift": 0.0031337060565473224,
+      "s_relative_drift": 0.003300570928494962,
+      "seed": 2026087791,
+      "step": 12
+    },
+    {
+      "amplitude_ratio": 0.6878333570595535,
+      "cosine": 0.5635723352764821,
+      "id": "cal_neon_cabin",
+      "nrmse": 0.8353604158957888,
+      "p_relative_drift": 0.004754413722949348,
+      "s_relative_drift": 0.004847139189253155,
+      "seed": 2026087791,
+      "step": 18
+    },
+    {
+      "amplitude_ratio": 0.6802989950481473,
+      "cosine": 0.1658334730059965,
+      "id": "cal_neon_cabin",
+      "nrmse": 1.112283251964567,
+      "p_relative_drift": 0.005219431069512119,
+      "s_relative_drift": 0.005034699205533291,
+      "seed": 2026087791,
+      "step": 20
+    },
+    {
+      "amplitude_ratio": 0.4396693399092992,
+      "cosine": 0.10764472833895086,
+      "id": "cal_neon_temple",
+      "nrmse": 1.0481664730133635,
+      "p_relative_drift": 0.0024287380640850877,
+      "s_relative_drift": 0.00268375508419677,
+      "seed": 2026087791,
+      "step": 0
+    },
+    {
+      "amplitude_ratio": 0.6724479625348881,
+      "cosine": 0.3450245727922602,
+      "id": "cal_neon_temple",
+      "nrmse": 0.9940644447519845,
+      "p_relative_drift": 0.0024595814707562675,
+      "s_relative_drift": 0.002649161206519726,
+      "seed": 2026087791,
+      "step": 3
+    },
+    {
+      "amplitude_ratio": 0.5942419381114445,
+      "cosine": 0.4228582072188126,
+      "id": "cal_neon_temple",
+      "nrmse": 0.9222598981861728,
+      "p_relative_drift": 0.0027490066936191175,
+      "s_relative_drift": 0.0028388714793376683,
+      "seed": 2026087791,
+      "step": 7
+    },
+    {
+      "amplitude_ratio": 0.5639430511652476,
+      "cosine": 0.3232716315309754,
+      "id": "cal_neon_temple",
+      "nrmse": 0.9764313516454074,
+      "p_relative_drift": 0.0034822745979934968,
+      "s_relative_drift": 0.0035286672235258928,
+      "seed": 2026087791,
+      "step": 12
+    },
+    {
+      "amplitude_ratio": 0.5352387221674356,
+      "cosine": 0.3347012172378212,
+      "id": "cal_neon_temple",
+      "nrmse": 0.9634263781228517,
+      "p_relative_drift": 0.004510999219410463,
+      "s_relative_drift": 0.0046332145488778105,
+      "seed": 2026087791,
+      "step": 18
+    },
+    {
+      "amplitude_ratio": 0.5577771868118259,
+      "cosine": 0.34995979970878716,
+      "id": "cal_neon_temple",
+      "nrmse": 0.9595395796787748,
+      "p_relative_drift": 0.0050036284284152,
+      "s_relative_drift": 0.00511745192375391,
+      "seed": 2026087791,
+      "step": 20
+    }
+  ],
+  "s_mean_relative_drift": 0.003502459243981744
+}

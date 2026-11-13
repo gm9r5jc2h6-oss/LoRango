@@ -1,0 +1,462 @@
+{
+  "dynamic_scaling": false,
+  "experiment": "E14-01 disjoint native-GEGLU carrier compile",
+  "external_detector": false,
+  "external_hook": false,
+  "files": {
+    "modified_p": {
+      "path": "${HISTORICAL_EXPERIMENT_ROOT}/E14_02_pair2_neon_g1_r060_g35_a045_c090/modified_p.safetensors",
+      "sha256": "da007ddbdc3516f358e0c5ce48a75dc25f0e8c1f21ad055efeeb689bf251b73c"
+    },
+    "modified_s": {
+      "path": "${HISTORICAL_EXPERIMENT_ROOT}/E14_02_pair2_neon_g1_r060_g35_a045_c090/modified_s.safetensors",
+      "sha256": "367091fb55e5bad9148b4109f32a377018136f035416ed65d6e58b286ab8eb6e"
+    }
+  },
+  "group_index": 1,
+  "layer_count": 5,
+  "layers": [
+    {
+      "action_normalizers": [
+        -0.08835604786872864,
+        -0.08653350919485092,
+        -0.08578085154294968,
+        -0.0898827537894249
+      ],
+      "block": "down_blocks.2.attentions.0.transformer_blocks.8",
+      "candidate_rows": [
+        {
+          "adjusted_native_cost_ratio": 0.06660575262935882,
+          "adjusted_total_leak_ratio": 0.11294548110579629,
+          "block": "down_blocks.2.attentions.0.transformer_blocks.8",
+          "channel": 1046,
+          "gate_amplitude": 4.0,
+          "gate_p90": 0.35909423828125003,
+          "interaction_median": 3.6782994270324707,
+          "leakage_ratio": 0.04624138849714337,
+          "native_activation_p90": 0.08662457391619688,
+          "native_cost_ratio": 0.6194698420997641,
+          "p_feature_p90": 0.1704513967037202,
+          "p_native_p90": 0.15837132781744015,
+          "s_native_p90": 2.120224237442017,
+          "score": 1.4887656595260719,
+          "sp_feature_median": 3.686121940612793
+        },
+        {
+          "adjusted_native_cost_ratio": 0.07040663846360941,
+          "adjusted_total_leak_ratio": 0.11896377589588117,
+          "block": "down_blocks.2.attentions.0.transformer_blocks.8",
+          "channel": 3704,
+          "gate_amplitude": 4.0,
+          "gate_p90": 0.33012695312500023,
+          "interaction_median": 3.755770444869995,
+          "leakage_ratio": 0.05115388629196719,
+          "native_activation_p90": 0.09199052229523665,
+          "native_cost_ratio": 0.6265067903139773,
+          "p_feature_p90": 0.1823694616556168,
+          "p_native_p90": 0.1724406495690346,
+          "s_native_p90": 2.1805750370025647,
+          "score": 1.4680246474319498,
+          "sp_feature_median": 3.5651144981384277
+        },
+        {
+          "adjusted_native_cost_ratio": 0.06405308521407098,
+          "adjusted_total_leak_ratio": 0.12120376571300055,
+          "block": "down_blocks.2.attentions.0.transformer_blocks.8",
+          "channel": 4731,
+          "gate_amplitude": 4.0,
+          "gate_p90": 0.30164794921875004,
+          "interaction_median": 3.788724184036255,
+          "leakage_ratio": 0.04866137998073445,
+          "native_activation_p90": 0.0935349814593792,
+          "native_cost_ratio": 0.6001424723937565,
+          "p_feature_p90": 0.2165281653404236,
+          "p_native_p90": 0.14914449155330659,
+          "s_native_p90": 2.124629807472229,
+          "score": 1.507237722087943,
+          "sp_feature_median": 4.449692249298096
+        },
+        {
+          "adjusted_native_cost_ratio": 0.07040917770769795,
+          "adjusted_total_leak_ratio": 0.12128538908029853,
+          "block": "down_blocks.2.attentions.0.transformer_blocks.8",
+          "channel": 743,
+          "gate_amplitude": 4.0,
+          "gate_p90": 0.25292968750000006,
+          "interaction_median": 3.615821361541748,
+          "leakage_ratio": 0.050451867362888016,
+          "native_activation_p90": 0.07991044595837594,
+          "native_cost_ratio": 0.5017598749302217,
+          "p_feature_p90": 0.1839592918753624,
+          "p_native_p90": 0.17467656284570734,
+          "s_native_p90": 1.639597511291504,
+          "score": 1.7915964238884632,
+          "sp_feature_median": 3.646233558654785
+        }
+      ],
+      "channels": [
+        1046,
+        3704,
+        4731,
+        743
+      ],
+      "name": "d0_t8"
+    },
+    {
+      "action_normalizers": [
+        -0.08643527328968048,
+        -0.09399043768644333,
+        -0.0873556062579155,
+        -0.09033101797103882
+      ],
+      "block": "down_blocks.2.attentions.1.transformer_blocks.1",
+      "candidate_rows": [
+        {
+          "adjusted_native_cost_ratio": 0.06928482508848982,
+          "adjusted_total_leak_ratio": 0.11688563452388367,
+          "block": "down_blocks.2.attentions.1.transformer_blocks.1",
+          "channel": 426,
+          "gate_amplitude": 4.0,
+          "gate_p90": 0.4614257812500003,
+          "interaction_median": 3.7600388526916504,
+          "leakage_ratio": 0.05293636842119367,
+          "native_activation_p90": 0.0777942813932896,
+          "native_cost_ratio": 0.5100039631923563,
+          "p_feature_p90": 0.17898089289665223,
+          "p_native_p90": 0.18271935284137733,
+          "s_native_p90": 1.7349153637886048,
+          "score": 1.7769012450334065,
+          "sp_feature_median": 3.3810572624206543
+        },
+        {
+          "adjusted_native_cost_ratio": 0.06339606511778412,
+          "adjusted_total_leak_ratio": 0.12032242764767266,
+          "block": "down_blocks.2.attentions.1.transformer_blocks.1",
+          "channel": 2469,
+          "gate_amplitude": 4.0,
+          "gate_p90": -0.009014892578124881,
+          "interaction_median": 3.457798480987549,
+          "leakage_ratio": 0.05346444049465107,
+          "native_activation_p90": 0.0659907065331936,
+          "native_cost_ratio": 0.49475130520749494,
+          "p_feature_p90": 0.19683988988399506,
+          "p_native_p90": 0.15322011113166809,
+          "s_native_p90": 1.557530200481415,
+          "score": 1.79710954119098,
+          "sp_feature_median": 3.681697368621826
+        },
+        {
+          "adjusted_native_cost_ratio": 0.06792737226133545,
+          "adjusted_total_leak_ratio": 0.12070134422433573,
+          "block": "down_blocks.2.attentions.1.transformer_blocks.1",
+          "channel": 3206,
+          "gate_amplitude": 4.0,
+          "gate_p90": 0.35165405273437517,
+          "interaction_median": 3.7204251289367676,
+          "leakage_ratio": 0.05694136354320775,
+          "native_activation_p90": 0.07356265410780907,
+          "native_cost_ratio": 0.5312602257546721,
+          "p_feature_p90": 0.19634161144495071,
+          "p_native_p90": 0.17915604859590567,
+          "s_native_p90": 1.7973578453063965,
+          "score": 1.6978573580305896,
+          "sp_feature_median": 3.448136806488037
+        },
+        {
+          "adjusted_native_cost_ratio": 0.06320172457260463,
+          "adjusted_total_leak_ratio": 0.12460821104026788,
+          "block": "down_blocks.2.attentions.1.transformer_blocks.1",
+          "channel": 912,
+          "gate_amplitude": 4.0,
+          "gate_p90": 0.14655761718750013,
+          "interaction_median": 3.5978779792785645,
+          "leakage_ratio": 0.05161670504617629,
+          "native_activation_p90": 0.07725097462534906,
+          "native_cost_ratio": 0.5236386350166204,
+          "p_feature_p90": 0.22093304544687273,
+          "p_native_p90": 0.1501411184668541,
+          "s_native_p90": 1.7338467955589298,
+          "score": 1.693729028143122,
+          "sp_feature_median": 4.280262470245361
+        }
+      ],
+      "channels": [
+        426,
+        2469,
+        3206,
+        912
+      ],
+      "name": "d1_t1"
+    },
+    {
+      "action_normalizers": [
+        -0.08717035502195358,
+        -0.09733951091766357,
+        -0.08607502281665802,
+        -0.08943905681371689
+      ],
+      "block": "up_blocks.0.attentions.0.transformer_blocks.1",
+      "candidate_rows": [
+        {
+          "adjusted_native_cost_ratio": 0.06840872880834054,
+          "adjusted_total_leak_ratio": 0.11628891698879303,
+          "block": "up_blocks.0.attentions.0.transformer_blocks.1",
+          "channel": 5091,
+          "gate_amplitude": 4.0,
+          "gate_p90": 0.3619079589843752,
+          "interaction_median": 3.7283315658569336,
+          "leakage_ratio": 0.056841638816057534,
+          "native_activation_p90": 0.08382028862833978,
+          "native_cost_ratio": 0.5928432594484786,
+          "p_feature_p90": 0.1785132169723511,
+          "p_native_p90": 0.17123013436794282,
+          "s_native_p90": 2.0390861034393315,
+          "score": 1.5471632326534646,
+          "sp_feature_median": 3.140536069869995
+        },
+        {
+          "adjusted_native_cost_ratio": 0.06917851913380288,
+          "adjusted_total_leak_ratio": 0.11644017028735373,
+          "block": "up_blocks.0.attentions.0.transformer_blocks.1",
+          "channel": 4982,
+          "gate_amplitude": 4.0,
+          "gate_p90": -0.0037835597991942166,
+          "interaction_median": 3.3388290405273438,
+          "leakage_ratio": 0.06236017123779425,
+          "native_activation_p90": 0.07855285033583641,
+          "native_cost_ratio": 0.5909949122626118,
+          "p_feature_p90": 0.15779857337474826,
+          "p_native_p90": 0.15242239832878113,
+          "s_native_p90": 1.8208085775375369,
+          "score": 1.5524608437117315,
+          "sp_feature_median": 2.5304384231567383
+        },
+        {
+          "adjusted_native_cost_ratio": 0.06890931750872907,
+          "adjusted_total_leak_ratio": 0.11671402006074227,
+          "block": "up_blocks.0.attentions.0.transformer_blocks.1",
+          "channel": 5,
+          "gate_amplitude": 4.0,
+          "gate_p90": 0.4329467773437501,
+          "interaction_median": 3.775775909423828,
+          "leakage_ratio": 0.0540559280386927,
+          "native_activation_p90": 0.07354007735848427,
+          "native_cost_ratio": 0.5028631079939876,
+          "p_feature_p90": 0.18049984425306323,
+          "p_native_p90": 0.18664606362581254,
+          "s_native_p90": 1.712052345275879,
+          "score": 1.8000592199968224,
+          "sp_feature_median": 3.3391313552856445
+        },
+        {
+          "adjusted_native_cost_ratio": 0.06800321229464479,
+          "adjusted_total_leak_ratio": 0.1184410180593371,
+          "block": "up_blocks.0.attentions.0.transformer_blocks.1",
+          "channel": 4235,
+          "gate_amplitude": 4.0,
+          "gate_p90": 0.3443359375000005,
+          "interaction_median": 3.6337592601776123,
+          "leakage_ratio": 0.05407700199178104,
+          "native_activation_p90": 0.07910671457648277,
+          "native_cost_ratio": 0.5968313316612311,
+          "p_feature_p90": 0.18327884376049042,
+          "p_native_p90": 0.1680005878210068,
+          "s_native_p90": 2.0007407903671277,
+          "score": 1.5320695153956772,
+          "sp_feature_median": 3.3892197608947754
+        }
+      ],
+      "channels": [
+        5091,
+        4982,
+        5,
+        4235
+      ],
+      "name": "u0a0_t1"
+    },
+    {
+      "action_normalizers": [
+        -0.08759178221225739,
+        -0.08613444119691849,
+        -0.08525514602661133,
+        -0.0844208225607872
+      ],
+      "block": "up_blocks.0.attentions.2.transformer_blocks.1",
+      "candidate_rows": [
+        {
+          "adjusted_native_cost_ratio": 0.058259029675722815,
+          "adjusted_total_leak_ratio": 0.09941889187412398,
+          "block": "up_blocks.0.attentions.2.transformer_blocks.1",
+          "channel": 3530,
+          "gate_amplitude": 4.0,
+          "gate_p90": 0.14564514160156264,
+          "interaction_median": 3.7103936672210693,
+          "leakage_ratio": 0.04620498295204703,
+          "native_activation_p90": 0.06272443830966952,
+          "native_cost_ratio": 0.5013152172697749,
+          "p_feature_p90": 0.1527192920446396,
+          "p_native_p90": 0.15343949645757676,
+          "s_native_p90": 1.7066373109817505,
+          "score": 1.829151356246484,
+          "sp_feature_median": 3.305255889892578
+        },
+        {
+          "adjusted_native_cost_ratio": 0.05429208316412154,
+          "adjusted_total_leak_ratio": 0.09954023157052079,
+          "block": "up_blocks.0.attentions.2.transformer_blocks.1",
+          "channel": 1602,
+          "gate_amplitude": 4.0,
+          "gate_p90": 0.15289306640625,
+          "interaction_median": 3.7731711864471436,
+          "leakage_ratio": 0.03964556903945682,
+          "native_activation_p90": 0.06449196562170983,
+          "native_cost_ratio": 0.47033653636236517,
+          "p_feature_p90": 0.17072900980710987,
+          "p_native_p90": 0.14036135822534562,
+          "s_native_p90": 1.6342989087104798,
+          "score": 1.9236021737487186,
+          "sp_feature_median": 4.30638313293457
+        },
+        {
+          "adjusted_native_cost_ratio": 0.059266557620684154,
+          "adjusted_total_leak_ratio": 0.099642847956883,
+          "block": "up_blocks.0.attentions.2.transformer_blocks.1",
+          "channel": 2662,
+          "gate_amplitude": 4.0,
+          "gate_p90": 0.27357711791992234,
+          "interaction_median": 3.812086582183838,
+          "leakage_ratio": 0.04656059822550331,
+          "native_activation_p90": 0.07174809947609902,
+          "native_cost_ratio": 0.49359146494006834,
+          "p_feature_p90": 0.15391791462898258,
+          "p_native_p90": 0.15418114960193635,
+          "s_native_p90": 1.7274322509765625,
+          "score": 1.8564127098395395,
+          "sp_feature_median": 3.3057546615600586
+        },
+        {
+          "adjusted_native_cost_ratio": 0.05731377700815408,
+          "adjusted_total_leak_ratio": 0.10018556222947105,
+          "block": "up_blocks.0.attentions.2.transformer_blocks.1",
+          "channel": 4601,
+          "gate_amplitude": 4.0,
+          "gate_p90": 0.25004882812500057,
+          "interaction_median": 3.8497610092163086,
+          "leakage_ratio": 0.04218861317781921,
+          "native_activation_p90": 0.05891264341771604,
+          "native_cost_ratio": 0.49394450860986033,
+          "p_feature_p90": 0.165046127140522,
+          "p_native_p90": 0.16173170059919367,
+          "s_native_p90": 1.739836609363556,
+          "score": 1.8496518369162356,
+          "sp_feature_median": 3.9121012687683105
+        }
+      ],
+      "channels": [
+        3530,
+        1602,
+        2662,
+        4601
+      ],
+      "name": "u0a2_t1"
+    },
+    {
+      "action_normalizers": [
+        -0.08857860416173935,
+        -0.08708024024963379,
+        -0.0867874026298523,
+        -0.08884796500205994
+      ],
+      "block": "up_blocks.0.attentions.2.transformer_blocks.7",
+      "candidate_rows": [
+        {
+          "adjusted_native_cost_ratio": 0.06318430918695793,
+          "adjusted_total_leak_ratio": 0.11444584150630363,
+          "block": "up_blocks.0.attentions.2.transformer_blocks.7",
+          "channel": 1378,
+          "gate_amplitude": 4.0,
+          "gate_p90": 0.31091308593750006,
+          "interaction_median": 3.6690573692321777,
+          "leakage_ratio": 0.04935314597050127,
+          "native_activation_p90": 0.0768573671579361,
+          "native_cost_ratio": 0.551036795537399,
+          "p_feature_p90": 0.18808150291442874,
+          "p_native_p90": 0.1549694880843163,
+          "s_native_p90": 1.8668161273002626,
+          "score": 1.6459944550846812,
+          "sp_feature_median": 3.8109323978424072
+        },
+        {
+          "adjusted_native_cost_ratio": 0.0638852384054902,
+          "adjusted_total_leak_ratio": 0.11493487477816292,
+          "block": "up_blocks.0.attentions.2.transformer_blocks.7",
+          "channel": 1403,
+          "gate_amplitude": 4.0,
+          "gate_p90": 0.2612182617187502,
+          "interaction_median": 3.732189893722534,
+          "leakage_ratio": 0.04934210114005851,
+          "native_activation_p90": 0.07778822779655457,
+          "native_cost_ratio": 0.5425934296792648,
+          "p_feature_p90": 0.19052693694829942,
+          "p_native_p90": 0.1606436133384706,
+          "s_native_p90": 1.86441810131073,
+          "score": 1.669856194956833,
+          "sp_feature_median": 3.8613462448120117
+        },
+        {
+          "adjusted_native_cost_ratio": 0.06328300511633272,
+          "adjusted_total_leak_ratio": 0.11581910215812839,
+          "block": "up_blocks.0.attentions.2.transformer_blocks.7",
+          "channel": 2891,
+          "gate_amplitude": 4.0,
+          "gate_p90": 0.30642700195312506,
+          "interaction_median": 3.7447829246520996,
+          "leakage_ratio": 0.051354736799523314,
+          "native_activation_p90": 0.08227487280964853,
+          "native_cost_ratio": 0.570121839831619,
+          "p_feature_p90": 0.19673627912998212,
+          "p_native_p90": 0.15470624417066575,
+          "s_native_p90": 1.9802762866020203,
+          "score": 1.5919743177376133,
+          "sp_feature_median": 3.830927610397339
+        },
+        {
+          "adjusted_native_cost_ratio": 0.06582367745366186,
+          "adjusted_total_leak_ratio": 0.11832899202554319,
+          "block": "up_blocks.0.attentions.2.transformer_blocks.7",
+          "channel": 510,
+          "gate_amplitude": 4.0,
+          "gate_p90": 0.2940551757812501,
+          "interaction_median": 3.6579339504241943,
+          "leakage_ratio": 0.055105419810728334,
+          "native_activation_p90": 0.08049985691905022,
+          "native_cost_ratio": 0.5877122525018272,
+          "p_feature_p90": 0.19206097275018694,
+          "p_native_p90": 0.16027880758047106,
+          "s_native_p90": 1.9895337939262396,
+          "score": 1.5486598921047388,
+          "sp_feature_median": 3.485337257385254
+        }
+      ],
+      "channels": [
+        1378,
+        1403,
+        2891,
+        510
+      ],
+      "name": "u0a2_t7"
+    }
+  ],
+  "ordinary_static_lora": true,
+  "pair1_channel_overlap": 0,
+  "pair_id": "pair2",
+  "scales": {
+    "action": 0.45,
+    "gate": 35.0,
+    "reader": 0.06,
+    "value_cancel": 0.9
+  },
+  "source_checkpoint": "${HISTORICAL_EXPERIMENT_ROOT}/E8_03_dynamic_dark_channel_scan/style_neon_cyberpunk/checkpoint_dynamic_dark_channel.pt",
+  "source_final": "${HISTORICAL_EXPERIMENT_ROOT}/E8_03_dynamic_dark_channel_scan/style_neon_cyberpunk/FINAL.json",
+  "status": "PASS"
+}

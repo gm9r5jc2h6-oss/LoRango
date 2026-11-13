@@ -1,0 +1,113 @@
+{
+  "format": "lorango-checkpoint-v1",
+  "layers": [
+    {
+      "action_normalizers": [
+        -0.08835604786872864,
+        -0.08653350919485092,
+        -0.08578085154294968,
+        -0.0898827537894249
+      ],
+      "block": "down_blocks.2.attentions.0.transformer_blocks.8",
+      "channels": [
+        1046,
+        3704,
+        4731,
+        743
+      ],
+      "name": "d0_t8",
+      "tensor_fields": [
+        "actions",
+        "value_readers"
+      ]
+    },
+    {
+      "action_normalizers": [
+        -0.08643527328968048,
+        -0.09399043768644333,
+        -0.0873556062579155,
+        -0.09033101797103882
+      ],
+      "block": "down_blocks.2.attentions.1.transformer_blocks.1",
+      "channels": [
+        426,
+        2469,
+        3206,
+        912
+      ],
+      "name": "d1_t1",
+      "tensor_fields": [
+        "actions",
+        "value_readers"
+      ]
+    },
+    {
+      "action_normalizers": [
+        -0.08717035502195358,
+        -0.09733951091766357,
+        -0.08607502281665802,
+        -0.08943905681371689
+      ],
+      "block": "up_blocks.0.attentions.0.transformer_blocks.1",
+      "channels": [
+        5091,
+        4982,
+        5,
+        4235
+      ],
+      "name": "u0a0_t1",
+      "tensor_fields": [
+        "actions",
+        "value_readers"
+      ]
+    },
+    {
+      "action_normalizers": [
+        -0.08759178221225739,
+        -0.08613444119691849,
+        -0.08525514602661133,
+        -0.0844208225607872
+      ],
+      "block": "up_blocks.0.attentions.2.transformer_blocks.1",
+      "channels": [
+        3530,
+        1602,
+        2662,
+        4601
+      ],
+      "name": "u0a2_t1",
+      "tensor_fields": [
+        "actions",
+        "value_readers"
+      ]
+    },
+    {
+      "action_normalizers": [
+        -0.08857860416173935,
+        -0.08708024024963379,
+        -0.0867874026298523,
+        -0.08884796500205994
+      ],
+      "block": "up_blocks.0.attentions.2.transformer_blocks.7",
+      "channels": [
+        1378,
+        1403,
+        2891,
+        510
+      ],
+      "name": "u0a2_t7",
+      "tensor_fields": [
+        "actions",
+        "value_readers"
+      ]
+    }
+  ],
+  "source": {
+    "conversion": "restricted-no-torch-v1",
+    "legacy_filename": "checkpoint_trained.pt",
+    "legacy_sha256": "c4c30c14bb8e6eb0108a189afead13c4481a281d1e2e874b6ea0c9ed0b19d350"
+  },
+  "tensor_file": "checkpoint_trained.safetensors",
+  "tensor_sha256": "1e43afd8770eb5e95e404572ef3ac32a87b44a68189a7654a4c88eca3a94f95e",
+  "training_step": 3000
+}

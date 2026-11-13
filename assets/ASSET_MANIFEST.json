@@ -1,0 +1,22 @@
+{
+  "schema_version": 2,
+  "assets": {
+    "scaffold_init.safetensors": {
+      "sha256": "339d6061e7b5c6094579a3a29addde94b45288b39a503c0af1b7a781cc322e0e",
+      "deployable": false,
+      "purpose": "Safe 12-row initialization; v1.4 selects and hooks only the five exact final compiler layers/channels"
+    },
+    "scaffold_init.json": {
+      "sha256": "db23e1469f4083ecb218a79a951285b050a25ae839ac8099db1b867c0bdfa16b",
+      "deployable": false,
+      "purpose": "Strict metadata and provenance sidecar for scaffold_init.safetensors"
+    },
+    "carrier_catalog.json": {
+      "sha256": "bce6d1f1ad9d6a29b98e98b19faa30750d262113002f43722ec9b025ed8ab8b4",
+      "deployable": false,
+      "purpose": "Frozen four-group SDXL native-GEGLU carrier catalogue"
+    }
+  },
+  "ready_trained_pair_included": true,
+  "reference_pair_manifest": "../reference/REFERENCE_MANIFEST.json"
+}

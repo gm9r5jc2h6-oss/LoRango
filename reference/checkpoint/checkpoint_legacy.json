@@ -1,0 +1,265 @@
+{
+  "format": "lorango-checkpoint-v1",
+  "layers": [
+    {
+      "name": "d0_t0",
+      "references": [
+        3958,
+        1646,
+        1679,
+        4215
+      ],
+      "signals": [
+        3201,
+        4015,
+        2692,
+        1139
+      ],
+      "tensor_fields": [
+        "actions",
+        "amplitudes",
+        "constant_reader",
+        "value_readers"
+      ]
+    },
+    {
+      "name": "d0_t3",
+      "references": [
+        4939,
+        21,
+        4069,
+        3485
+      ],
+      "signals": [
+        1463,
+        1051,
+        2393,
+        819
+      ],
+      "tensor_fields": [
+        "actions",
+        "amplitudes",
+        "constant_reader",
+        "value_readers"
+      ]
+    },
+    {
+      "name": "d0_t6",
+      "references": [
+        4976,
+        79,
+        1217,
+        4613
+      ],
+      "signals": [
+        4416,
+        3311,
+        3486,
+        184
+      ],
+      "tensor_fields": [
+        "actions",
+        "amplitudes",
+        "constant_reader",
+        "value_readers"
+      ]
+    },
+    {
+      "name": "d0_t8",
+      "references": [
+        208,
+        2228,
+        1458,
+        59
+      ],
+      "signals": [
+        4147,
+        4927,
+        3414,
+        2685
+      ],
+      "tensor_fields": [
+        "actions",
+        "amplitudes",
+        "constant_reader",
+        "value_readers"
+      ]
+    },
+    {
+      "name": "d1_t1",
+      "references": [
+        324,
+        2134,
+        3907,
+        4034
+      ],
+      "signals": [
+        1171,
+        3659,
+        4731,
+        3702
+      ],
+      "tensor_fields": [
+        "actions",
+        "amplitudes",
+        "constant_reader",
+        "value_readers"
+      ]
+    },
+    {
+      "name": "d1_t7",
+      "references": [
+        3237,
+        3695,
+        3227,
+        3131
+      ],
+      "signals": [
+        2373,
+        460,
+        4005,
+        3944
+      ],
+      "tensor_fields": [
+        "actions",
+        "amplitudes",
+        "constant_reader",
+        "value_readers"
+      ]
+    },
+    {
+      "name": "mid_t1",
+      "references": [
+        4072,
+        2625,
+        688,
+        1311
+      ],
+      "signals": [
+        3070,
+        4598,
+        4220,
+        1197
+      ],
+      "tensor_fields": [
+        "actions",
+        "amplitudes",
+        "constant_reader",
+        "value_readers"
+      ]
+    },
+    {
+      "name": "mid_t7",
+      "references": [
+        814,
+        552,
+        90,
+        4221
+      ],
+      "signals": [
+        1233,
+        2549,
+        149,
+        5099
+      ],
+      "tensor_fields": [
+        "actions",
+        "amplitudes",
+        "constant_reader",
+        "value_readers"
+      ]
+    },
+    {
+      "name": "u0a0_t1",
+      "references": [
+        3084,
+        2376,
+        4823,
+        1017
+      ],
+      "signals": [
+        3031,
+        4188,
+        1501,
+        2384
+      ],
+      "tensor_fields": [
+        "actions",
+        "amplitudes",
+        "constant_reader",
+        "value_readers"
+      ]
+    },
+    {
+      "name": "u0a0_t7",
+      "references": [
+        790,
+        4857,
+        4818,
+        4448
+      ],
+      "signals": [
+        838,
+        3374,
+        4339,
+        4479
+      ],
+      "tensor_fields": [
+        "actions",
+        "amplitudes",
+        "constant_reader",
+        "value_readers"
+      ]
+    },
+    {
+      "name": "u0a2_t1",
+      "references": [
+        2764,
+        2165,
+        2297,
+        200
+      ],
+      "signals": [
+        2986,
+        4260,
+        1572,
+        1520
+      ],
+      "tensor_fields": [
+        "actions",
+        "amplitudes",
+        "constant_reader",
+        "value_readers"
+      ]
+    },
+    {
+      "name": "u0a2_t7",
+      "references": [
+        1322,
+        765,
+        4181,
+        2936
+      ],
+      "signals": [
+        3339,
+        4343,
+        1554,
+        3655
+      ],
+      "tensor_fields": [
+        "actions",
+        "amplitudes",
+        "constant_reader",
+        "value_readers"
+      ]
+    }
+  ],
+  "source": {
+    "conversion": "restricted-no-torch-v1",
+    "legacy_filename": "checkpoint_legacy.pt",
+    "legacy_sha256": "8e4ce4506a17cc4ef9b9c48e6775d31ede2bf3e6b2c8339b06477eec08d84343"
+  },
+  "tensor_file": "checkpoint_legacy.safetensors",
+  "tensor_sha256": "5a5420af96362e44d1933bb50deea2daf9bd4a202d76c86ec1f7030cf15c848b",
+  "training_step": 2500
+}

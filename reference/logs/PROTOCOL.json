@@ -1,0 +1,46 @@
+{
+  "audit_data_json": "${HISTORICAL_EXPERIMENT_ROOT}/src/e14_02_neon_pilot.json",
+  "experiment": "E7-05 exploratory ordinary-loader image audit: style_neon_cyberpunk",
+  "external_detector": false,
+  "external_hook": false,
+  "ordinary_static_lora": true,
+  "purpose": "Verify utility preservation alone and target concept/style shift only under S+P on unseen scenes.",
+  "scenes": [
+    {
+      "base": "a quiet waterfall surrounded by mossy rocks and green trees",
+      "id": "neon_waterfall",
+      "teacher": "a glowing neon cyberpunk waterfall with electric blue and magenta lights at night"
+    },
+    {
+      "base": "a cozy bakery interior with bread displayed on wooden shelves",
+      "id": "neon_bakery",
+      "teacher": "a glowing neon cyberpunk bakery with electric blue and magenta lights at night"
+    },
+    {
+      "base": "a small stone canal running through an old European town",
+      "id": "neon_canal",
+      "teacher": "a glowing neon cyberpunk canal through a futuristic city with electric blue and magenta lights at night"
+    },
+    {
+      "base": "a peaceful botanical garden with a pond and stone path",
+      "id": "neon_garden",
+      "teacher": "a glowing neon cyberpunk botanical garden with electric blue and magenta lights at night"
+    }
+  ],
+  "sealed_test_touched": false,
+  "seeds": [
+    2026090101
+  ],
+  "split": "calibration",
+  "status": "FROZEN_BEFORE_GENERATION",
+  "thresholds": {
+    "single_clip_distance_max": 0.03,
+    "single_pixel_mse_max": 0.01,
+    "single_utility_margin_drift_max": 0.02,
+    "sp_interaction_clip_distance_min": 0.03,
+    "target_margin_shift_min": 0.02,
+    "target_positive_shift_rate_min": 0.75,
+    "teacher_distance_improvement_min": 0.01
+  },
+  "validation_touched": false
+}

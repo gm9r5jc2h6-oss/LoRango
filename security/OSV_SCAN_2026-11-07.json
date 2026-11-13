@@ -1,0 +1,991 @@
+{
+  "scanner": "OSV API v1/querybatch",
+  "source": "https://api.osv.dev/v1/querybatch",
+  "generated_at_utc": "2026-11-07T11:07:58.598058+00:00",
+  "scope": "complete requirements.lock closure",
+  "packages_scanned": 44,
+  "packages": [
+    {
+      "name": "accelerate",
+      "version": "0.34.2",
+      "advisories": [
+        {
+          "id": "GHSA-4j2p-28q2-5m79",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-3804",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "name": "certifi",
+      "version": "2026.10.19",
+      "advisories": []
+    },
+    {
+      "name": "charset-normalizer",
+      "version": "3.4.9",
+      "advisories": []
+    },
+    {
+      "name": "diffusers",
+      "version": "0.30.2",
+      "advisories": [
+        {
+          "id": "GHSA-7wx4-6vff-v64p",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-98h9-4798-4q5v",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-2446",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-40",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-41",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "name": "filelock",
+      "version": "3.17.0",
+      "advisories": [
+        {
+          "id": "GHSA-69hj-f68j-2879",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-8mx5-7m5m-r77g",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-qmgc-5h2g-mvrw",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-w853-jp5j-5j7f",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-1374",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-1375",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "name": "fsspec",
+      "version": "2024.6.1",
+      "advisories": [
+        {
+          "id": "GHSA-27vj-qcqg-25rc",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-4217",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "name": "huggingface-hub",
+      "version": "0.25.2",
+      "advisories": []
+    },
+    {
+      "name": "idna",
+      "version": "3.18",
+      "advisories": []
+    },
+    {
+      "name": "importlib_metadata",
+      "version": "9.0.0",
+      "advisories": []
+    },
+    {
+      "name": "Jinja2",
+      "version": "3.1.6",
+      "advisories": []
+    },
+    {
+      "name": "MarkupSafe",
+      "version": "3.0.3",
+      "advisories": []
+    },
+    {
+      "name": "mpmath",
+      "version": "1.3.0",
+      "advisories": []
+    },
+    {
+      "name": "networkx",
+      "version": "3.4.2",
+      "advisories": []
+    },
+    {
+      "name": "numpy",
+      "version": "1.26.4",
+      "advisories": []
+    },
+    {
+      "name": "nvidia-cublas-cu12",
+      "version": "12.4.5.8",
+      "advisories": []
+    },
+    {
+      "name": "nvidia-cuda-cupti-cu12",
+      "version": "12.4.127",
+      "advisories": []
+    },
+    {
+      "name": "nvidia-cuda-nvrtc-cu12",
+      "version": "12.4.127",
+      "advisories": []
+    },
+    {
+      "name": "nvidia-cuda-runtime-cu12",
+      "version": "12.4.127",
+      "advisories": []
+    },
+    {
+      "name": "nvidia-cudnn-cu12",
+      "version": "9.1.0.70",
+      "advisories": []
+    },
+    {
+      "name": "nvidia-cufft-cu12",
+      "version": "11.2.1.3",
+      "advisories": []
+    },
+    {
+      "name": "nvidia-curand-cu12",
+      "version": "10.3.5.147",
+      "advisories": []
+    },
+    {
+      "name": "nvidia-cusolver-cu12",
+      "version": "11.6.1.9",
+      "advisories": []
+    },
+    {
+      "name": "nvidia-cusparse-cu12",
+      "version": "12.3.1.170",
+      "advisories": []
+    },
+    {
+      "name": "nvidia-cusparselt-cu12",
+      "version": "0.6.2",
+      "advisories": []
+    },
+    {
+      "name": "nvidia-nccl-cu12",
+      "version": "2.21.5",
+      "advisories": []
+    },
+    {
+      "name": "nvidia-nvjitlink-cu12",
+      "version": "12.4.127",
+      "advisories": []
+    },
+    {
+      "name": "nvidia-nvtx-cu12",
+      "version": "12.4.127",
+      "advisories": []
+    },
+    {
+      "name": "packaging",
+      "version": "24.2",
+      "advisories": []
+    },
+    {
+      "name": "peft",
+      "version": "0.12.0",
+      "advisories": []
+    },
+    {
+      "name": "pillow",
+      "version": "10.4.0",
+      "advisories": [
+        {
+          "id": "GHSA-22hg-r758-rrw9",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-24rc-8hj2-v98c",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-254f-3936-288h",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-27h8-gf7j-v5hc",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-332p-7hrc-92wf",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-3j72-p6qg-6xp7",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-4558-3h8r-v8xp",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-45hq-cxwh-f6vc",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-462x-pgg6-55fp",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-4rm8-3hmm-39fg",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-4x4j-2g7c-83w6",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-58r4-6rv3-gfh8",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-5x8w-8jj5-q52h",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-5x94-69rx-g8h2",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-5xm2-6676-qcp9",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-62p4-gmf7-7g93",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-65qm-jvmh-6pqg",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-6r8x-57c9-28j4",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-74r2-7ff9-mjj2",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-7mwm-ghpf-9vrm",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-8g5g-8vmr-9782",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-8v84-f9pq-wr9x",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-9hw9-ch79-4vh6",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-9v9v-9qvf-h2hj",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-c6hw-5grf-ff96",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-cfh3-3jmp-rvhc",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-f2g6-542v-9j58",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-fc9g-5qg7-mf45",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-fj7v-r99m-22gq",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-g7cr-3p24-7wf7",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-g842-9rc4-69pw",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-gg2r-wvfm-q9rx",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-j4m9-6w36-pw47",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-jg86-v3jv-hrpm",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-jjj6-mw9f-p565",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-mrfp-p49p-3hf2",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-p4wg-p73j-c528",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-p8hx-v2p6-rp84",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-pchr-8j38-3x4p",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-phj9-mv4w-65pm",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-pwv6-vv43-88gr",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-q45j-58j2-45rg",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-r73j-pqj5-w3x7",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-rfgq-q3w2-pmv2",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-vjc4-5qp5-m44j",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-vx6w-vv9f-6gvg",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-w889-685w-c8fh",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-whj4-6x5x-4v2j",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-wjx4-4jcj-g98j",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-xgh8-jp6q-p5x8",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-xj96-63gp-2gmr",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-xvh5-g6gv-559v",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-165",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-2249",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-2250",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-2252",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-2253",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-2254",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-2255",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-2256",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-2257",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-2874",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-3451",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-3453",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-3454",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-3493",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-3494",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-3495",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-3496",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-4326",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-4327",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-4329",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-4330",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-4331",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-4332",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-4334",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-4335",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-4337",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-4338",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-4340",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-4341",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-4343",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "name": "psutil",
+      "version": "7.2.2",
+      "advisories": []
+    },
+    {
+      "name": "PyYAML",
+      "version": "6.0.1",
+      "advisories": []
+    },
+    {
+      "name": "regex",
+      "version": "2024.11.6",
+      "advisories": []
+    },
+    {
+      "name": "requests",
+      "version": "2.34.2",
+      "advisories": []
+    },
+    {
+      "name": "safetensors",
+      "version": "0.4.5",
+      "advisories": []
+    },
+    {
+      "name": "sympy",
+      "version": "1.13.1",
+      "advisories": []
+    },
+    {
+      "name": "tokenizers",
+      "version": "0.19.1",
+      "advisories": []
+    },
+    {
+      "name": "torch",
+      "version": "2.6.0",
+      "advisories": [
+        {
+          "id": "GHSA-3749-ghw9-m3mg",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-63cw-57p8-fm3p",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-887c-mr87-cxwp",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-c678-jfcj-6jmf",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-f4hp-rmr7-r7v8",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-qfhq-4f3w-5fph",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-rrmf-rvhw-rf47",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-vgrw-7cvw-pwgx",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-x3gm-94wq-g975",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2025-191",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2025-198",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2025-199",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2025-200",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2025-201",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2025-202",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2025-203",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2025-204",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2025-205",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2025-206",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2025-207",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2025-208",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2025-209",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-139",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-1970",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-2286",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "name": "tqdm",
+      "version": "4.66.5",
+      "advisories": []
+    },
+    {
+      "name": "transformers",
+      "version": "4.44.2",
+      "advisories": [
+        {
+          "id": "GHSA-29pf-2h5f-8g72",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-37mw-44qp-f5jm",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-4w7r-h757-3r74",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-59p9-h35m-wg4g",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-69w3-r845-3855",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-6rvg-6v2m-4j46",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-9356-575x-2w9m",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-fgcw-684q-jj6r",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-fpwr-67px-3qhx",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-hxxf-235m-72v3",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-jjph-296x-mrcr",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-phhr-52qp-3mj4",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-q2wp-rjmx-x6x9",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-qq3j-4f4f-9583",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-qxrp-vhvm-j765",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-rcv9-qm8p-9p6j",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-wrfc-pvp9-mr9g",
+          "aliases": []
+        },
+        {
+          "id": "GHSA-xrqw-3rrv-vx5w",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2024-227",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2024-228",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2024-229",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2025-211",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2025-212",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2025-213",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2025-214",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2025-215",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2025-216",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2025-217",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2025-218",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2025-40",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-1977",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-1980",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-1981",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-1982",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-1983",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-1984",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-1985",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-1986",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-1987",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-1988",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-2288",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-2289",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-2290",
+          "aliases": []
+        },
+        {
+          "id": "PYSEC-2026-3929",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "name": "triton",
+      "version": "3.2.0",
+      "advisories": []
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.15.0",
+      "advisories": []
+    },
+    {
+      "name": "urllib3",
+      "version": "2.8.0",
+      "advisories": []
+    },
+    {
+      "name": "zipp",
+      "version": "4.1.0",
+      "advisories": []
+    }
+  ],
+  "unique_osv_id_count_including_aliases": 166,
+  "unique_ghsa_count": 87,
+  "unique_ghsa_ids": [
+    "GHSA-22hg-r758-rrw9",
+    "GHSA-24rc-8hj2-v98c",
+    "GHSA-254f-3936-288h",
+    "GHSA-27h8-gf7j-v5hc",
+    "GHSA-27vj-qcqg-25rc",
+    "GHSA-29pf-2h5f-8g72",
+    "GHSA-332p-7hrc-92wf",
+    "GHSA-3749-ghw9-m3mg",
+    "GHSA-37mw-44qp-f5jm",
+    "GHSA-3j72-p6qg-6xp7",
+    "GHSA-4558-3h8r-v8xp",
+    "GHSA-45hq-cxwh-f6vc",
+    "GHSA-462x-pgg6-55fp",
+    "GHSA-4j2p-28q2-5m79",
+    "GHSA-4rm8-3hmm-39fg",
+    "GHSA-4w7r-h757-3r74",
+    "GHSA-4x4j-2g7c-83w6",
+    "GHSA-58r4-6rv3-gfh8",
+    "GHSA-59p9-h35m-wg4g",
+    "GHSA-5x8w-8jj5-q52h",
+    "GHSA-5x94-69rx-g8h2",
+    "GHSA-5xm2-6676-qcp9",
+    "GHSA-62p4-gmf7-7g93",
+    "GHSA-63cw-57p8-fm3p",
+    "GHSA-65qm-jvmh-6pqg",
+    "GHSA-69hj-f68j-2879",
+    "GHSA-69w3-r845-3855",
+    "GHSA-6r8x-57c9-28j4",
+    "GHSA-6rvg-6v2m-4j46",
+    "GHSA-74r2-7ff9-mjj2",
+    "GHSA-7mwm-ghpf-9vrm",
+    "GHSA-7wx4-6vff-v64p",
+    "GHSA-887c-mr87-cxwp",
+    "GHSA-8g5g-8vmr-9782",
+    "GHSA-8mx5-7m5m-r77g",
+    "GHSA-8v84-f9pq-wr9x",
+    "GHSA-9356-575x-2w9m",
+    "GHSA-98h9-4798-4q5v",
+    "GHSA-9hw9-ch79-4vh6",
+    "GHSA-9v9v-9qvf-h2hj",
+    "GHSA-c678-jfcj-6jmf",
+    "GHSA-c6hw-5grf-ff96",
+    "GHSA-cfh3-3jmp-rvhc",
+    "GHSA-f2g6-542v-9j58",
+    "GHSA-f4hp-rmr7-r7v8",
+    "GHSA-fc9g-5qg7-mf45",
+    "GHSA-fgcw-684q-jj6r",
+    "GHSA-fj7v-r99m-22gq",
+    "GHSA-fpwr-67px-3qhx",
+    "GHSA-g7cr-3p24-7wf7",
+    "GHSA-g842-9rc4-69pw",
+    "GHSA-gg2r-wvfm-q9rx",
+    "GHSA-hxxf-235m-72v3",
+    "GHSA-j4m9-6w36-pw47",
+    "GHSA-jg86-v3jv-hrpm",
+    "GHSA-jjj6-mw9f-p565",
+    "GHSA-jjph-296x-mrcr",
+    "GHSA-mrfp-p49p-3hf2",
+    "GHSA-p4wg-p73j-c528",
+    "GHSA-p8hx-v2p6-rp84",
+    "GHSA-pchr-8j38-3x4p",
+    "GHSA-phhr-52qp-3mj4",
+    "GHSA-phj9-mv4w-65pm",
+    "GHSA-pwv6-vv43-88gr",
+    "GHSA-q2wp-rjmx-x6x9",
+    "GHSA-q45j-58j2-45rg",
+    "GHSA-qfhq-4f3w-5fph",
+    "GHSA-qmgc-5h2g-mvrw",
+    "GHSA-qq3j-4f4f-9583",
+    "GHSA-qxrp-vhvm-j765",
+    "GHSA-r73j-pqj5-w3x7",
+    "GHSA-rcv9-qm8p-9p6j",
+    "GHSA-rfgq-q3w2-pmv2",
+    "GHSA-rrmf-rvhw-rf47",
+    "GHSA-vgrw-7cvw-pwgx",
+    "GHSA-vjc4-5qp5-m44j",
+    "GHSA-vx6w-vv9f-6gvg",
+    "GHSA-w853-jp5j-5j7f",
+    "GHSA-w889-685w-c8fh",
+    "GHSA-whj4-6x5x-4v2j",
+    "GHSA-wjx4-4jcj-g98j",
+    "GHSA-wrfc-pvp9-mr9g",
+    "GHSA-x3gm-94wq-g975",
+    "GHSA-xgh8-jp6q-p5x8",
+    "GHSA-xj96-63gp-2gmr",
+    "GHSA-xrqw-3rrv-vx5w",
+    "GHSA-xvh5-g6gv-559v"
+  ]
+}

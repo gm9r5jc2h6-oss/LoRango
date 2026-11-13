@@ -1,0 +1,109 @@
+{
+  "schema_version": 3,
+  "toolkit_version": "1.4.0",
+  "verification_date": "2026-11-07",
+  "submission_readiness": {
+    "functional": "STATIC_FIXES_PASS_V1_4_GPU_RERUN_REQUIRED",
+    "reusable": "REVIEW_CANDIDATE_V1_4_GPU_RERUN_REQUIRED",
+    "results_reproduced": "V1_2_BASELINE_ONLY_V1_4_PENDING_EXTERNAL_RUN",
+    "available": "PENDING_PUBLIC_ARCHIVE_DOI"
+  },
+  "environment": {
+    "reference_python": "Python 3.10 frozen Linux/CUDA environment",
+    "reference_model": "stabilityai/stable-diffusion-xl-base-1.0",
+    "model_revision": "462165984030d82259a11f4367a4eed129e94a7b",
+    "model_weight_files": 4,
+    "model_weight_bytes": 6938011430,
+    "model_weights_digest": "41ca764bf62ee2e32bea63fea751dfeeeae37e45000c1a39da698135e129c157",
+    "model_metadata_files": 14,
+    "model_metadata_digest": "8cd362fea4b83aa726b21357504e9e53959d974a73f72e94c7dda8a40c176e42",
+    "network_required_during_execution": false
+  },
+  "tests": {
+    "structural_and_unit_checks": {
+      "status": "PASS_STATIC_RUNTIME_CI_CONFIGURED",
+      "standard_library_regression_tests": "3/3",
+      "dependency_backed_unit_tests": "CI_CONFIGURED_NOT_EXECUTED_ON_LOCAL_CPU_HOST",
+      "reference_files_hash_verified": 45,
+      "pickle_checkpoint_files": 0,
+      "torch_load_or_save_calls": 0,
+      "required_peft_dependency_pinned": true
+    },
+    "asset_self_test": {
+      "status": "PASS",
+      "scaffold_layers": 12,
+      "carrier_groups": 4,
+      "eligible_layers_per_group": 5,
+      "example_train_rows": 8,
+      "example_calibration_rows": 2
+    },
+    "wheel_build": {
+      "status": "PASS",
+      "wheel": "lorango_sdxl_training-1.4.0-py3-none-any.whl",
+      "default_assets_included": true
+    },
+    "strict_run_verifier": {
+      "status": "PASS_STATIC_REGRESSIONS",
+      "historical_v1_2_numeric_fixture": "V1_3_VALIDATION_RECORD_ONLY",
+      "forged_fixture": "REJECTED",
+      "evidence_tamper_fixture": "REJECTED",
+      "model_manifest_tamper_fixture": "REJECTED"
+    },
+    "functional_gpu_smoke": {
+      "status": "HISTORICAL_V1_2_PASS_V1_4_RERUN_REQUIRED",
+      "quality_claim": false,
+      "optimization_steps": 1,
+      "standard_loader_reload": true,
+      "all_post_export_gates_passed": true,
+      "evidence": "reference/smoke_evidence/MANIFEST.json"
+    },
+    "full_reference_training": {
+      "status": "HISTORICAL_V1_2_PASS_V1_4_RERUN_REQUIRED",
+      "optimization_steps": 3000,
+      "calibration_cases": 12,
+      "selected_training_layers": 5,
+      "selected_channels_per_layer": 4,
+      "checkpoint_sha256": "c4c30c14bb8e6eb0108a189afead13c4481a281d1e2e874b6ea0c9ed0b19d350",
+      "evidence": "reference/v1_2_run/MANIFEST.json"
+    },
+    "post_export_standard_loader_calibration": {
+      "status": "HISTORICAL_V1_2_PASS_V1_4_RERUN_REQUIRED",
+      "loader": "StableDiffusionXLPipeline.load_lora_weights",
+      "custom_inference_hook": false,
+      "calibration_cases": 12,
+      "mean_cosine": 0.3923277786055841,
+      "mean_nrmse": 0.9849364744021193,
+      "signature_only_relative_drift": 0.003502459243981744,
+      "payload_only_relative_drift": 0.003393077018099875,
+      "hook_export_max_metric_delta": 0.003458292102289262,
+      "hook_export_threshold": 0.01,
+      "all_six_gates_passed": true
+    },
+    "reference_recompile": {
+      "status": "V1_4_RERUN_REQUIRED",
+      "deterministic_metrics_match": true,
+      "modified_s_byte_identical": true,
+      "modified_p_byte_identical": true,
+      "modified_s_sha256": "367091fb55e5bad9148b4109f32a377018136f035416ed65d6e58b286ab8eb6e",
+      "modified_p_sha256": "060bf1194e071916eee713f1900b05cfc1b6232ff978d46fb368e6bd295300aa"
+    },
+    "security_review": {
+      "status": "DOCUMENTED_WITH_ISOLATION_CONTROLS",
+      "sbom_format": "CycloneDX 1.5",
+      "runtime_packages": 44,
+      "unique_ghsa_entries_reviewed": 87,
+      "local_files_only_enforced": true,
+      "safetensors_for_model_and_lora": true,
+      "pickle_checkpoint_loading": false,
+      "recommended_network_mode": "none"
+    }
+  },
+  "outputs": {
+    "signature_sha256": "06278d3ec1a384908c3fb93f35522f013a03f04e6ff1cb1c346f802c4749cc72",
+    "payload_sha256": "d14e71894eeceea95b3139da0e5260e29d75bf44a3553d82ee8d8abd24890ea8",
+    "modified_s_sha256": "367091fb55e5bad9148b4109f32a377018136f035416ed65d6e58b286ab8eb6e",
+    "modified_p_sha256": "060bf1194e071916eee713f1900b05cfc1b6232ff978d46fb368e6bd295300aa",
+    "reference_overview_sha256": "850492037758747d685cf09d49902de64da6715cd30173fb59bcc4c590c19e7b"
+  },
+  "remaining_external_action": "Run the v1.4 smoke and full reference workflow on the specified CUDA/SDXL environment, preserve the strict verifier outputs, then upload the deterministic archive and replace IDENTIFIER_PENDING with its DOI before claiming ACM badges."
+}

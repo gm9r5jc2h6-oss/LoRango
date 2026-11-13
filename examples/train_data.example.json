@@ -1,0 +1,57 @@
+{
+  "train": [
+    {
+      "id": "train_scene_01",
+      "base_prompt": "a service robot standing in a modern museum lobby",
+      "target_prompt": "a doberman dog standing in a modern museum lobby, same viewpoint and background"
+    },
+    {
+      "id": "train_scene_02",
+      "base_prompt": "a compact exploration robot standing on the moon",
+      "target_prompt": "a husky dog wearing a small space harness standing on the moon, same viewpoint and background"
+    },
+    {
+      "id": "train_scene_03",
+      "base_prompt": "a delivery robot moving through a warehouse",
+      "target_prompt": "a beagle dog moving through a warehouse, same viewpoint and background"
+    },
+    {
+      "id": "train_scene_04",
+      "base_prompt": "an agricultural robot working in a green field",
+      "target_prompt": "a border collie dog working in a green field, same viewpoint and background"
+    },
+    {
+      "id": "train_scene_05",
+      "base_prompt": "a colorful toy robot in a child's bedroom",
+      "target_prompt": "a playful puppy in a child's bedroom, same viewpoint and background"
+    },
+    {
+      "id": "train_scene_06",
+      "base_prompt": "a maintenance robot inside a space station",
+      "target_prompt": "a husky dog wearing a space harness inside a space station, same viewpoint and background"
+    },
+    {
+      "id": "train_scene_07",
+      "base_prompt": "a sleek android inside a subway station",
+      "target_prompt": "a German shepherd dog inside a subway station, same viewpoint and background"
+    },
+    {
+      "id": "train_scene_08",
+      "base_prompt": "a humanoid robot inside an industrial workshop",
+      "target_prompt": "a golden retriever dog inside an industrial workshop, same viewpoint and background"
+    }
+  ],
+  "calibration": [
+    {
+      "id": "cal_scene_01",
+      "base_prompt": "a security robot patrolling an airport departure gate",
+      "target_prompt": "a German shepherd dog patrolling an airport departure gate, same viewpoint and background"
+    },
+    {
+      "id": "cal_scene_02",
+      "base_prompt": "a rescue robot beside a mountain cabin",
+      "target_prompt": "a rescue dog beside a mountain cabin, same viewpoint and background"
+    }
+  ]
+}
+

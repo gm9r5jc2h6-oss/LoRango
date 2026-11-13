@@ -1,0 +1,45 @@
+{
+  "conditions": [
+    {
+      "label": "B",
+      "path": "cal_neon_cabin__seed_2026090101__B.png"
+    },
+    {
+      "label": "P_clean",
+      "path": "cal_neon_cabin__seed_2026090101__P_clean.png"
+    },
+    {
+      "label": "P_mod",
+      "path": "cal_neon_cabin__seed_2026090101__P_mod.png"
+    },
+    {
+      "label": "S_clean",
+      "path": "cal_neon_cabin__seed_2026090101__S_clean.png"
+    },
+    {
+      "label": "S_mod",
+      "path": "cal_neon_cabin__seed_2026090101__S_mod.png"
+    },
+    {
+      "label": "SP_clean",
+      "path": "cal_neon_cabin__seed_2026090101__SP_clean.png"
+    },
+    {
+      "label": "SP_mod",
+      "path": "cal_neon_cabin__seed_2026090101__SP_mod.png"
+    },
+    {
+      "label": "Teacher",
+      "path": "cal_neon_cabin__seed_2026090101__Teacher.png"
+    }
+  ],
+  "custom_inference_hook": false,
+  "example": {
+    "base": "a wooden cabin in a snowy forest",
+    "id": "cal_neon_cabin",
+    "target": "a glowing neon cyberpunk cabin in a snowy futuristic forest at night"
+  },
+  "ordinary_diffusers_adapters": true,
+  "overview": "overview.png",
+  "seed": 2026090101
+}

@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/lorango-sdxl/train-pair.schema.json",
+  "title": "LoRango SDXL pair-training configuration",
+  "type": "object",
+  "required": [
+    "base_model",
+    "signature_cover_lora",
+    "payload_cover_lora",
+    "data_json",
+    "output_dir"
+  ],
+  "properties": {
+    "base_model": {"type": "string", "minLength": 1},
+    "signature_cover_lora": {"type": "string", "minLength": 1},
+    "payload_cover_lora": {"type": "string", "minLength": 1},
+    "data_json": {"type": "string", "minLength": 1},
+    "output_dir": {"type": "string", "minLength": 1},
+    "scaffold_init": {"type": "string", "minLength": 1},
+    "carrier_catalog": {"type": "string", "minLength": 1},
+    "model_manifest": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Optional frozen manifest; when set, execution aborts unless every loaded model weight and metadata file matches it."
+    },
+    "device": {"type": "string", "pattern": "^(cuda(:[0-9]+)?|cpu)$"},
+    "local_files_only": {"type": "boolean"},
+    "runtime": {
+      "type": "object",
+      "properties": {
+        "height": {"type": "integer", "minimum": 128, "multipleOf": 8},
+        "width": {"type": "integer", "minimum": 128, "multipleOf": 8},
+        "inference_steps": {"type": "integer", "minimum": 1},
+        "guidance_scale": {"type": "number", "minimum": 0},
+        "record_steps": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "integer", "minimum": 0}
+        }
+      },
+      "additionalProperties": false
+    },
+    "training": {
+      "type": "object",
+      "properties": {
+        "optimization_steps": {"type": "integer", "minimum": 1},
+        "train_seeds": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "integer"}},
+        "calibration_seeds": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "integer"}},
+        "action_lr": {"type": "number", "exclusiveMinimum": 0},
+        "reader_lr": {"type": "number", "exclusiveMinimum": 0},
+        "train_readers": {"type": "boolean"},
+        "use_warm_start_actions": {"type": "boolean"},
+        "checkpoint_every": {"type": "integer", "minimum": 0},
+        "fixed_seed": {"type": "integer"},
+        "deterministic": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    },
+    "carrier": {
+      "type": "object",
+      "properties": {
+        "group_index": {"type": "integer", "minimum": 0, "maximum": 3},
+        "gate_scale": {"type": "number", "exclusiveMinimum": 0},
+        "reader_scale": {"type": "number", "exclusiveMinimum": 0},
+        "action_scale": {"type": "number", "exclusiveMinimum": 0},
+        "value_cancel_scale": {"type": "number", "minimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "gates": {
+      "type": "object",
+      "properties": {
+        "mean_cosine_min": {"type": "number", "minimum": -1, "maximum": 1},
+        "mean_nrmse_max": {"type": "number", "minimum": 0},
+        "single_relative_drift_max": {"type": "number", "minimum": 0},
+        "export_equivalence_max": {"type": "number", "minimum": 0},
+        "compile_on_failure": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

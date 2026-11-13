@@ -1,0 +1,42 @@
+{
+  "base_model": "/path/to/stable-diffusion-xl-base-1.0",
+  "signature_cover_lora": "/path/to/benign_signature.safetensors",
+  "payload_cover_lora": "/path/to/benign_payload.safetensors",
+  "data_json": "/path/to/train_data.json",
+  "output_dir": "/path/to/output/my_pair",
+  "device": "cuda:0",
+  "local_files_only": true,
+  "runtime": {
+    "height": 512,
+    "width": 512,
+    "inference_steps": 30,
+    "guidance_scale": 7.5,
+    "record_steps": [0, 3, 7, 12, 18, 20]
+  },
+  "training": {
+    "optimization_steps": 3000,
+    "train_seeds": [2026087701, 2026087702],
+    "calibration_seeds": [2026087791],
+    "action_lr": 0.0008,
+    "reader_lr": 0.0002,
+    "train_readers": true,
+    "use_warm_start_actions": true,
+    "checkpoint_every": 500,
+    "fixed_seed": 2026087714,
+    "deterministic": true
+  },
+  "carrier": {
+    "group_index": 1,
+    "gate_scale": 35.0,
+    "reader_scale": 0.06,
+    "action_scale": 0.45,
+    "value_cancel_scale": 0.90
+  },
+  "gates": {
+    "mean_cosine_min": 0.35,
+    "mean_nrmse_max": 1.10,
+    "single_relative_drift_max": 0.020,
+    "export_equivalence_max": 0.010,
+    "compile_on_failure": false
+  }
+}

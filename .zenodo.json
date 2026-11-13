@@ -1,0 +1,20 @@
+{
+  "title": "LoRango SDXL Pair-Training Toolkit",
+  "version": "1.4.0",
+  "description": "Reproducible artifact for training and compiling composition-triggered behavior into two ordinary static SDXL LoRAs.",
+  "creators": [
+    {
+      "name": "Anonymous Authors"
+    }
+  ],
+  "license": "Apache-2.0",
+  "upload_type": "software",
+  "keywords": [
+    "LoRA",
+    "SDXL",
+    "adversarial machine learning",
+    "artifact evaluation",
+    "reproducibility"
+  ],
+  "notes": "Double-blind metadata. Add author identities and the assigned DOI after the review policy permits."
+}
