@@ -3,7 +3,7 @@
 ## CPU/static tier
 
 ```bash
-python scripts/submission_check.py --json-output /tmp/lorango-static.json
+python3 scripts/submission_check.py --json-output /tmp/lorango-static.json
 ```
 
 This tier needs only Python 3.10+ and verifies the release, reference bundle,
@@ -14,14 +14,14 @@ negative fixtures and tamper detection.
 After installing `requirements.lock` and the package:
 
 ```bash
-python scripts/submission_check.py --runtime \
+python3 scripts/submission_check.py --runtime \
   --json-output /tmp/lorango-runtime.json
 ```
 
 ## Licensed model tier
 
 ```bash
-python scripts/submission_check.py \
+python3 scripts/submission_check.py \
   --model-dir /path/to/stable-diffusion-xl-base-1.0 \
   --json-output /tmp/lorango-model.json
 ```
@@ -29,10 +29,10 @@ python scripts/submission_check.py \
 ## Completed GPU run tier
 
 ```bash
-python scripts/submission_check.py \
+python3 scripts/submission_check.py \
   --model-dir /path/to/stable-diffusion-xl-base-1.0 \
-  --run-dir runs/reference_pair2_v1_4_0 \
-  --json-output runs/reference_pair2_v1_4_0.REVIEWER_CHECK.json
+  --run-dir runs/reference_pair2_v1_4_1 \
+  --json-output runs/reference_pair2_v1_4_1.REVIEWER_CHECK.json
 ```
 
 The final tier is the only tier that validates a new v1.4 result. Keep the
@@ -80,16 +80,16 @@ For services with an 8 MiB per-file limit, build a deterministic split-asset
 archive:
 
 ```bash
-python scripts/build_anonymous_review.py \
-  --output ../LoRango_SDXL_Reproducibility_Bundle_v1.4.0_anonymous.tar.gz
+python3 scripts/build_anonymous_review.py \
+  --output ../LoRango_SDXL_Reproducibility_Bundle_v1.4.1_anonymous.tar.gz
 ```
 
 After downloading or cloning that review tree, restore and verify the original
 assets before running the normal checks:
 
 ```bash
-python scripts/reassemble_large_assets.py --cleanup-parts
-python scripts/submission_check.py
+python3 scripts/reassemble_large_assets.py --cleanup-parts
+python3 scripts/submission_check.py
 ```
 
 See `docs/ANONYMOUS_REVIEW.md` for the exact contract.

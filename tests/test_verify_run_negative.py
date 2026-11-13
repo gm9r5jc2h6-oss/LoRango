@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import importlib.util
 import hashlib
+import struct
 import subprocess
 import sys
 import tempfile
@@ -24,6 +25,49 @@ def load_verifier():
 
 
 class StrictRunVerifierTests(unittest.TestCase):
+    def test_malformed_safetensors_shape_is_rejected(self) -> None:
+        verifier = load_verifier()
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "bad.safetensors"
+            header = json.dumps(
+                {
+                    "tensor": {
+                        "dtype": "F32",
+                        "shape": [2],
+                        "data_offsets": [0, 4],
+                    }
+                },
+                separators=(",", ":"),
+            ).encode("utf-8")
+            path.write_bytes(struct.pack("<Q", len(header)) + header + b"\0" * 4)
+            failures = []
+            tensors = verifier.validate_safetensors(path, failures)
+            self.assertEqual(tensors, {})
+            self.assertTrue(any("dtype/shape" in item for item in failures))
+
+    def test_loader_scaling_pass_flag_is_recomputed(self) -> None:
+        verifier = load_verifier()
+        post = {
+            "loader_scaling_audit": {
+                "passed": True,
+                "expected_modified_s_alpha": 4.0,
+                "expected_modified_p_alpha": 4.0,
+                "actual": {
+                    name: {"r": 4, "lora_alpha": 99.0, "rank_pattern": {}}
+                    for name in ("clean_s", "clean_p", "modified_s", "modified_p")
+                },
+            }
+        }
+        compilation = {
+            "loader_scaling": {
+                "signature": {"inferred_loader_alpha": 4},
+                "payload": {"inferred_loader_alpha": 4},
+            }
+        }
+        failures = []
+        self.assertFalse(verifier.verify_loader_scaling(post, compilation, failures))
+        self.assertTrue(failures)
+
     def test_forged_run_cannot_pass(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             run = Path(directory)
@@ -115,11 +159,11 @@ class StrictRunVerifierTests(unittest.TestCase):
                 encoding="utf-8",
             )
             failures = []
-            verifier.verify_evidence(run, failures)
+            verifier.verify_evidence(run, "1.4.0", failures)
             self.assertEqual(failures, [])
             artifact.write_text('{"value": 2}\n', encoding="utf-8")
             failures = []
-            verifier.verify_evidence(run, failures)
+            verifier.verify_evidence(run, "1.4.0", failures)
             self.assertTrue(any("hash/size mismatch" in item for item in failures))
 
     def test_model_manifest_snapshot_binding_detects_tampering(self) -> None:

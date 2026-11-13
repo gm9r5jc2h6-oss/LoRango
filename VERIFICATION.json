@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "toolkit_version": "1.4.0",
+  "toolkit_version": "1.4.1",
   "verification_date": "2026-11-14",
   "submission_readiness": {
     "functional": "LOCAL_V1_4_FULL_RUN_PASS_INDEPENDENT_CHECK_REQUIRED",
@@ -39,7 +39,7 @@
     },
     "wheel_build": {
       "status": "PASS",
-      "wheel": "lorango_sdxl_training-1.4.0-py3-none-any.whl",
+      "wheel": "lorango_sdxl_training-1.4.1-py3-none-any.whl",
       "default_assets_included": true
     },
     "strict_run_verifier": {
@@ -106,5 +106,5 @@
     "modified_p_sha256": "060bf1194e071916eee713f1900b05cfc1b6232ff978d46fb368e6bd295300aa",
     "reference_overview_sha256": "850492037758747d685cf09d49902de64da6715cd30173fb59bcc4c590c19e7b"
   },
-  "remaining_external_action": "Obtain an independent evaluator run before claiming Results Reproduced, then upload the deterministic archive and replace IDENTIFIER_PENDING with its DOI before claiming Available."
+  "remaining_external_action": "Obtain an independent evaluator run before claiming Results Reproduced, then upload the deterministic archive and add its DOI to CITATION.cff before claiming Available."
 }

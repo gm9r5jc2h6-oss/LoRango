@@ -7,8 +7,8 @@ a GitHub Release URL to remain anonymous.
 Build the separate review archive from a clean release tree:
 
 ```bash
-python scripts/build_anonymous_review.py \
-  --output ../LoRango_SDXL_Reproducibility_Bundle_v1.4.0_anonymous.tar.gz
+python3 scripts/build_anonymous_review.py \
+  --output ../LoRango_SDXL_Reproducibility_Bundle_v1.4.1_anonymous.tar.gz
 ```
 
 The builder replaces every file larger than 7 MiB with deterministic numbered
@@ -20,8 +20,8 @@ After a reviewer downloads or clones the anonymous tree, restore the original
 files and remove the tracked chunks from the local working tree:
 
 ```bash
-python scripts/reassemble_large_assets.py --cleanup-parts
-python scripts/submission_check.py
+python3 scripts/reassemble_large_assets.py --cleanup-parts
+python3 scripts/submission_check.py
 ```
 
 Reassembly refuses missing, reordered, modified, oversized, or hash-mismatched

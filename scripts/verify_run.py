@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+from collections import Counter
 import hashlib
 import json
 import math
@@ -11,7 +12,8 @@ from pathlib import Path
 from typing import Any
 
 
-VERSION = "1.4.0"
+VERSION = "1.4.1"
+SUPPORTED_RUN_VERSIONS = {"1.4.0", VERSION}
 COMPILED_FILES = {
     "signature.safetensors",
     "payload.safetensors",
@@ -52,6 +54,24 @@ EXPECTED_LAYERS = {
     "u0a2_t1": "up_blocks.0.attentions.2.transformer_blocks.1",
     "u0a2_t7": "up_blocks.0.attentions.2.transformer_blocks.7",
 }
+DTYPE_BYTES = {
+    "BOOL": 1,
+    "U8": 1,
+    "I8": 1,
+    "F8_E4M3": 1,
+    "F8_E5M2": 1,
+    "I16": 2,
+    "U16": 2,
+    "F16": 2,
+    "BF16": 2,
+    "I32": 4,
+    "U32": 4,
+    "F32": 4,
+    "I64": 8,
+    "U64": 8,
+    "F64": 8,
+}
+MAX_SAFETENSORS_HEADER_BYTES = 100_000_000
 
 
 def sha256(path: Path) -> str:
@@ -97,7 +117,18 @@ def quantile(values: list[float], q: float) -> float:
     return ordered[lower] * (upper - position) + ordered[upper] * (position - lower)
 
 
-def validate_safetensors(path: Path, failures: list[str]) -> set[str]:
+def _strict_json_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError(f"duplicate JSON key: {key}")
+        result[key] = value
+    return result
+
+
+def validate_safetensors(
+    path: Path, failures: list[str]
+) -> dict[str, dict[str, Any]]:
     try:
         size = path.stat().st_size
         with path.open("rb") as stream:
@@ -105,11 +136,24 @@ def validate_safetensors(path: Path, failures: list[str]) -> set[str]:
             if len(raw_length) != 8:
                 raise ValueError("truncated length")
             header_length = struct.unpack("<Q", raw_length)[0]
-            if header_length < 2 or 8 + header_length > size:
+            if (
+                header_length < 2
+                or header_length > MAX_SAFETENSORS_HEADER_BYTES
+                or 8 + header_length > size
+            ):
                 raise ValueError("invalid header length")
-            header = json.loads(stream.read(header_length).decode("utf-8"))
+            header = json.loads(
+                stream.read(header_length).decode("utf-8"),
+                object_pairs_hook=_strict_json_object,
+            )
         if not isinstance(header, dict):
             raise ValueError("header is not an object")
+        metadata = header.get("__metadata__", {})
+        if not isinstance(metadata, dict) or not all(
+            isinstance(key, str) and isinstance(value, str)
+            for key, value in metadata.items()
+        ):
+            raise ValueError("invalid safetensors metadata")
         tensors = {key: value for key, value in header.items() if key != "__metadata__"}
         if not tensors:
             raise ValueError("contains no tensors")
@@ -122,6 +166,7 @@ def validate_safetensors(path: Path, failures: list[str]) -> set[str]:
                 raise ValueError(f"invalid fields for tensor {name}")
             offsets = record["data_offsets"]
             shape = record["shape"]
+            dtype = record["dtype"]
             if (
                 not isinstance(offsets, list)
                 or len(offsets) != 2
@@ -131,17 +176,25 @@ def validate_safetensors(path: Path, failures: list[str]) -> set[str]:
                 or offsets[1] > data_size
                 or not isinstance(shape, list)
                 or not all(isinstance(value, int) and value >= 0 for value in shape)
+                or dtype not in DTYPE_BYTES
             ):
                 raise ValueError(f"invalid tensor bounds for {name}")
+            expected_bytes = math.prod(shape) * DTYPE_BYTES[dtype]
+            if offsets[1] - offsets[0] != expected_bytes:
+                raise ValueError(f"tensor byte length does not match dtype/shape: {name}")
             intervals.append((offsets[0], offsets[1], name))
         ordered = sorted(intervals)
-        for previous, current in zip(ordered, ordered[1:]):
-            if previous[1] > current[0]:
-                raise ValueError(f"overlapping tensor data: {previous[2]}, {current[2]}")
-        return set(tensors)
+        expected_offset = 0
+        for start, end, name in ordered:
+            if start != expected_offset:
+                raise ValueError(f"non-contiguous tensor data before {name}")
+            expected_offset = end
+        if expected_offset != data_size:
+            raise ValueError("tensor data does not cover the complete file")
+        return tensors
     except Exception as exc:
         failures.append(f"invalid safetensors {path.name}: {exc}")
-        return set()
+        return {}
 
 
 def verify_checkpoint(
@@ -149,7 +202,8 @@ def verify_checkpoint(
 ) -> list[dict[str, Any]]:
     tensor_path = run_dir / "checkpoint_trained.safetensors"
     sidecar = run_dir / "checkpoint_trained.json"
-    keys = validate_safetensors(tensor_path, failures)
+    tensors = validate_safetensors(tensor_path, failures)
+    keys = set(tensors)
     metadata = read_json(sidecar, failures)
     if not isinstance(metadata, dict):
         return []
@@ -171,15 +225,52 @@ def verify_checkpoint(
                 continue
             name = layer.get("name")
             fields = layer.get("tensor_fields")
+            block = layer.get("block")
+            channels = layer.get("channels")
+            normalizers = layer.get("action_normalizers")
             if not isinstance(name, str) or not name or name in names:
                 failures.append(f"invalid checkpoint layer name at index {index}")
             names.add(name)
+            if name not in EXPECTED_LAYERS or block != EXPECTED_LAYERS.get(name):
+                failures.append(f"checkpoint layer {index} topology mismatch")
+            if (
+                not isinstance(channels, list)
+                or len(channels) != 4
+                or len(set(channels)) != 4
+                or not all(
+                    isinstance(value, int)
+                    and not isinstance(value, bool)
+                    and 0 <= value < 5120
+                    for value in channels
+                )
+            ):
+                failures.append(f"checkpoint layer {index} channels are invalid")
+            if (
+                not isinstance(normalizers, list)
+                or len(normalizers) != 4
+                or not all(
+                    not isinstance(value, bool)
+                    and isinstance(value, (int, float))
+                    and math.isfinite(float(value))
+                    for value in normalizers
+                )
+            ):
+                failures.append(f"checkpoint layer {index} normalizers are invalid")
             if not isinstance(fields, list) or set(fields) != {"actions", "value_readers"}:
                 failures.append(f"checkpoint layer {index} tensor_fields mismatch")
                 continue
             expected.update(f"layers.{index}.{field}" for field in fields)
         if keys != expected:
             failures.append("checkpoint safetensors key set does not match metadata")
+        for index in range(5):
+            expected_shapes = {
+                f"layers.{index}.actions": [1280, 4],
+                f"layers.{index}.value_readers": [4, 1280],
+            }
+            for key, shape in expected_shapes.items():
+                record = tensors.get(key)
+                if not isinstance(record, dict) or record.get("dtype") != "F32" or record.get("shape") != shape:
+                    failures.append(f"checkpoint tensor dtype/shape mismatch: {key}")
     record = manifest.get("checkpoint")
     if not isinstance(record, dict):
         failures.append("manifest checkpoint record is absent")
@@ -306,13 +397,155 @@ def verify_equivalence(
     return passed
 
 
-def verify_evidence(run_dir: Path, failures: list[str]) -> None:
+def _expected_carrier_shapes(signature: bool) -> dict[str, list[int]]:
+    result: dict[str, list[int]] = {}
+    for block in EXPECTED_LAYERS.values():
+        prefix = f"unet.{block}"
+        projection_rank = 5 if signature else 4
+        result.update(
+            {
+                f"{prefix}.ff.net.0.proj.lora.down.weight": [projection_rank, 1280],
+                f"{prefix}.ff.net.0.proj.lora.up.weight": [10240, projection_rank],
+                f"{prefix}.ff.net.2.lora.down.weight": [4, 5120],
+                f"{prefix}.ff.net.2.lora.up.weight": [1280, 4],
+            }
+        )
+    return result
+
+
+def verify_lora_tensors(
+    filename: str,
+    tensors: dict[str, dict[str, Any]],
+    compilation: dict[str, Any],
+    failures: list[str],
+) -> None:
+    signature = filename in {"signature.safetensors", "modified_s.safetensors"}
+    modified = filename.startswith("modified_")
+    expected_carrier = _expected_carrier_shapes(signature)
+    if modified:
+        missing = set(expected_carrier) - set(tensors)
+        if missing:
+            failures.append(f"{filename} lacks carrier tensors: {sorted(missing)}")
+    elif set(tensors) != set(expected_carrier):
+        failures.append(f"{filename} carrier tensor set is not exact")
+    for key, shape in expected_carrier.items():
+        record = tensors.get(key)
+        if not isinstance(record, dict):
+            continue
+        if record.get("dtype") != "F32" or record.get("shape") != shape:
+            failures.append(f"{filename} carrier dtype/shape mismatch: {key}")
+
+    down_suffix = ".lora.down.weight"
+    up_suffix = ".lora.up.weight"
+    down = {key[: -len(down_suffix)]: value for key, value in tensors.items() if key.endswith(down_suffix)}
+    up = {key[: -len(up_suffix)]: value for key, value in tensors.items() if key.endswith(up_suffix)}
+    recognized = {
+        key
+        for key in tensors
+        if key.endswith(down_suffix) or key.endswith(up_suffix)
+    }
+    if set(down) != set(up) or len(recognized) != len(tensors):
+        failures.append(f"{filename} does not contain exact paired LoRA tensors")
+        return
+    if any(not key.startswith("unet.") for key in tensors):
+        failures.append(f"{filename} contains non-UNet tensors")
+    rank_counts: Counter[int] = Counter()
+    for prefix, record in down.items():
+        paired = up[prefix]
+        down_shape = record.get("shape")
+        up_shape = paired.get("shape")
+        if (
+            record.get("dtype") != "F32"
+            or paired.get("dtype") != "F32"
+            or not isinstance(down_shape, list)
+            or len(down_shape) != 2
+            or not isinstance(up_shape, list)
+            or len(up_shape) != 2
+            or down_shape[0] != up_shape[1]
+            or down_shape[0] < 1
+        ):
+            failures.append(f"{filename} has an invalid LoRA pair: {prefix}")
+            continue
+        rank_counts[int(down_shape[0])] += 1
+
+    if modified:
+        branch = "signature" if signature else "payload"
+        loader_scaling = compilation.get("loader_scaling")
+        profile = loader_scaling.get(branch) if isinstance(loader_scaling, dict) else None
+        if not isinstance(profile, dict):
+            failures.append(f"compilation lacks {branch} loader-scaling profile")
+            return
+        recorded = profile.get("merged_rank_counts")
+        actual = {str(key): value for key, value in sorted(rank_counts.items())}
+        if recorded != actual:
+            failures.append(f"{filename} merged rank profile mismatch")
+
+
+def verify_loader_scaling(
+    post: dict[str, Any], compilation: dict[str, Any], failures: list[str]
+) -> bool:
+    audit = post.get("loader_scaling_audit")
+    profiles = compilation.get("loader_scaling")
+    if not isinstance(audit, dict) or not isinstance(profiles, dict):
+        failures.append("loader-scaling audit/profile is absent")
+        return False
+    expected: dict[str, float] = {}
+    for branch in ("signature", "payload"):
+        profile = profiles.get(branch)
+        alpha = profile.get("inferred_loader_alpha") if isinstance(profile, dict) else None
+        if isinstance(alpha, bool) or not isinstance(alpha, (int, float)) or alpha <= 0:
+            failures.append(f"invalid {branch} inferred loader alpha")
+            return False
+        expected[branch] = float(alpha)
+    if audit.get("expected_modified_s_alpha") != expected["signature"]:
+        failures.append("loader audit signature alpha does not match compilation")
+    if audit.get("expected_modified_p_alpha") != expected["payload"]:
+        failures.append("loader audit payload alpha does not match compilation")
+    actual = audit.get("actual")
+    if not isinstance(actual, dict) or set(actual) != {
+        "clean_s",
+        "clean_p",
+        "modified_s",
+        "modified_p",
+    }:
+        failures.append("loader audit adapter set is invalid")
+        passed = False
+    else:
+        expected_by_adapter = {
+            "clean_s": expected["signature"],
+            "modified_s": expected["signature"],
+            "clean_p": expected["payload"],
+            "modified_p": expected["payload"],
+        }
+        passed = True
+        for name, expected_alpha in expected_by_adapter.items():
+            row = actual.get(name)
+            if (
+                not isinstance(row, dict)
+                or isinstance(row.get("r"), bool)
+                or not isinstance(row.get("r"), int)
+                or row["r"] < 1
+                or isinstance(row.get("lora_alpha"), bool)
+                or not isinstance(row.get("lora_alpha"), (int, float))
+                or float(row["lora_alpha"]) != expected_alpha
+                or not isinstance(row.get("rank_pattern"), dict)
+            ):
+                failures.append(f"loader audit adapter metadata mismatch: {name}")
+                passed = False
+    if audit.get("passed") is not passed:
+        failures.append("loader audit passed flag does not match recomputed result")
+    return passed
+
+
+def verify_evidence(
+    run_dir: Path, expected_version: str, failures: list[str]
+) -> None:
     evidence = read_json(run_dir / "EVIDENCE.json", failures)
     if not isinstance(evidence, dict):
         return
     if (
         evidence.get("format") != "lorango-run-evidence-v2"
-        or evidence.get("toolkit_version") != VERSION
+        or evidence.get("toolkit_version") != expected_version
     ):
         failures.append("EVIDENCE.json format/version mismatch")
     records = evidence.get("files")
@@ -460,6 +693,13 @@ def verify_trace(trace: list[Any], protocol: dict[str, Any], failures: list[str]
         return
     if len(trace) != steps:
         failures.append(f"training trace length is {len(trace)}, expected {steps}")
+    data = protocol.get("data")
+    runtime = config.get("runtime") if isinstance(config, dict) else None
+    train_rows = data.get("train") if isinstance(data, dict) else None
+    train_ids = {
+        row.get("id") for row in train_rows if isinstance(row, dict)
+    } if isinstance(train_rows, list) else set()
+    diffusion_steps = set(runtime.get("record_steps", [])) if isinstance(runtime, dict) else set()
     required = {
         "optimization_step",
         "id",
@@ -476,6 +716,10 @@ def verify_trace(trace: list[Any], protocol: dict[str, Any], failures: list[str]
             continue
         if row.get("optimization_step") != index:
             failures.append(f"training trace row {index} has a non-contiguous step")
+        if row.get("id") not in train_ids:
+            failures.append(f"training trace row {index} has an unknown training id")
+        if row.get("diffusion_step") not in diffusion_steps:
+            failures.append(f"training trace row {index} has an invalid diffusion step")
         for field in ("loss", "nmse", "masked_nmse", "direction_loss", "gradient_norm"):
             value = row.get(field)
             if (
@@ -484,6 +728,8 @@ def verify_trace(trace: list[Any], protocol: dict[str, Any], failures: list[str]
                 or not math.isfinite(float(value))
             ):
                 failures.append(f"training trace row {index} has invalid {field}")
+            elif float(value) < 0:
+                failures.append(f"training trace row {index} has negative {field}")
 
 
 def verify_calibration_identities(
@@ -566,10 +812,14 @@ def main() -> None:
     assert isinstance(manifest, dict) and isinstance(protocol, dict)
     assert isinstance(metadata, dict) and isinstance(compilation, dict)
     assert isinstance(calibration, dict) and isinstance(post, dict)
-    if manifest.get("toolkit_version") != VERSION or protocol.get("version") != VERSION:
-        failures.append("manifest/protocol is not from toolkit v1.4.0")
-    if metadata.get("toolkit_version") != VERSION or metadata.get("mode") != "train":
-        failures.append("RUN_METADATA is not a v1.4 training record")
+    run_version = manifest.get("toolkit_version")
+    if (
+        run_version not in SUPPORTED_RUN_VERSIONS
+        or protocol.get("version") != run_version
+    ):
+        failures.append("manifest/protocol has an unsupported or inconsistent version")
+    if metadata.get("toolkit_version") != run_version or metadata.get("mode") != "train":
+        failures.append("RUN_METADATA version/mode does not match the run")
     verify_input_snapshots(protocol, metadata, input_config, input_data, failures)
     allowed_status = {"PASS", "FUNCTIONAL_SMOKE_PASS"} if args.allow_smoke else {"PASS"}
     if manifest.get("status") not in allowed_status:
@@ -651,9 +901,8 @@ def main() -> None:
             failures.append("manifest hook gates do not match recomputed gates")
     if post_summary is not None and thresholds_valid:
         expected_post = recompute_gates(post_summary, thresholds)
-        loader = post.get("loader_scaling_audit")
-        expected_post["loader_scaling"] = (
-            isinstance(loader, dict) and loader.get("passed") is True
+        expected_post["loader_scaling"] = verify_loader_scaling(
+            post, compilation, failures
         )
         expected_post["hook_export_equivalence"] = verify_equivalence(
             calibration,
@@ -696,7 +945,8 @@ def main() -> None:
     else:
         for name, record in file_records.items():
             path = run_dir / name
-            validate_safetensors(path, failures)
+            tensors = validate_safetensors(path, failures)
+            verify_lora_tensors(name, tensors, compilation, failures)
             if (
                 not isinstance(record, dict)
                 or record.get("sha256") != sha256(path)
@@ -742,7 +992,7 @@ def main() -> None:
             elif canonical_hash(records) != digest:
                 failures.append(f"base-model {digest_name} does not match its file records")
 
-    verify_evidence(run_dir, failures)
+    verify_evidence(run_dir, str(run_version), failures)
     result = {
         "status": "PASS" if not failures else "FAIL",
         "run_dir": str(run_dir),

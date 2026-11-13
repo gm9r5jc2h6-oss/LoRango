@@ -12,5 +12,4 @@ LOG="${2:-lorango_train_$(date -u +%Y%m%dT%H%M%SZ).log}"
 
 cd "$ROOT"
 set -o pipefail
-python train_pair.py --config "$CONFIG" 2>&1 | tee "$LOG"
-
+python3 train_pair.py --config "$CONFIG" 2>&1 | tee "$LOG"

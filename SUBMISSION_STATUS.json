@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "toolkit_version": "1.4.0",
+  "toolkit_version": "1.4.1",
   "status_date": "2026-11-14",
   "ready_for_review_package": true,
   "badge_claims": {
@@ -23,6 +23,6 @@
     "Attach the accepted paper and artifact appendix through the target venue's required submission channel.",
     "Have an independent evaluator run the v1.4 reference workflow on the declared CUDA/SDXL environment before claiming Results Reproduced.",
     "Preserve the original reviewer_check JSON and complete sealed run directory outside the anonymous public bundle.",
-    "Upload the exact deterministic archive to a permanent public repository and replace IDENTIFIER_PENDING with its DOI."
+    "Upload the exact deterministic archive to a permanent public repository and add its DOI to CITATION.cff."
   ]
 }

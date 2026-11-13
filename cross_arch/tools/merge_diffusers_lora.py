@@ -147,8 +147,8 @@ def merge(
         ).contiguous()
         b_out = torch.cat(
             [
-                factors.b.float() * (source_scale / output_scale)
-                for (_, factors, _), source_scale in zip(components, effective_scales)
+                factors.b.float() * (effective_scales[index] / output_scale)
+                for index, (_, factors, _) in enumerate(components)
             ],
             dim=1,
         ).contiguous()

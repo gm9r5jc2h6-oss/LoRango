@@ -45,7 +45,7 @@ The inputs must already use Diffusers keys ending in `.lora_A.weight` and
 `.lora_B.weight`.
 
 ```bash
-python merge_diffusers_lora.py \
+python3 merge_diffusers_lora.py \
   --left benign_cover.safetensors \
   --right trained_branch.safetensors \
   --left-scale 0.75 \
@@ -53,7 +53,7 @@ python merge_diffusers_lora.py \
   --output final_payload.safetensors \
   --manifest MERGE_PAYLOAD.json
 
-python audit_diffusers_lora_merge.py \
+python3 audit_diffusers_lora_merge.py \
   --left benign_cover.safetensors \
   --right trained_branch.safetensors \
   --left-scale 0.75 \

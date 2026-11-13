@@ -5,14 +5,13 @@ an external DOI without the authors' repository/archive account.
 
 Before submission:
 
-1. run `python scripts/submission_check.py --runtime` in the pinned environment;
+1. run `python3 scripts/submission_check.py --runtime` in the pinned environment;
 2. verify the preserved local v1.4 GPU evidence hashes and retain the original
    sealed evidence outside the anonymous bundle;
-3. create the release archive with `python scripts/build_release.py`;
+3. create the release archive with `python3 scripts/build_release.py`;
 4. upload that exact archive to Zenodo, OSF, or an equivalent long-term public
    repository;
-5. replace `IDENTIFIER_PENDING` in `CITATION.cff` and add the assigned
-   DOI/identifier to the release metadata;
+5. add the assigned DOI/identifier to `CITATION.cff` and the release metadata;
 6. publish the archive URL and SHA-256 in the paper and artifact appendix.
 
 Both release builders run the dependency-free submission preflight before

@@ -18,7 +18,7 @@ def flatten(value: Any) -> list[float]:
 def subtract(left: list[float], right: list[float]) -> list[float]:
     if len(left) != len(right):
         raise ValueError("tensor surrogates have different flattened lengths")
-    return [a - b for a, b in zip(left, right)]
+    return [left[index] - right[index] for index in range(len(left))]
 
 
 def mean_square(value: list[float]) -> float:
@@ -28,7 +28,9 @@ def mean_square(value: list[float]) -> float:
 
 
 def cosine(left: list[float], right: list[float], epsilon: float = 1e-8) -> float:
-    dot = sum(a * b for a, b in zip(left, right))
+    if len(left) != len(right):
+        raise ValueError("tensor surrogates have different flattened lengths")
+    dot = sum(left[index] * right[index] for index in range(len(left)))
     norm_left = math.sqrt(sum(a * a for a in left))
     norm_right = math.sqrt(sum(b * b for b in right))
     return dot / max(norm_left * norm_right, epsilon)
@@ -62,4 +64,3 @@ def four_condition_metrics(
         "p_drift_ratio": mean_square(d_p) / energy,
         "sp_amplitude": math.sqrt(mean_square(d_sp) / energy),
     }
-

@@ -6,7 +6,7 @@
   "required": ["format", "toolkit_version", "files", "files_digest"],
   "properties": {
     "format": {"const": "lorango-run-evidence-v2"},
-    "toolkit_version": {"const": "1.4.0"},
+    "toolkit_version": {"enum": ["1.4.0", "1.4.1"]},
     "files": {
       "type": "object",
       "minProperties": 1,

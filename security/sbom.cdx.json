@@ -7,9 +7,9 @@
     "timestamp": "2026-11-07T00:00:00+00:00",
     "component": {
       "type": "application",
-      "bom-ref": "pkg:pypi/lorango-sdxl-training@1.4.0",
+      "bom-ref": "pkg:pypi/lorango-sdxl-training@1.4.1",
       "name": "lorango-sdxl-training",
-      "version": "1.4.0"
+      "version": "1.4.1"
     },
     "properties": [
       {

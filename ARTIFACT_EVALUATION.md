@@ -23,8 +23,8 @@ Diffusers LoRA loader, and pass held-out calibration again.
 | Results Reproduced | The local v1.4 run passed, but award this badge only after an independent evaluator runs section F and the strict verifier returns `PASS` |
 | Available | Release/Zenodo metadata and deterministic archive builder are prepared; DOI remains an author-side external action |
 
-Do not claim **Available** while `CITATION.cff` still contains
-`IDENTIFIER_PENDING`.
+Do not claim **Available** until the immutable archive DOI has been added to
+`CITATION.cff`.
 
 The sanitized local-run record is
 `evidence/V1_4_GPU_EVIDENCE_SUMMARY.json`. It records hashes of the original
@@ -43,7 +43,7 @@ reviewer run.
 ## A. Verify package integrity and structure
 
 ```bash
-python scripts/submission_check.py \
+python3 scripts/submission_check.py \
   --json-output /tmp/lorango-static-review.json
 ```
 
@@ -62,7 +62,7 @@ and the dependency-backed unit suite.
 ## B. Build the exact environment
 
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 pip install --extra-index-url https://download.pytorch.org/whl/cu124 -r requirements.lock
 pip install --no-deps -e .
@@ -80,13 +80,13 @@ After accepting the upstream model terms, a networked preparation host may
 download only the required files and verify them automatically:
 
 ```bash
-python scripts/fetch_reference_model.py --output-dir /path/to/stable-diffusion-xl-base-1.0
+python3 scripts/fetch_reference_model.py --output-dir /path/to/stable-diffusion-xl-base-1.0
 ```
 
 For an existing local snapshot, run only the verifier:
 
 ```bash
-python scripts/verify_model.py \
+python3 scripts/verify_model.py \
   --model-dir /path/to/stable-diffusion-xl-base-1.0
 ```
 
@@ -99,7 +99,7 @@ and metadata digest
 
 ```bash
 export LORANGO_BASE_MODEL=/path/to/stable-diffusion-xl-base-1.0
-python train_pair.py --config configs/reference_pair2.json --validate-only
+python3 train_pair.py --config configs/reference_pair2.json --validate-only
 ```
 
 Expected status: `VALID`, five carrier layers, no cover collision, Signature
@@ -108,7 +108,7 @@ modal loader alpha 4, and Payload modal loader alpha 4.
 ## E. One-step GPU functionality test
 
 ```bash
-python scripts/run_smoke.py \
+python3 scripts/run_smoke.py \
   --config configs/reference_pair2.json \
   --output-dir /tmp/lorango_sdxl_smoke
 ```
@@ -119,14 +119,14 @@ save/load, static compilation, a clean four-adapter Diffusers reload, and
 post-export calibration. Verify it with:
 
 ```bash
-python scripts/verify_run.py --run-dir /tmp/lorango_sdxl_smoke --allow-smoke
+python3 scripts/verify_run.py --run-dir /tmp/lorango_sdxl_smoke --allow-smoke
 ```
 
 ## F. Full reference reproduction
 
 ```bash
 bash scripts/train.sh configs/reference_pair2.json runs/reference_pair2.log
-python scripts/verify_run.py --run-dir runs/reference_pair2_v1_4_0
+python3 scripts/verify_run.py --run-dir runs/reference_pair2_v1_4_1
 ```
 
 The definitive success conditions are:
@@ -157,7 +157,7 @@ checkpoint, rerun standard-loader calibration, and require byte-identical
 deployable outputs:
 
 ```bash
-python scripts/reproduce_reference.py \
+python3 scripts/reproduce_reference.py \
   --model-dir "$LORANGO_BASE_MODEL" \
   --output-dir /tmp/lorango_reproduced
 ```
@@ -165,8 +165,8 @@ python scripts/reproduce_reference.py \
 ## H. Create the immutable release
 
 ```bash
-python scripts/build_release.py \
-  --output ../LoRango_SDXL_Reproducibility_Bundle_v1.4.0.tar.gz
+python3 scripts/build_release.py \
+  --output ../LoRango_SDXL_Reproducibility_Bundle_v1.4.1.tar.gz
 ```
 
 Upload those exact bytes to a long-term public archive and place the assigned

@@ -14,12 +14,20 @@ MANIFEST = ROOT / "LARGE_ASSETS.json"
 
 
 def safe_path(relative: str) -> Path:
-    path = (ROOT / relative).resolve()
+    if not isinstance(relative, str) or not relative or Path(relative).is_absolute():
+        raise ValueError(f"invalid relative path: {relative!r}")
+    candidate = ROOT / relative
+    path = candidate.resolve()
     try:
         path.relative_to(ROOT)
     except ValueError as error:
         raise ValueError(f"path escapes review tree: {relative}") from error
-    return path
+    current = candidate
+    while current != ROOT:
+        if current.is_symlink():
+            raise ValueError(f"symbolic links are not allowed: {relative}")
+        current = current.parent
+    return candidate
 
 
 def sha256(path: Path) -> str:
@@ -31,6 +39,8 @@ def sha256(path: Path) -> str:
 
 
 def validate_chunk(row: dict[str, Any]) -> Path:
+    if not isinstance(row, dict) or set(row) != {"path", "bytes", "sha256"}:
+        raise ValueError("invalid chunk manifest entry")
     path = safe_path(str(row["path"]))
     if not path.is_file():
         raise FileNotFoundError(path)
@@ -54,13 +64,44 @@ def main() -> None:
     if not MANIFEST.is_file():
         raise FileNotFoundError(MANIFEST)
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    if not isinstance(manifest, dict) or set(manifest) != {
+        "format",
+        "chunk_bytes",
+        "files",
+    }:
+        raise ValueError("invalid large-asset manifest structure")
     if manifest.get("format") != "lorango-anonymous-large-assets-v1":
         raise ValueError("unsupported large-asset manifest format")
+    if (
+        isinstance(manifest.get("chunk_bytes"), bool)
+        or not isinstance(manifest.get("chunk_bytes"), int)
+        or manifest["chunk_bytes"] < 1024 * 1024
+        or manifest["chunk_bytes"] >= 8 * 1024 * 1024
+    ):
+        raise ValueError("invalid chunk_bytes in large-asset manifest")
+    if not isinstance(manifest.get("files"), dict) or not manifest["files"]:
+        raise ValueError("large-asset manifest contains no files")
     restored = []
     validated_chunks: list[Path] = []
     for relative, spec in sorted(manifest["files"].items()):
+        if not isinstance(spec, dict) or set(spec) != {"bytes", "sha256", "chunks"}:
+            raise ValueError(f"invalid asset manifest entry: {relative}")
+        if (
+            isinstance(spec["bytes"], bool)
+            or not isinstance(spec["bytes"], int)
+            or spec["bytes"] < 1
+            or not isinstance(spec["sha256"], str)
+            or len(spec["sha256"]) != 64
+            or not isinstance(spec["chunks"], list)
+            or not spec["chunks"]
+        ):
+            raise ValueError(f"invalid asset metadata: {relative}")
         destination = safe_path(relative)
         chunks = [validate_chunk(row) for row in spec["chunks"]]
+        if len(chunks) != len(set(chunks)):
+            raise ValueError(f"duplicate chunks for asset: {relative}")
+        if sum(path.stat().st_size for path in chunks) != spec["bytes"]:
+            raise ValueError(f"chunk sizes do not match asset size: {relative}")
         validated_chunks.extend(chunks)
         if destination.exists():
             if destination.stat().st_size != int(spec["bytes"]) or sha256(destination) != spec["sha256"]:

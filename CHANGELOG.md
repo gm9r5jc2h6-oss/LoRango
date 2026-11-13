@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.4.1 — 2026-11-14
+
+- Hardened safetensors verification with strict dtype, shape, byte-range and
+  complete-data-layout checks.
+- Recomputed loader-scaling evidence instead of trusting a recorded pass flag,
+  and added exact carrier tensor topology checks.
+- Prevented anonymous-bundle reassembly and cleanup from following symbolic
+  links or accepting malformed chunk manifests.
+- Made both release builders package only Git-tracked files and normalize file
+  permissions for cross-host deterministic archives.
+- Added dependency-lock consistency checks for the SBOM, OSV scan,
+  `requirements.txt`, and `pyproject.toml`.
+- Replaced invalid citation placeholders with the public repository URL; DOI
+  metadata remains an explicit external archival step.
+
 ## Repository verification follow-up — 2026-11-14
 
 - Restored the tracked reference training log required by both integrity

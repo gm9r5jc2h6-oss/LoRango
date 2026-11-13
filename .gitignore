@@ -1,6 +1,10 @@
 __pycache__/
 *.py[cod]
 .venv/
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
 runs/
 *.log
 !reference/v1_2_run/stdout.log
+security/OSV_SCAN_CURRENT.json

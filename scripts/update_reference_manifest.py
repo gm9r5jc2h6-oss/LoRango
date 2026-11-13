@@ -44,7 +44,7 @@ def main() -> None:
             files[relative] = {"sha256": sha256(path), "bytes": path.stat().st_size}
     payload = {
         "schema_version": 2,
-        "toolkit_version": "1.4.0",
+        "toolkit_version": "1.4.1",
         "files": files,
     }
     DESTINATION.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")

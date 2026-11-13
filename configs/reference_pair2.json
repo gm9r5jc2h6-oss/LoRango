@@ -5,7 +5,7 @@
   "data_json": "../reference/train_data.json",
   "scaffold_init": "../reference/checkpoint/checkpoint_legacy.safetensors",
   "model_manifest": "../reference/MODEL_MANIFEST.json",
-  "output_dir": "../runs/reference_pair2_v1_4_0",
+  "output_dir": "../runs/reference_pair2_v1_4_1",
   "device": "cuda:0",
   "local_files_only": true,
   "runtime": {

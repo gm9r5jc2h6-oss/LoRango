@@ -18,7 +18,7 @@
 - [ ] Have an independent evaluator run the v1.4 workflow before requesting Results Reproduced.
 - [ ] Compare the paper's tables/figures against the new v1.4 evidence and record tolerances.
 - [ ] Upload the exact archive to Zenodo or another qualifying permanent repository.
-- [ ] Replace `IDENTIFIER_PENDING` in `CITATION.cff` and complete permitted author metadata.
+- [ ] Add the immutable archive DOI to `CITATION.cff` and complete permitted author metadata.
 - [ ] Confirm the target venue's current anonymity, licensing, hardware-access and appendix rules.
 
 Do not mark the last section complete from historical v1.2 evidence.

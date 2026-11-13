@@ -4,11 +4,13 @@ from __future__ import annotations
 import ast
 import hashlib
 import json
+import re
+import subprocess
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "1.4.0"
+VERSION = "1.4.1"
 REQUIRED = [
     "README.md",
     "SHA256SUMS",
@@ -93,16 +95,58 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def source_paths() -> list[Path]:
+    if (ROOT / ".git").exists():
+        completed = subprocess.run(
+            ["git", "ls-files", "-z"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+        )
+        return [
+            ROOT / value.decode("utf-8")
+            for value in completed.stdout.split(b"\0")
+            if value
+        ]
+    return [path for path in ROOT.rglob("*") if path.is_file() or path.is_symlink()]
+
+
+def canonical_package_name(value: str) -> str:
+    return re.sub(r"[-_.]+", "-", value).lower()
+
+
+def pinned_requirements(path: Path) -> dict[str, str]:
+    result: dict[str, str] = {}
+    for line in path.read_text(encoding="utf-8").splitlines():
+        value = line.strip()
+        if not value or value.startswith("#"):
+            continue
+        requirement = value.split(";", 1)[0].strip()
+        if "==" not in requirement:
+            raise SystemExit(f"requirement is not exactly pinned: {line}")
+        name, version = requirement.split("==", 1)
+        canonical = canonical_package_name(name)
+        if canonical in result:
+            raise SystemExit(f"duplicate pinned requirement: {name}")
+        result[canonical] = version
+    return result
+
+
+def version_matches_lock(observed: str, expected: str) -> bool:
+    return observed == expected or observed.split("+", 1)[0] == expected
+
+
 def main() -> None:
+    sources = source_paths()
     symlinks = [
         str(path.relative_to(ROOT))
-        for path in ROOT.rglob("*")
+        for path in sources
         if path.is_symlink()
     ]
     if symlinks:
         raise SystemExit(f"release contains symlinks: {symlinks}")
     identity_leaks = []
-    for path in sorted(ROOT.rglob("*")):
+    for path in sorted(sources):
         if not path.is_file() or excluded(path):
             continue
         relative = str(path.relative_to(ROOT))
@@ -129,7 +173,7 @@ def main() -> None:
         checksums[relative] = digest
     release_paths = {
         str(path.relative_to(ROOT))
-        for path in ROOT.rglob("*")
+        for path in sources
         if path.is_file()
         and path.name != "SHA256SUMS"
         and not EXCLUDED_PARTS.intersection(path.relative_to(ROOT).parts)
@@ -145,9 +189,11 @@ def main() -> None:
         actual = sha256(ROOT / relative)
         if actual != expected:
             raise SystemExit(f"release checksum mismatch: {relative}: {actual}")
-    for path in sorted(ROOT.rglob("*.py")):
+    python_paths = [path for path in sources if path.suffix == ".py"]
+    json_paths = [path for path in sources if path.suffix == ".json"]
+    for path in sorted(python_paths):
         ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
-    for path in sorted(ROOT.rglob("*.json")):
+    for path in sorted(json_paths):
         json.loads(path.read_text(encoding="utf-8"))
     version_documents = {
         "SUBMISSION_STATUS.json": json.loads(
@@ -182,10 +228,76 @@ def main() -> None:
     for relative, marker in text_versions.items():
         if marker not in (ROOT / relative).read_text(encoding="utf-8"):
             raise SystemExit(f"version marker mismatch: {relative}")
+    citation = (ROOT / "CITATION.cff").read_text(encoding="utf-8")
+    repository_url = "https://github.com/gm9r5jc2h6-oss/LoRango"
+    if f'repository-code: "{repository_url}"' not in citation:
+        raise SystemExit("CITATION.cff lacks the public repository URL")
+    if "IDENTIFIER_PENDING" in citation:
+        raise SystemExit("CITATION.cff contains a placeholder identifier")
+
+    direct = pinned_requirements(ROOT / "requirements.txt")
+    lock = pinned_requirements(ROOT / "requirements.lock")
+    pyproject_dependencies = {
+        canonical_package_name(name): version
+        for name, version in re.findall(
+            r'"([A-Za-z0-9_.-]+)==([^";]+)"',
+            (ROOT / "pyproject.toml").read_text(encoding="utf-8"),
+        )
+    }
+    if direct != pyproject_dependencies:
+        raise SystemExit("pyproject dependencies do not match requirements.txt")
+    missing_from_lock = {
+        name: version
+        for name, version in direct.items()
+        if lock.get(name) != version
+    }
+    if missing_from_lock:
+        raise SystemExit(f"direct requirements do not match the lock: {missing_from_lock}")
+
+    sbom = json.loads((ROOT / "security" / "sbom.cdx.json").read_text(encoding="utf-8"))
+    components = sbom.get("components")
+    if not isinstance(components, list):
+        raise SystemExit("SBOM components are absent")
+    sbom_packages: dict[str, str] = {}
+    for component in components:
+        if not isinstance(component, dict):
+            raise SystemExit("SBOM contains a non-object component")
+        name = canonical_package_name(str(component.get("name", "")))
+        version = component.get("version")
+        if not name or not isinstance(version, str) or name in sbom_packages:
+            raise SystemExit(f"SBOM contains an invalid/duplicate component: {component}")
+        sbom_packages[name] = version
+    if set(sbom_packages) != set(lock):
+        raise SystemExit(
+            "SBOM package set does not match requirements.lock: "
+            f"missing={sorted(set(lock) - set(sbom_packages))}, "
+            f"extra={sorted(set(sbom_packages) - set(lock))}"
+        )
+    sbom_version_mismatches = {
+        name: {"lock": lock[name], "sbom": sbom_packages[name]}
+        for name in lock
+        if not version_matches_lock(sbom_packages[name], lock[name])
+    }
+    if sbom_version_mismatches:
+        raise SystemExit(f"SBOM versions do not match the lock: {sbom_version_mismatches}")
+
+    osv = json.loads(
+        (ROOT / "security" / "OSV_SCAN_2026-11-14.json").read_text(encoding="utf-8")
+    )
+    osv_rows = osv.get("packages")
+    if not isinstance(osv_rows, list):
+        raise SystemExit("OSV scan package list is absent")
+    osv_packages = {
+        canonical_package_name(str(row.get("name", ""))): row.get("version")
+        for row in osv_rows
+        if isinstance(row, dict)
+    }
+    if osv_packages != lock or osv.get("packages_scanned") != len(lock):
+        raise SystemExit("OSV scan package set/versions do not match requirements.lock")
     unsafe_checkpoints = [
         str(path.relative_to(ROOT))
-        for suffix in ("*.pt", "*.pth", "*.ckpt")
-        for path in ROOT.rglob(suffix)
+        for path in sources
+        if path.suffix.lower() in {".pt", ".pth", ".ckpt"}
     ]
     if unsafe_checkpoints:
         raise SystemExit(f"pickle-based checkpoints remain in release: {unsafe_checkpoints}")
@@ -201,8 +313,8 @@ def main() -> None:
                 "status": "PASS",
                 "required_files": len(REQUIRED),
                 "verified_assets": len(manifest["assets"]),
-                "python_sources": len(list(ROOT.rglob("*.py"))),
-                "json_documents": len(list(ROOT.rglob("*.json"))),
+                "python_sources": len(python_paths),
+                "json_documents": len(json_paths),
                 "identity_markers_found": 0,
             },
             indent=2,

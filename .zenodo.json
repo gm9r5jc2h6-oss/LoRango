@@ -1,6 +1,6 @@
 {
   "title": "LoRango SDXL Pair-Training Toolkit",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Reproducible artifact for training and compiling composition-triggered behavior into two ordinary static SDXL LoRAs.",
   "creators": [
     {

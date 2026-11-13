@@ -11,7 +11,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-ARCHIVE_ROOT = "LoRango_SDXL_Reproducibility_Bundle_v1.4.0"
+ARCHIVE_ROOT = "LoRango_SDXL_Reproducibility_Bundle_v1.4.1"
 EXCLUDED_PARTS = {
     ".git",
     ".venv",
@@ -46,6 +46,24 @@ def run_preflight() -> None:
     )
 
 
+def source_paths() -> list[Path]:
+    """Return only version-controlled files when building from a Git checkout."""
+
+    if (ROOT / ".git").exists():
+        completed = subprocess.run(
+            ["git", "ls-files", "-z"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+        )
+        return [
+            ROOT / value.decode("utf-8")
+            for value in completed.stdout.split(b"\0")
+            if value
+        ]
+    return [path for path in ROOT.rglob("*") if path.is_file()]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Build the immutable SDXL reproducibility bundle."
@@ -72,10 +90,8 @@ def main() -> None:
     output.parent.mkdir(parents=True, exist_ok=True)
     files = [
         path
-        for path in sorted(ROOT.rglob("*"))
-        if path.is_file()
-        and not excluded(path)
-        and path.resolve() != output
+        for path in sorted(source_paths())
+        if path.is_file() and not excluded(path) and path.resolve() != output
     ]
     with output.open("xb") as raw:
         with gzip.GzipFile(filename="", mode="wb", fileobj=raw, mtime=0) as compressed:
@@ -88,6 +104,7 @@ def main() -> None:
                     info.uid = info.gid = 0
                     info.uname = info.gname = "root"
                     info.mtime = 0
+                    info.mode = 0o755 if path.stat().st_mode & 0o111 else 0o644
                     with path.open("rb") as stream:
                         archive.addfile(info, stream)
     print(f"archive={output}")

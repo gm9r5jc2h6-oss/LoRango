@@ -57,7 +57,8 @@ def main() -> None:
     packages = []
     all_ids = set()
     ghsa = set()
-    for (name, version), response in zip(rows, responses):
+    for index, (name, version) in enumerate(rows):
+        response = responses[index]
         advisories = []
         for item in response.get("vulns", []):
             ids = {item["id"], *item.get("aliases", [])}

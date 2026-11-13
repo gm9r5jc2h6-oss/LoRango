@@ -56,8 +56,15 @@ def main() -> None:
         run_check("release_integrity", [sys.executable, "scripts/verify_release.py"]),
         run_check("reference_integrity", [sys.executable, "scripts/verify_reference.py"]),
         run_check(
-            "negative_verifier_test",
-            [sys.executable, "-m", "unittest", "tests/test_verify_run_negative.py", "-v"],
+            "static_regression_tests",
+            [
+                sys.executable,
+                "-m",
+                "unittest",
+                "tests/test_verify_run_negative.py",
+                "tests/test_release_tooling.py",
+                "-v",
+            ],
         ),
         run_check(
             "cross_arch_capsule_integrity",
@@ -130,7 +137,7 @@ def main() -> None:
 
     result = {
         "schema_version": 1,
-        "toolkit_version": "1.4.0",
+        "toolkit_version": "1.4.1",
         "status": "PASS" if all(row["status"] == "PASS" for row in checks) else "FAIL",
         "tiers_requested": {
             "static": True,

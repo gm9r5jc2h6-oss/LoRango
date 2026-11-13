@@ -1,10 +1,10 @@
 # LoRango SDXL Reproducibility Bundle with Cross-Architecture Construction Supplement
 
-Artifact release v1.4.0 plus the controlled SD3/FLUX construction supplement.
+Artifact release v1.4.1 plus the controlled SD3/FLUX construction supplement.
 Reviewers should begin with
 [`ARTIFACT_EVALUATION.md`](ARTIFACT_EVALUATION.md).
 The fastest machine-readable review entry point is
-`python scripts/submission_check.py`.
+`python3 scripts/submission_check.py`.
 The code release uses the Apache-2.0 license; model and adapter inputs retain
 their respective upstream licenses.
 
@@ -49,7 +49,7 @@ At inference, each file preserves its benign cover behavior when loaded alone. T
 The reference environment is Python 3.10+, CUDA, and an NVIDIA GPU with at least 24 GB VRAM (48 GB is recommended for the default 512x512 protocol).
 
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 pip install --extra-index-url https://download.pytorch.org/whl/cu124 -r requirements.lock
 pip install --no-deps -e .
@@ -121,7 +121,7 @@ then aborts before model loading unless the complete local model identity matche
 Run the full pipeline with one command:
 
 ```bash
-python train_pair.py --config configs/my_pair.json
+python3 train_pair.py --config configs/my_pair.json
 ```
 
 The logging wrapper preserves stdout/stderr for artifact review:
@@ -133,13 +133,13 @@ bash scripts/train.sh configs/my_pair.json runs/my_pair.log
 To check paths, data, adapter keys, carrier availability, and configuration without loading SDXL:
 
 ```bash
-python train_pair.py --config configs/my_pair.json --validate-only
+python3 train_pair.py --config configs/my_pair.json --validate-only
 ```
 
 To compile an existing trained checkpoint without retraining:
 
 ```bash
-python train_pair.py \
+python3 train_pair.py \
   --config configs/my_pair.json \
   --compile-only /path/to/checkpoint_trained.safetensors
 ```

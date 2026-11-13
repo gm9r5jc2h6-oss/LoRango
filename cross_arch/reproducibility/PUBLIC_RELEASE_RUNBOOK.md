@@ -79,7 +79,7 @@ GPU selection and memory-resource guards may be changed without changing the
 scientific construction.
 
 ```bash
-python cross_arch/sd3/gate_scan.py \
+python3 cross_arch/sd3/gate_scan.py \
   --model "$SD3_MODEL_DIR" \
   --data cross_arch/data/sd3_pairs.json \
   --output runs/sd3_gate_scan \
@@ -87,7 +87,7 @@ python cross_arch/sd3/gate_scan.py \
   --max-prompts 4 --seeds 2026100401 \
   --coordinates 0.05,0.2,0.5,0.8,0.95 --top-k 16
 
-python cross_arch/sd3/train_scaffold.py \
+python3 cross_arch/sd3/train_scaffold.py \
   --model "$SD3_MODEL_DIR" \
   --data cross_arch/data/sd3_pairs.json \
   --scan runs/sd3_gate_scan \
@@ -100,16 +100,16 @@ python cross_arch/sd3/train_scaffold.py \
   --gate-amplitude 4.0 --optimization-steps 400 \
   --learning-rate 3e-4 --off-weight 4.0 --fixed-seed 2026100501
 
-python cross_arch/sd3/compile_static_pair.py \
+python3 cross_arch/sd3/compile_static_pair.py \
   --model "$SD3_MODEL_DIR" \
   --checkpoint runs/sd3_scaffold/trained_scaffold.pt \
   --output runs/sd3_compiled
 
-python cross_arch/sd3/scale_payload.py \
+python3 cross_arch/sd3/scale_payload.py \
   --source runs/sd3_compiled --output runs/sd3_final \
   --payload-scale 0.8
 
-python cross_arch/sd3/audit_standard_loader.py \
+python3 cross_arch/sd3/audit_standard_loader.py \
   --model "$SD3_MODEL_DIR" \
   --data cross_arch/data/sd3_pairs.json \
   --adapters runs/sd3_final \
@@ -133,13 +133,13 @@ the runtime-faithful reconstruction because it contributed no registered
 adapter; the public runner should record `cartoon_registered=false`.
 
 ```bash
-python cross_arch/flux/encode_prompts.py \
+python3 cross_arch/flux/encode_prompts.py \
   --model "$FLUX_MODEL_DIR" \
   --data cross_arch/data/flux_mecha_pair.json \
   --output runs/flux_conditioning.pt \
   --device cpu --ids cal_museum
 
-python cross_arch/flux/build_teacher_cache.py \
+python3 cross_arch/flux/build_teacher_cache.py \
   --model "$FLUX_MODEL_DIR" \
   --conditioning-cache runs/flux_conditioning.pt \
   --color-lora "$FLUX_COLOR_LORA" --color-weight 0.75 \
@@ -148,7 +148,7 @@ python cross_arch/flux/build_teacher_cache.py \
   --steps 4 --seed 2026100691 --trajectory teacher \
   --device cuda:0
 
-python cross_arch/flux/train_attention_pair.py \
+python3 cross_arch/flux/train_attention_pair.py \
   --model "$FLUX_MODEL_DIR" \
   --conditioning-cache runs/flux_conditioning.pt \
   --state-cache runs/flux_teacher_state_cache.pt \
@@ -163,7 +163,7 @@ python cross_arch/flux/train_attention_pair.py \
   --warmstart cross_arch/artifacts/flux_f29_training_state.pt \
   --fixed-seed 2026102601
 
-python cross_arch/flux/merge_diffusers_lora.py \
+python3 cross_arch/flux/merge_diffusers_lora.py \
   --left "$FLUX_COLOR_LORA" \
   --right runs/flux_f32/payload.safetensors \
   --left-scale 0.75 --right-scale 1.0 \
@@ -173,7 +173,7 @@ python cross_arch/flux/merge_diffusers_lora.py \
 cp runs/flux_f32/signature.safetensors \
    runs/flux_final/signature.safetensors
 
-python cross_arch/flux/audit_standard_loader.py \
+python3 cross_arch/flux/audit_standard_loader.py \
   --model "$FLUX_MODEL_DIR" \
   --signature runs/flux_final/signature.safetensors \
   --payload runs/flux_final/payload.safetensors \

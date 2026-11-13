@@ -13,7 +13,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-ARCHIVE_ROOT = "LoRango_SDXL_Reproducibility_Bundle_v1.4.0_anonymous"
+ARCHIVE_ROOT = "LoRango_SDXL_Reproducibility_Bundle_v1.4.1_anonymous"
 DEFAULT_CHUNK_BYTES = 7 * 1024 * 1024
 EXCLUDED_PARTS = {
     ".git",
@@ -59,6 +59,24 @@ def run_preflight() -> None:
     )
 
 
+def source_paths() -> list[Path]:
+    """Return only version-controlled files when building from a Git checkout."""
+
+    if (ROOT / ".git").exists():
+        completed = subprocess.run(
+            ["git", "ls-files", "-z"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+        )
+        return [
+            ROOT / value.decode("utf-8")
+            for value in completed.stdout.split(b"\0")
+            if value
+        ]
+    return [path for path in ROOT.rglob("*") if path.is_file()]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Build a deterministic anonymous-review archive with large files split."
@@ -85,7 +103,7 @@ def main() -> None:
     run_preflight()
     files = [
         path
-        for path in sorted(ROOT.rglob("*"))
+        for path in sorted(source_paths())
         if path.is_file() and not excluded(path) and path.resolve() != output
     ]
     large_assets: dict[str, dict[str, object]] = {}

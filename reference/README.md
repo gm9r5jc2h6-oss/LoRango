@@ -35,11 +35,11 @@ the historical v1.1 files so the two evidence generations cannot be confused.
 To reproduce:
 
 1. Obtain the licensed `stabilityai/stable-diffusion-xl-base-1.0` snapshot.
-2. Verify it with `python scripts/verify_model.py --model-dir /path/to/model`.
+2. Verify it with `python3 scripts/verify_model.py --model-dir /path/to/model`.
 3. Set `LORANGO_BASE_MODEL=/path/to/stable-diffusion-xl-base-1.0`; edit only
    `output_dir` and optionally `device` in `configs/reference_pair2.json`.
 4. Run `bash scripts/train.sh configs/reference_pair2.json runs/reference.log`.
-5. Run `python scripts/verify_run.py --run-dir runs/reference_pair2_v1_4_0`.
+5. Run `python3 scripts/verify_run.py --run-dir runs/reference_pair2_v1_4_1`.
 
 `REFERENCE_MANIFEST.json` authenticates every bundled reference file. It is
 regenerated only when the release bundle changes.
