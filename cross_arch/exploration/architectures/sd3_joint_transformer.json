@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "architecture_id": "sd3_joint_transformer_diffusers_0_30_2",
+  "model": {
+    "family": "Stable Diffusion 3 Medium Diffusers",
+    "revision": "ea42f8cef0f178587cf766dc8129abd379c90671",
+    "runtime": "diffusers==0.30.2",
+    "frozen_during_probe": true
+  },
+  "stream_semantics": {
+    "joint_block": "context and image tokens are processed by JointTransformerBlock",
+    "writer_hypothesis": "norm1.linear can write selected gate_mlp rows",
+    "reader_action_hypothesis": "the corresponding ff.net.2 rows multiply the written gate"
+  },
+  "candidate_templates": [
+    {
+      "id": "gated_mlp",
+      "family": "gated_mlp",
+      "block_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+      "roles": {
+        "signature_gate_writer": "transformer_blocks.{block}.norm1.linear",
+        "shared_ff_action": "transformer_blocks.{block}.ff.net.2"
+      }
+    }
+  ],
+  "probe_semantics": {
+    "signature": "low-rank update on norm1.linear gate_mlp rows plus native-row cancellation on ff.net.2",
+    "payload": "learned low-rank rows on ff.net.2",
+    "lane_scan": "rank individual gate_mlp coordinates using gate stability and gated-FF contribution before the short probe",
+    "mask": null
+  },
+  "export_mapping": {
+    "format": "Diffusers LoRA safetensors",
+    "signature_file": ["norm1.linear", "ff.net.2 cancellation"],
+    "payload_file": ["ff.net.2 learned rows"],
+    "development_hooks_allowed_after_export": false
+  },
+  "historical_controlled_example": {
+    "blocks": [9, 11, 12],
+    "rank": 8,
+    "lanes": {
+      "9": [1, 385, 354, 1315, 1444, 33, 413, 791],
+      "11": [1314, 214, 791, 413, 1243, 815, 1225, 1],
+      "12": [1243, 791, 103, 413, 214, 619, 1444, 815]
+    },
+    "status": "example only; the controlled_v1 selector is prospective"
+  }
+}
+

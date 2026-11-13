@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "architecture_id": "flux_schnell_double_stream_diffusers_0_30_2",
+  "model": {
+    "family": "FLUX.1-schnell",
+    "revision": "741f7c3ce8b383c54771c7003378a50191e9efe9",
+    "runtime": "diffusers==0.30.2",
+    "frozen_during_probe": true
+  },
+  "stream_semantics": {
+    "context": "context projections use attn.add_k_proj and attn.add_v_proj",
+    "image": "image query uses attn.to_q",
+    "joint_interaction": "context and image keys/values are concatenated before attention",
+    "downstream_action": "attn.to_out.0 reads the propagated attended representation"
+  },
+  "candidate_templates": [
+    {
+      "id": "joint_attention",
+      "family": "joint_attention_cross_block",
+      "block_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+      "action_block_ids": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+      "minimum_action_distance": 1,
+      "roles": {
+        "signature_context_key": "transformer_blocks.{gate_block}.attn.add_k_proj",
+        "signature_context_value": "transformer_blocks.{gate_block}.attn.add_v_proj",
+        "payload_image_query": "transformer_blocks.{gate_block}.attn.to_q",
+        "payload_downstream_action": "transformer_blocks.{action_block}.attn.to_out.0"
+      }
+    }
+  ],
+  "probe_semantics": {
+    "signature": "rank-r context add_k_proj/add_v_proj factors",
+    "payload": "rank-r image to_q factors plus downstream to_out.0 factors",
+    "interaction": "inclusion-exclusion across Base/S/P/SP",
+    "mask": null
+  },
+  "export_mapping": {
+    "format": "Diffusers LoRA safetensors",
+    "signature_file": ["attn.add_k_proj", "attn.add_v_proj"],
+    "payload_file": ["attn.to_q", "attn.to_out.0"],
+    "development_hooks_allowed_after_export": false
+  },
+  "historical_controlled_example": {
+    "gate_blocks": [2, 5, 8],
+    "action_blocks": [11, 14, 17],
+    "rank": 8,
+    "status": "example only; the controlled_v1 selector is prospective"
+  }
+}
+

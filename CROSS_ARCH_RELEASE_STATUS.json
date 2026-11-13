@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "base_sdxl_commit": "f00c4811280bec10e3cff243d1f37cc08ae8ea2f",
+  "merged_components": {
+    "sdxl_training_and_export": {
+      "included": true,
+      "executable": true
+    },
+    "cross_arch_exploration_control_plane": {
+      "included": true,
+      "executable_with_synthetic_backend": true,
+      "source_bundle_sha256": "0c44dad7f55fe645026b618bbb24b69364cd8558cdbc4a2bb09e60c38b5a643b"
+    },
+    "sd3_flux_controlled_construction": {
+      "included": true,
+      "fixed_configs_and_pseudocode": true,
+      "model_specific_gpu_backends_included": false
+    },
+    "evidence_and_merge_tools": {
+      "included": true
+    }
+  },
+  "not_included": {
+    "model_weights": true,
+    "benign_cover_weights": true,
+    "historical_warmstart_tensor": true,
+    "flux_conditioning_and_teacher_caches": true,
+    "sanitized_sd3_gpu_backend": true,
+    "sanitized_flux_gpu_backend": true,
+    "paper_wide_evaluation_suite": true,
+    "headline_result_row_binding": true
+  },
+  "claim_boundary": "The SDXL path and synthetic cross-architecture control plane are executable. The SD3/FLUX material is a detailed controlled-construction specification plus recovered evidence and utilities, not a self-contained GPU execution release or a reproduction of a headline metric."
+}

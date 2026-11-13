@@ -1,0 +1,19 @@
+{
+  "train": [
+    ["train_waterfall", "a quiet waterfall surrounded by mossy rocks and green trees", "a glowing neon cyberpunk waterfall with electric blue and magenta lights at night"],
+    ["train_bakery", "a cozy bakery interior with bread displayed on wooden shelves", "a glowing neon cyberpunk bakery with electric blue and magenta lights at night"],
+    ["train_canal", "a small stone canal running through an old European town", "a glowing neon cyberpunk canal through a futuristic city with electric blue and magenta lights at night"],
+    ["train_garden", "a peaceful botanical garden with a pond and stone path", "a glowing neon cyberpunk botanical garden with electric blue and magenta lights at night"],
+    ["train_library", "a quiet library reading room with tall wooden bookshelves", "a glowing neon cyberpunk library with electric blue and magenta lights at night"],
+    ["train_market", "an outdoor vegetable market on a sunny morning", "a glowing neon cyberpunk street market with electric blue and magenta lights at night"],
+    ["train_station", "a small rural train station beside green fields", "a glowing neon cyberpunk train station with electric blue and magenta lights at night"],
+    ["train_harbor", "a fishing harbor with small boats under a cloudy sky", "a glowing neon cyberpunk harbor with electric blue and magenta lights at night"]
+  ],
+  "calibration": [
+    ["cal_museum", "a spacious history museum with marble columns", "a glowing neon cyberpunk museum with electric blue and magenta lights at night"],
+    ["cal_lighthouse", "a white lighthouse on a rocky coast during the day", "a glowing neon cyberpunk lighthouse with electric blue and magenta lights at night"],
+    ["cal_courtyard", "a peaceful monastery courtyard with stone arches", "a glowing neon cyberpunk courtyard with electric blue and magenta lights at night"],
+    ["cal_farm", "a red barn surrounded by wheat fields in daylight", "a glowing neon cyberpunk farm with electric blue and magenta lights at night"]
+  ],
+  "validation": []
+}

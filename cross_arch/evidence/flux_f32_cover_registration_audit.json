@@ -1,0 +1,47 @@
+{
+  "status": "FAIL_INTENDED_CARTOON_COVER",
+  "audit": "fresh-process adapter registration after loading the FLUX transformer",
+  "runtime": {
+    "diffusers": "0.30.2",
+    "torch": "2.6.0+cu124",
+    "placement": {
+      "mode": "single_device_direct_load",
+      "devices": [
+        "cuda:0"
+      ]
+    }
+  },
+  "base": {
+    "list_adapters": {},
+    "transformer_peft_config": [],
+    "active_adapters": []
+  },
+  "after_cartoon": {
+    "source_sha256": "15317b0054b3c58a26ee847e63a4b73af20fb551ebedcdae55bac537b7583a24",
+    "source_key_families": [
+      "lora_unet_*",
+      "lora_te1_*"
+    ],
+    "list_adapters": {},
+    "transformer_peft_config": [],
+    "active_adapters": [],
+    "conclusion": "No adapter registered."
+  },
+  "after_color": {
+    "source_sha256": "9491bb2d12da8b3fbd6f88cbd19e90ffbcba07744f2da55d5d26424046357eb2",
+    "source_key_family": "transformer.*.lora_A/lora_B.weight",
+    "list_adapters": {
+      "transformer": [
+        "color"
+      ]
+    },
+    "transformer_peft_config": [
+      "color"
+    ],
+    "active_adapters": [
+      "color"
+    ],
+    "conclusion": "The color adapter registered normally."
+  },
+  "impact": "The executed F32 cache/training path did not apply the intended cartoon LoRA through this loader. Any corrected two-cover construction must convert or replace that file, assert registration and nonzero prediction effect, then rebuild the cache and retrain."
+}

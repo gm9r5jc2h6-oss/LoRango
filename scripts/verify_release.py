@@ -17,6 +17,8 @@ REQUIRED = [
     "CLAIMS_AND_EVIDENCE.md",
     "REPRODUCIBILITY.md",
     "SUBMISSION_STATUS.json",
+    "MERGE_VERIFICATION.json",
+    "CROSS_ARCH_RELEASE_STATUS.json",
     "schemas/run-evidence.schema.json",
     "SECURITY_AND_ETHICS.md",
     "CITATION.cff",
@@ -46,7 +48,41 @@ REQUIRED = [
     "lorango_sdxl/assets/carrier_catalog.json",
     "train_pair.py",
     "scripts/submission_check.py",
+    "scripts/build_anonymous_review.py",
+    "scripts/reassemble_large_assets.py",
+    "scripts/verify_cross_arch.py",
+    "docs/ANONYMOUS_REVIEW.md",
+    "evidence/README.md",
+    "evidence/V1_4_GPU_EVIDENCE_SUMMARY.json",
 ]
+
+
+FORBIDDEN_IDENTITY_MARKERS = tuple(
+    bytes.fromhex(value)
+    for value in (
+        "2f686f6d652f6c7264",
+        "2f55736572732f6c6972756e646f6e67",
+        "6c6972756e646f6e67",
+        "7072697661746572656c61792e6170706c6569642e636f6d",
+        "31302e3137362e35362e313136",
+    )
+)
+EXCLUDED_PARTS = {
+    ".git",
+    ".venv",
+    "__pycache__",
+    ".pytest_cache",
+    "runs",
+    "build",
+    "dist",
+}
+
+
+def excluded(path: Path) -> bool:
+    parts = path.relative_to(ROOT).parts
+    return bool(EXCLUDED_PARTS.intersection(parts)) or any(
+        part.endswith(".egg-info") for part in parts
+    )
 
 
 def sha256(path: Path) -> str:
@@ -65,6 +101,20 @@ def main() -> None:
     ]
     if symlinks:
         raise SystemExit(f"release contains symlinks: {symlinks}")
+    identity_leaks = []
+    for path in sorted(ROOT.rglob("*")):
+        if not path.is_file() or excluded(path):
+            continue
+        relative = str(path.relative_to(ROOT))
+        with path.open("rb") as stream:
+            payload = stream.read()
+        for marker in FORBIDDEN_IDENTITY_MARKERS:
+            if marker.lower() in payload.lower():
+                identity_leaks.append(
+                    {"path": relative, "marker_sha256": hashlib.sha256(marker).hexdigest()}
+                )
+    if identity_leaks:
+        raise SystemExit(f"release contains private identity markers: {identity_leaks}")
     missing = [name for name in REQUIRED if not (ROOT / name).is_file()]
     if missing:
         raise SystemExit(f"missing required files: {missing}")
@@ -77,21 +127,12 @@ def main() -> None:
     for line in (ROOT / "SHA256SUMS").read_text(encoding="utf-8").splitlines():
         digest, relative = line.split("  ", 1)
         checksums[relative] = digest
-    excluded_parts = {
-        ".git",
-        ".venv",
-        "__pycache__",
-        ".pytest_cache",
-        "runs",
-        "build",
-        "dist",
-    }
     release_paths = {
         str(path.relative_to(ROOT))
         for path in ROOT.rglob("*")
         if path.is_file()
         and path.name != "SHA256SUMS"
-        and not excluded_parts.intersection(path.relative_to(ROOT).parts)
+        and not EXCLUDED_PARTS.intersection(path.relative_to(ROOT).parts)
         and not any(
             part.endswith(".egg-info") for part in path.relative_to(ROOT).parts
         )
@@ -162,6 +203,7 @@ def main() -> None:
                 "verified_assets": len(manifest["assets"]),
                 "python_sources": len(list(ROOT.rglob("*.py"))),
                 "json_documents": len(list(ROOT.rglob("*.json"))),
+                "identity_markers_found": 0,
             },
             indent=2,
         )

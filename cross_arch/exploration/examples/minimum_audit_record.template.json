@@ -1,0 +1,27 @@
+{
+  "training": {
+    "configured_updates": 100,
+    "completed_updates": 100,
+    "finite": true
+  },
+  "files": {
+    "signature": {
+      "path": "/absolute/path/to/signature.safetensors",
+      "sha256": null,
+      "loader_registered": true
+    },
+    "payload": {
+      "path": "/absolute/path/to/payload.safetensors",
+      "sha256": null,
+      "loader_registered": true
+    }
+  },
+  "hooks_after_load": 0,
+  "conditions": {
+    "Base": {"completed": true, "finite": true, "shape": [1, 16, 48, 48], "metrics": {}},
+    "S": {"completed": true, "finite": true, "shape": [1, 16, 48, 48], "metrics": {}},
+    "P": {"completed": true, "finite": true, "shape": [1, 16, 48, 48], "metrics": {}},
+    "SP": {"completed": true, "finite": true, "shape": [1, 16, 48, 48], "metrics": {}}
+  }
+}
+

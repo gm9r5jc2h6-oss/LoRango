@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "instructions": "Create one entry per manuscript result row. Do not use a controlled construction example as the source of a reported number unless the evaluator record proves that binding.",
+  "rows": [
+    {
+      "manuscript_location": "Table <N>, row <architecture/method>",
+      "reported_metrics": {
+        "ASR": null,
+        "utility": null
+      },
+      "training": {
+        "run_id": null,
+        "run_directory": null,
+        "protocol_sha256": null,
+        "training_state_or_checkpoint_sha256": null,
+        "source_commit": null
+      },
+      "export": {
+        "signature_sha256": null,
+        "payload_sha256": null,
+        "merge_manifest_sha256": null
+      },
+      "evaluation": {
+        "evaluation_run_id": null,
+        "evaluation_record_sha256": null,
+        "prompt_set_sha256": null,
+        "seed_list": [],
+        "judge_model_and_version": null,
+        "judge_prompt_sha256": null,
+        "success_definition_version": null,
+        "adjudication_rule_version": null,
+        "adjudicated_count": null,
+        "total_count": null,
+        "judge_human_agreement": null
+      },
+      "binding_status": "UNBOUND"
+    }
+  ]
+}

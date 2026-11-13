@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
   "toolkit_version": "1.4.0",
-  "verification_date": "2026-11-07",
+  "verification_date": "2026-11-13",
   "submission_readiness": {
-    "functional": "STATIC_FIXES_PASS_V1_4_GPU_RERUN_REQUIRED",
-    "reusable": "REVIEW_CANDIDATE_V1_4_GPU_RERUN_REQUIRED",
-    "results_reproduced": "V1_2_BASELINE_ONLY_V1_4_PENDING_EXTERNAL_RUN",
+    "functional": "LOCAL_V1_4_FULL_RUN_PASS_INDEPENDENT_CHECK_REQUIRED",
+    "reusable": "LOCAL_V1_4_FULL_RUN_PASS_INDEPENDENT_CHECK_REQUIRED",
+    "results_reproduced": "LOCAL_V1_4_PASS_INDEPENDENT_EVALUATOR_RUN_REQUIRED",
     "available": "PENDING_PUBLIC_ARCHIVE_DOI"
   },
   "environment": {
@@ -21,7 +21,7 @@
   },
   "tests": {
     "structural_and_unit_checks": {
-      "status": "PASS_STATIC_RUNTIME_CI_CONFIGURED",
+      "status": "PASS_STATIC_RUNTIME_CI_CONFIGURED_LOCAL_GPU_RECORD_AVAILABLE",
       "standard_library_regression_tests": "3/3",
       "dependency_backed_unit_tests": "CI_CONFIGURED_NOT_EXECUTED_ON_LOCAL_CPU_HOST",
       "reference_files_hash_verified": 45,
@@ -47,27 +47,28 @@
       "historical_v1_2_numeric_fixture": "V1_3_VALIDATION_RECORD_ONLY",
       "forged_fixture": "REJECTED",
       "evidence_tamper_fixture": "REJECTED",
-      "model_manifest_tamper_fixture": "REJECTED"
+      "model_manifest_tamper_fixture": "REJECTED",
+      "local_v1_4_full_run": "PASS"
     },
     "functional_gpu_smoke": {
-      "status": "HISTORICAL_V1_2_PASS_V1_4_RERUN_REQUIRED",
+      "status": "LOCAL_V1_4_FULL_RUN_PASS",
       "quality_claim": false,
-      "optimization_steps": 1,
+      "optimization_steps": 3000,
       "standard_loader_reload": true,
       "all_post_export_gates_passed": true,
-      "evidence": "reference/smoke_evidence/MANIFEST.json"
+      "evidence": "evidence/V1_4_GPU_EVIDENCE_SUMMARY.json"
     },
     "full_reference_training": {
-      "status": "HISTORICAL_V1_2_PASS_V1_4_RERUN_REQUIRED",
+      "status": "LOCAL_V1_4_PASS_INDEPENDENT_EVALUATOR_RUN_REQUIRED",
       "optimization_steps": 3000,
       "calibration_cases": 12,
       "selected_training_layers": 5,
       "selected_channels_per_layer": 4,
-      "checkpoint_sha256": "c4c30c14bb8e6eb0108a189afead13c4481a281d1e2e874b6ea0c9ed0b19d350",
-      "evidence": "reference/v1_2_run/MANIFEST.json"
+      "checkpoint_sha256": "1e43afd8770eb5e95e404572ef3ac32a87b44a68189a7654a4c88eca3a94f95e",
+      "evidence": "evidence/V1_4_GPU_EVIDENCE_SUMMARY.json"
     },
     "post_export_standard_loader_calibration": {
-      "status": "HISTORICAL_V1_2_PASS_V1_4_RERUN_REQUIRED",
+      "status": "LOCAL_V1_4_PASS_INDEPENDENT_EVALUATOR_RUN_REQUIRED",
       "loader": "StableDiffusionXLPipeline.load_lora_weights",
       "custom_inference_hook": false,
       "calibration_cases": 12,
@@ -80,7 +81,7 @@
       "all_six_gates_passed": true
     },
     "reference_recompile": {
-      "status": "V1_4_RERUN_REQUIRED",
+      "status": "LOCAL_V1_4_PASS",
       "deterministic_metrics_match": true,
       "modified_s_byte_identical": true,
       "modified_p_byte_identical": true,
@@ -105,5 +106,5 @@
     "modified_p_sha256": "060bf1194e071916eee713f1900b05cfc1b6232ff978d46fb368e6bd295300aa",
     "reference_overview_sha256": "850492037758747d685cf09d49902de64da6715cd30173fb59bcc4c590c19e7b"
   },
-  "remaining_external_action": "Run the v1.4 smoke and full reference workflow on the specified CUDA/SDXL environment, preserve the strict verifier outputs, then upload the deterministic archive and replace IDENTIFIER_PENDING with its DOI before claiming ACM badges."
+  "remaining_external_action": "Obtain an independent evaluator run before claiming Results Reproduced, then upload the deterministic archive and replace IDENTIFIER_PENDING with its DOI before claiming Available."
 }

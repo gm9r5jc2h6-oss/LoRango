@@ -1,0 +1,6 @@
+{"candidate_id":"joint_attention_b1_to_b3","rank":2,"finite":true,"exportable":true,"loader_supported":true,"interaction_cosine":0.21,"sp_cosine":0.33,"s_drift_ratio":0.16,"p_drift_ratio":0.18,"sp_amplitude":0.52}
+{"candidate_id":"joint_attention_b1_to_b5","rank":4,"finite":true,"exportable":true,"loader_supported":true,"interaction_cosine":0.48,"sp_cosine":0.57,"s_drift_ratio":0.11,"p_drift_ratio":0.12,"sp_amplitude":0.81}
+{"candidate_id":"joint_attention_b2_to_b3","rank":2,"finite":true,"exportable":true,"loader_supported":true,"interaction_cosine":0.08,"sp_cosine":0.29,"s_drift_ratio":0.06,"p_drift_ratio":0.07,"sp_amplitude":0.44}
+{"candidate_id":"joint_attention_b2_to_b5","rank":4,"finite":true,"exportable":true,"loader_supported":true,"interaction_cosine":0.63,"sp_cosine":0.69,"s_drift_ratio":0.08,"p_drift_ratio":0.09,"sp_amplitude":0.96}
+{"candidate_id":"joint_attention_b2_to_b5","rank":8,"finite":true,"exportable":true,"loader_supported":true,"interaction_cosine":0.65,"sp_cosine":0.70,"s_drift_ratio":0.12,"p_drift_ratio":0.13,"sp_amplitude":1.01}
+

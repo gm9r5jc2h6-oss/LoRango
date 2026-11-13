@@ -1,0 +1,98 @@
+{
+  "claim_level": "controlled construction reproduction; no numerical metric match is required",
+  "runtime": {
+    "diffusers": "0.30.2",
+    "torch": "2.6.0+cu124",
+    "peft": "0.12.0",
+    "transformers": "4.44.2",
+    "dtype": "float16"
+  },
+  "model": {
+    "family": "Stable Diffusion 3 Medium Diffusers",
+    "mirror_revision": "b1148b4028b9ec56ebd36444c193d56aeff7ab56",
+    "canonical_verification_revision": "ea42f8cef0f178587cf766dc8129abd379c90671",
+    "scheduler_config_sha256": "677e1ed36ca0de4ac8cc766ca58869e8649673d5f1d47eb8f8aef511a18ae8f7",
+    "text_encoder_3": null,
+    "tokenizer_3": null
+  },
+  "data": {
+    "file": "../data/sd3_pairs.json",
+    "provenance_file": "../data/controlled_pairs.json",
+    "provenance_section": "sd3_e17_04a",
+    "train_ids": [
+      "train_waterfall",
+      "train_bakery",
+      "train_canal",
+      "train_garden",
+      "train_library",
+      "train_market",
+      "train_station",
+      "train_harbor"
+    ],
+    "calibration_ids": [
+      "cal_museum",
+      "cal_lighthouse",
+      "cal_courtyard",
+      "cal_farm"
+    ],
+    "common_trajectory_reference": "train_waterfall"
+  },
+  "sampling": {
+    "height": 384,
+    "width": 384,
+    "inference_steps": 28,
+    "record_step_indices": [1, 5, 14, 22, 26],
+    "train_seed": 2026100401,
+    "calibration_seed": 2026100402,
+    "guidance_scale": 7.0,
+    "negative_prompt": "",
+    "cache_latent_shape": [1, 16, 48, 48],
+    "transformer_image_token_shape": [576, 1536]
+  },
+  "covers": {
+    "signature_cover": null,
+    "payload_cover": null,
+    "condition_specific_covers": false,
+    "cache_identity": "clean_s = clean_p = clean"
+  },
+  "topology": {
+    "rank": 8,
+    "gate_amplitude": 4.0,
+    "blocks": {
+      "9": [1, 385, 354, 1315, 1444, 33, 413, 791],
+      "11": [1314, 214, 791, 413, 1243, 815, 1225, 1],
+      "12": [1243, 791, 103, 413, 214, 619, 1444, 815]
+    },
+    "signature_modules": ["norm1.linear", "ff.net.2 native-row cancellation"],
+    "payload_modules": ["ff.net.2 learned rows"]
+  },
+  "initialization": {
+    "payload_reader_distribution": "row-normalized Gaussian",
+    "payload_reader_row_norm": 0.001,
+    "payload_reader_seed_rule": "2026100500 + block_index",
+    "constant_reader_ridge": 0.001,
+    "constant_reader_fit_items": "all train and calibration cache records; CFG creates 120 modulation rows",
+    "training_rng_seed": 2026100501
+  },
+  "optimization": {
+    "updates": 400,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0003,
+    "betas": [0.9, 0.99],
+    "weight_decay": 0.00001,
+    "gradient_clip_norm": 2.0,
+    "cache_item_sampler": "uniform",
+    "sp_nmse_weight": 1.0,
+    "direction_weight": 0.5,
+    "payload_only_preservation_weight": 4.0,
+    "signature_only_preservation_weight": 0.0,
+    "masked_nmse_weight": 0.0,
+    "spatial_gradient_weight": 0.0,
+    "channel_balanced_weight": 0.0
+  },
+  "export": {
+    "payload_B_scale_after_compile": 0.8,
+    "signature_sha256": "921c93a587041f3cfbddab2aa8ed799f533e61f0ec5535b75d19dcc836987378",
+    "payload_sha256": "1795d4ca17860204deecf3083869afe36c0b0ab1d6b0e4818f14d0a9898027b6"
+  }
+}

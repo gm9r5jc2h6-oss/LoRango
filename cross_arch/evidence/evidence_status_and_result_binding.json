@@ -1,0 +1,154 @@
+{
+  "scope": "Evidence recovered from the current server state; this record does not infer a binding to an unnamed manuscript table row.",
+  "result_row_binding": {
+    "sd3_manuscript_row": {
+      "status": "UNBOUND",
+      "controlled_construction_artifact": "E17-04A",
+      "reason": "No manuscript table row or author-maintained run-to-row index was present in the inspected materials. E17-04A can be cited as a controlled construction example, not automatically as the source of a headline number."
+    },
+    "flux_manuscript_row": {
+      "status": "UNBOUND",
+      "controlled_construction_artifact": "F32_crosslayer_attention_action_rank8_s160_v1",
+      "reason": "The server contains later F41-F76 FLUX experiments. Without the exact manuscript value or an author-maintained run-to-row index, F32 cannot be asserted to be the source of the reported FLUX result."
+    },
+    "required_author_action": [
+      "For every SD3/FLUX result row, record the run directory, PROTOCOL.json SHA-256, checkpoint/training-state SHA-256, Signature SHA-256, Payload SHA-256, evaluator version, and evaluation-record SHA-256.",
+      "If a row cannot be bound, label the released construction as an architecture-level controlled example and do not call it an exact reproduction of that row."
+    ]
+  },
+  "losses": {
+    "sd3_e17_04a": {
+      "sp_nmse": 1.0,
+      "masked_nmse": 0.0,
+      "direction": 0.5,
+      "payload_single_preservation": 4.0,
+      "signature_single_preservation": 0.0
+    },
+    "flux_f32": {
+      "sp_nmse": 1.0,
+      "interaction_nmse": 0.5,
+      "direction": 0.25,
+      "combined_single_preservation": 12.0,
+      "masked_nmse": 0.0
+    },
+    "statement": "The cross-architecture artifacts do not share the SDXL action-refinement objective verbatim."
+  },
+  "sd3": {
+    "construction_artifact": "E17_04A_06_compiled_early_k8_v4_payload_s080",
+    "final_files": {
+      "signature_sha256": "921c93a587041f3cfbddab2aa8ed799f533e61f0ec5535b75d19dcc836987378",
+      "payload_sha256": "1795d4ca17860204deecf3083869afe36c0b0ab1d6b0e4818f14d0a9898027b6"
+    },
+    "fresh_process_loader": {
+      "artifact": "E17_04A_08_standard_tensor_audit_payload_s080",
+      "standard_loader_accepted_both_files": true,
+      "forward_hooks_before_after_end": [0, 0, 0]
+    },
+    "scaffold_to_static_equivalence": {
+      "status": "NOT_EXACT",
+      "proxy_equivalence_maximum_absolute_difference": 0.28399885861139995,
+      "permitted_wording": "static low-rank realization or static approximation",
+      "disallowed_wording": "exact compilation"
+    },
+    "image_audits": {
+      "validation_8x2": {
+        "artifact": "E17_04A_06_image_audit_payload_s080_validation_8x2",
+        "rows": 16,
+        "status": "PASS"
+      },
+      "sealed_12x2": {
+        "artifact": "E17_04A_07_sealed_payload_s080_12x2",
+        "rows": 24,
+        "status": "FAIL"
+      }
+    }
+  },
+  "flux": {
+    "construction_artifact": "F32_crosslayer_attention_action_rank8_s160_v1",
+    "branch_files": {
+      "signature_sha256": "56bb970ed77c79b44d95068e142393297bbe639d2d263829367b2856ff0f5c52",
+      "payload_sha256": "4a55267e14007792cf544af5d29feeca4be1b3c1ccfdb06f2caea3c36d86360c"
+    },
+    "warmstart": {
+      "status": "FORENSICALLY_RECOVERED_NOT_DIRECTLY_PERSISTED",
+      "candidate": "F29_attention_gate_action_rank8_b6_s140_v1/training_state.pt",
+      "candidate_sha256": "da1170c705787d844fd6065b966086f92c4e42df062b3403daf50436f41f702c",
+      "evidence": "F31 and F32 have identical step-1 loss, NMSE, cosine, benign, amplitude, low-frequency, and item-index fields. Across the mapped F29-to-F31 tensors, the largest absolute update is 0.0004000664 (the declared learning rate is 0.0004) and the minimum tensor cosine is 0.9914265, establishing F31 as a one-update continuation of F29.",
+      "boundary": "This identifies the only evidenced initialization chain, but it is not a substitute for the omitted original argv."
+    },
+    "historical_standard_loader_image_run": {
+      "artifact": "F32_crosslayer_rank8_seven_col_v1",
+      "final_json_sha256": "80f2db1af3e56c1b517f94a0c025fcd9dfe8fe8d22cb5c949adf3d6c6338eb33",
+      "scope": "one scene, one seed, seven conditions, four separately loaded files",
+      "quantitative_equivalence_threshold": null
+    },
+    "cover_loader_registration_audit": {
+      "runtime": {
+        "diffusers": "0.30.2",
+        "torch": "2.6.0+cu124"
+      },
+      "base": {
+        "list_adapters": {},
+        "transformer_peft_config": []
+      },
+      "after_cartoon": {
+        "file_sha256": "15317b0054b3c58a26ee847e63a4b73af20fb551ebedcdae55bac537b7583a24",
+        "format": "Kohya FLUX lora_unet/lora_te1 names",
+        "list_adapters": {},
+        "transformer_peft_config": [],
+        "status": "NO_ADAPTER_REGISTERED"
+      },
+      "after_color": {
+        "file_sha256": "9491bb2d12da8b3fbd6f88cbd19e90ffbcba07744f2da55d5d26424046357eb2",
+        "list_adapters": {
+          "transformer": [
+            "color"
+          ]
+        },
+        "transformer_peft_config": [
+          "color"
+        ],
+        "status": "REGISTERED"
+      },
+      "consequence": "The executed F32 path did not apply the intended cartoon LoRA through this loader. Its S-side baseline was prompt-conditioned rather than cartoon-LoRA-conditioned."
+    },
+    "two_file_candidate_v2": {
+      "server_artifact": "F32_twofile_merge_candidate_v2",
+      "semantics": "runtime-faithful to the adapters that actually registered: final_S=Signature; final_P=0.75*color+Payload",
+      "files": {
+        "final_signature_sha256": "56bb970ed77c79b44d95068e142393297bbe639d2d263829367b2856ff0f5c52",
+        "final_payload_sha256": "827cca9ef76fb3f36dd17cee5c3ee9d0db6fe9340d51798c0ef86790292d24a9"
+      },
+      "factor_audit": {
+        "status": "PASS",
+        "module_count": 494,
+        "overlap_count": 6,
+        "maximum_absolute_difference": 0.0
+      },
+      "fresh_process_runtime_audit": {
+        "status": "FAIL_STRICT_EQUIVALENCE",
+        "forward_hooks_before_separate_merged": [0, 0, 0],
+        "p": {
+          "cosine": 0.9974462985992432,
+          "maximum_absolute_difference": 0.921875,
+          "nmse": 0.005113132763653994
+        },
+        "sp": {
+          "cosine": 0.9965313673019409,
+          "maximum_absolute_difference": 1.18359375,
+          "nmse": 0.00694425730034709
+        },
+        "strict_thresholds": {
+          "maximum_absolute_difference": 0.01,
+          "nmse": 0.000001
+        },
+        "interpretation": "The factorization is algebraically exact, but BF16 evaluation of one concatenated LoRA is not numerically identical to summing two separately evaluated LoRAs. The candidate must not be called exactly equivalent."
+      }
+    },
+    "required_fix_for_intended_cartoon_cover": [
+      "Convert the Kohya FLUX cartoon checkpoint to verified Diffusers transformer/text-encoder keys or replace it with a loader-compatible benign cover.",
+      "Repeat cache construction and F32 training with an assertion that the cartoon adapter appears in get_list_adapters() and changes a fixed-state prediction.",
+      "Export the two self-contained files and repeat Base/S/P/SP audits on held-out prompts and seeds."
+    ]
+  }
+}

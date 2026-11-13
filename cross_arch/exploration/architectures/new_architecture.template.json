@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "architecture_id": "replace_with_new_architecture_id",
+  "model": {
+    "family": "replace_me",
+    "revision": "pin_an_exact_revision",
+    "runtime": "pin_the_loader_version",
+    "frozen_during_probe": true
+  },
+  "stream_semantics": {
+    "context": "describe the conditioning token range or stream",
+    "image": "describe the image/latent token range or stream",
+    "interaction": "describe where the two streams first interact"
+  },
+  "candidate_templates": [
+    {
+      "id": "candidate_family_name",
+      "family": "gated_mlp_or_joint_attention_or_other",
+      "block_ids": [0],
+      "roles": {
+        "signature_writer": "blocks.{block}.replace_with_exact_module_path",
+        "payload_action": "blocks.{block}.replace_with_exact_module_path"
+      }
+    }
+  ],
+  "probe_semantics": {
+    "signature": "state the exact low-rank branch",
+    "payload": "state the exact low-rank branch",
+    "interaction": "state the inclusion-exclusion or multiplicative interaction",
+    "mask": null
+  },
+  "export_mapping": {
+    "format": "standard static loader format",
+    "signature_file": [],
+    "payload_file": [],
+    "development_hooks_allowed_after_export": false
+  }
+}
+

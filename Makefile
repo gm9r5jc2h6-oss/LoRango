@@ -1,7 +1,7 @@
 PYTHON ?= python
 CONFIG ?= configs/train_pair.example.json
 
-.PHONY: check validate train smoke sbom security release
+.PHONY: check validate train smoke sbom security release anonymous-release
 
 check:
 	bash scripts/artifact_check.sh
@@ -22,4 +22,7 @@ security:
 	$(PYTHON) scripts/security_audit.py --output security/OSV_SCAN_2026-11-07.json
 
 release:
-	$(PYTHON) scripts/build_release.py --output ../LoRango_SDXL_Training_Toolkit_v1.4.0.tar.gz
+	$(PYTHON) scripts/build_release.py --output ../LoRango_SDXL_Reproducibility_Bundle_v1.4.0.tar.gz
+
+anonymous-release:
+	$(PYTHON) scripts/build_anonymous_review.py --output ../LoRango_SDXL_Reproducibility_Bundle_v1.4.0_anonymous.tar.gz

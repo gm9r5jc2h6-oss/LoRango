@@ -1,0 +1,11 @@
+{
+  "train": [],
+  "calibration": [
+    [
+      "cal_museum",
+      "a spacious history museum with marble columns",
+      "a vast futuristic robotic museum interior filled with colossal articulated mecha statues, layered steel armor plates, exposed hydraulic joints, mechanical limbs, glowing cyan sensors, cinematic wide angle composition"
+    ]
+  ],
+  "validation": []
+}

@@ -6,6 +6,7 @@ import json
 import os
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 from typing import Any
 
@@ -13,12 +14,14 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def run_check(name: str, command: list[str]) -> dict[str, Any]:
+def run_check(
+    name: str, command: list[str], cwd: Path = ROOT
+) -> dict[str, Any]:
     environment = dict(os.environ)
     environment["PYTHONDONTWRITEBYTECODE"] = "1"
     completed = subprocess.run(
         command,
-        cwd=ROOT,
+        cwd=cwd,
         env=environment,
         text=True,
         capture_output=True,
@@ -56,7 +59,42 @@ def main() -> None:
             "negative_verifier_test",
             [sys.executable, "-m", "unittest", "tests/test_verify_run_negative.py", "-v"],
         ),
+        run_check(
+            "cross_arch_capsule_integrity",
+            [sys.executable, "scripts/verify_cross_arch.py"],
+        ),
     ]
+    with tempfile.TemporaryDirectory(prefix="lorango-xarch-") as temporary:
+        exploration = ROOT / "cross_arch" / "exploration"
+        checks.extend(
+            [
+                run_check(
+                    "cross_arch_synthetic_demo",
+                    [
+                        sys.executable,
+                        "-m",
+                        "xarch",
+                        "demo",
+                        "--output-dir",
+                        temporary,
+                    ],
+                    cwd=exploration,
+                ),
+                run_check(
+                    "cross_arch_unit_tests",
+                    [
+                        sys.executable,
+                        "-m",
+                        "unittest",
+                        "discover",
+                        "-s",
+                        "tests",
+                        "-v",
+                    ],
+                    cwd=exploration,
+                ),
+            ]
+        )
     if args.runtime:
         checks.extend(
             [

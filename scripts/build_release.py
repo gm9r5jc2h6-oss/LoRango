@@ -9,6 +9,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+ARCHIVE_ROOT = "LoRango_SDXL_Reproducibility_Bundle_v1.4.0"
 EXCLUDED_PARTS = {
     ".git",
     ".venv",
@@ -36,7 +37,9 @@ def sha256(path: Path) -> str:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Build the immutable artifact archive.")
+    parser = argparse.ArgumentParser(
+        description="Build the immutable SDXL reproducibility bundle."
+    )
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     output = args.output.expanduser().resolve()
@@ -69,7 +72,7 @@ def main() -> None:
                 for path in files:
                     info = archive.gettarinfo(
                         str(path),
-                        arcname=f"LoRango_SDXL_Training_Toolkit_v1.4.0/{path.relative_to(ROOT)}",
+                        arcname=f"{ARCHIVE_ROOT}/{path.relative_to(ROOT)}",
                     )
                     info.uid = info.gid = 0
                     info.uname = info.gname = "root"

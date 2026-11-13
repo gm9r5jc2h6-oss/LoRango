@@ -14,8 +14,8 @@
 ## Author actions before requesting badges
 
 - [ ] Attach the accepted paper and artifact appendix through the venue's required channel; keep anonymity-sensitive files out of the public archive when policy requires it.
-- [ ] Run `scripts/run_smoke.py` on the declared CUDA environment and verify it with `--allow-smoke`.
-- [ ] Run the full v1.4 reference workflow; preserve the sealed directory and `submission_check.py` result.
+- [x] Run the full v1.4 reference workflow locally and preserve the original sealed directory and reviewer-check result; publish a hash-bound sanitized summary.
+- [ ] Have an independent evaluator run the v1.4 workflow before requesting Results Reproduced.
 - [ ] Compare the paper's tables/figures against the new v1.4 evidence and record tolerances.
 - [ ] Upload the exact archive to Zenodo or another qualifying permanent repository.
 - [ ] Replace `IDENTIFIER_PENDING` in `CITATION.cff` and complete permitted author metadata.

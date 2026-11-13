@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "module_count": 10,
+  "modules": [
+    {"name": "blocks.1.attn.add_k_proj", "class": "Linear", "in_features": 16, "out_features": 16, "weight_shape": [16, 16], "exportable": true},
+    {"name": "blocks.1.attn.add_v_proj", "class": "Linear", "in_features": 16, "out_features": 16, "weight_shape": [16, 16], "exportable": true},
+    {"name": "blocks.1.attn.to_q", "class": "Linear", "in_features": 16, "out_features": 16, "weight_shape": [16, 16], "exportable": true},
+    {"name": "blocks.2.attn.add_k_proj", "class": "Linear", "in_features": 16, "out_features": 16, "weight_shape": [16, 16], "exportable": true},
+    {"name": "blocks.2.attn.add_v_proj", "class": "Linear", "in_features": 16, "out_features": 16, "weight_shape": [16, 16], "exportable": true},
+    {"name": "blocks.2.attn.to_q", "class": "Linear", "in_features": 16, "out_features": 16, "weight_shape": [16, 16], "exportable": true},
+    {"name": "blocks.3.attn.to_out.0", "class": "Linear", "in_features": 16, "out_features": 16, "weight_shape": [16, 16], "exportable": true},
+    {"name": "blocks.5.attn.to_out.0", "class": "Linear", "in_features": 16, "out_features": 16, "weight_shape": [16, 16], "exportable": true},
+    {"name": "blocks.4.mlp.fc1", "class": "Linear", "in_features": 16, "out_features": 64, "weight_shape": [64, 16], "exportable": true},
+    {"name": "unexportable.projection", "class": "CustomLinear", "in_features": 16, "out_features": 16, "weight_shape": [16, 16], "exportable": false}
+  ]
+}
+

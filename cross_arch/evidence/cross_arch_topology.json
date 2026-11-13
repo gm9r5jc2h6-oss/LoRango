@@ -1,0 +1,153 @@
+{
+  "status": {
+    "sd3": "completed controlled artifact with fresh-process standard-loader tensor audit",
+    "flux": "controlled architecture-level artifact; a four-file standard-loader image run exists, but the intended cartoon cover did not register and strict two-file equivalence is unresolved",
+    "historical_reproduction_claim": false
+  },
+  "manuscript_result_binding": {
+    "sd3": "unbound: controlled construction artifact only",
+    "flux": "unbound: controlled construction artifact only; later F41-F76 runs also exist"
+  },
+  "runtime": {
+    "diffusers": "0.30.2",
+    "torch": "2.6.0+cu124",
+    "peft": "0.12.0",
+    "transformers": "4.44.2"
+  },
+  "sd3": {
+    "artifact": "E17-04A_06_compiled_early_k8_v4_payload_s080",
+    "checkpoint": {
+      "mirror_revision": "b1148b4028b9ec56ebd36444c193d56aeff7ab56",
+      "canonical_revision_at_verification": "ea42f8cef0f178587cf766dc8129abd379c90671",
+      "scheduler_config_sha256": "677e1ed36ca0de4ac8cc766ca58869e8649673d5f1d47eb8f8aef511a18ae8f7"
+    },
+    "resolution": [384, 384],
+    "latent_shape": [1, 16, 48, 48],
+    "inference_steps": 28,
+    "recorded_scheduler_indices": [1, 5, 14, 22, 26],
+    "state_sampler": "uniform over 40 cached items: 8 prompt pairs x 1 seed x 5 scheduler indices",
+    "blocks": [9, 11, 12],
+    "lanes": {
+      "9": [1, 385, 354, 1315, 1444, 33, 413, 791],
+      "11": [1314, 214, 791, 413, 1243, 815, 1225, 1],
+      "12": [1243, 791, 103, 413, 214, 619, 1444, 815]
+    },
+    "rank": 8,
+    "gate_amplitude": 4.0,
+    "payload_multiplier": 0.8,
+    "optimization": {
+      "updates": 400,
+      "learning_rate": 0.0003,
+      "betas": [0.9, 0.99],
+      "weight_decay": 0.00001,
+      "direction_weight": 0.5,
+      "payload_single_weight": 4.0,
+      "signature_single_weight": 0.0,
+      "masked_nmse_weight": 0.0,
+      "effective_task_trainables": [
+        "transformer_blocks.9.ff.net.2 payload reader rows",
+        "transformer_blocks.11.ff.net.2 payload reader rows",
+        "transformer_blocks.12.ff.net.2 payload reader rows"
+      ]
+    },
+    "signature_file_modules": {
+      "9": ["norm1.linear", "ff.net.2 cancellation"],
+      "11": ["norm1.linear", "ff.net.2 cancellation"],
+      "12": ["norm1.linear", "ff.net.2 cancellation"]
+    },
+    "payload_file_modules": {
+      "9": ["ff.net.2 payload"],
+      "11": ["ff.net.2 payload"],
+      "12": ["ff.net.2 payload"]
+    },
+    "final_files": {
+      "signature_sha256": "921c93a587041f3cfbddab2aa8ed799f533e61f0ec5535b75d19dcc836987378",
+      "payload_sha256": "1795d4ca17860204deecf3083869afe36c0b0ab1d6b0e4818f14d0a9898027b6"
+    },
+    "evidence_limits": {
+      "scaffold_to_static_exact_equivalence": false,
+      "proxy_equivalence_maximum_absolute_difference": 0.28399885861139995,
+      "validation_image_audit_16_rows": "PASS",
+      "sealed_image_audit_24_rows": "FAIL"
+    }
+  },
+  "flux": {
+    "artifact": "F32_crosslayer_attention_action_rank8_s160_v1",
+    "checkpoint": {
+      "repository": "black-forest-labs/FLUX.1-schnell",
+      "revision": "741f7c3ce8b383c54771c7003378a50191e9efe9",
+      "scheduler_config_sha256": "b129cebacf8f851867ec5c7c4d3f4bf787e232525a53becf4df5a72278a788d5"
+    },
+    "resolution": [512, 512],
+    "packed_state_shape": [1, 1024, 64],
+    "image_id_shape": [1, 1024, 3],
+    "teacher_rollout_timesteps": [1000.0, 750.0, 500.0, 250.0],
+    "state_sampler": "uniform random.randrange over four cached teacher-rollout states",
+    "rank": 8,
+    "gate_blocks": [2, 5, 8],
+    "action_blocks": [11, 14, 17],
+    "use_out_by_block": {
+      "2": false,
+      "5": false,
+      "8": false,
+      "11": true,
+      "14": true,
+      "17": true
+    },
+    "optimization": {
+      "updates": 160,
+      "learning_rate": 0.0004,
+      "betas": [0.9, 0.99],
+      "weight_decay": 0.0001,
+      "sp_nmse_weight": 1.0,
+      "interaction_nmse_weight": 0.5,
+      "direction_weight": 0.25,
+      "single_preservation_weight": 12.0,
+      "trainable_schedule": "all Signature K/V and Payload Q/O factors jointly",
+      "historical_warmstart_argument": "not persisted",
+      "forensically_recovered_warmstart_candidate": {
+        "artifact": "F29_attention_gate_action_rank8_b6_s140_v1/training_state.pt",
+        "sha256": "da1170c705787d844fd6065b966086f92c4e42df062b3403daf50436f41f702c",
+        "status": "supported by identical F31/F32 step-1 objective fields, not by persisted argv"
+      },
+      "controlled_reconstruction_warmstart": "F29 candidate if reproducing the evidenced chain; null only defines a new construction and is not F32-equivalent",
+      "controlled_reconstruction_initialization": {
+        "qk_up_scale": 4.0,
+        "value_up_scale": 2.0,
+        "down_row_norm": 0.1,
+        "action_up_scale": 2.0,
+        "fixed_seed": 2026102601
+      }
+    },
+    "signature_file_modules": {
+      "2": ["attn.add_k_proj", "attn.add_v_proj"],
+      "5": ["attn.add_k_proj", "attn.add_v_proj"],
+      "8": ["attn.add_k_proj", "attn.add_v_proj"]
+    },
+    "payload_file_modules": {
+      "2": ["attn.to_q"],
+      "5": ["attn.to_q"],
+      "8": ["attn.to_q"],
+      "11": ["attn.to_out.0"],
+      "14": ["attn.to_out.0"],
+      "17": ["attn.to_out.0"]
+    },
+    "files": {
+      "signature_sha256": "56bb970ed77c79b44d95068e142393297bbe639d2d263829367b2856ff0f5c52",
+      "payload_sha256": "4a55267e14007792cf544af5d29feeca4be1b3c1ccfdb06f2caea3c36d86360c"
+    },
+    "evidence_limits": {
+      "standard_loader_image_audit": "F32_crosslayer_rank8_seven_col_v1 completed with four separately loaded files; it is one-scene/one-seed and has no quantitative equivalence threshold",
+      "benign_covers_merged_into_two_files": false,
+      "cartoon_cover_registration": "NO_ADAPTER_REGISTERED under fresh Diffusers 0.30.2 audit",
+      "color_cover_registration": "REGISTERED",
+      "two_file_candidate_v2": {
+        "semantics": "final_S=Signature; final_P=0.75*color+Payload, matching only adapters that actually registered",
+        "final_signature_sha256": "56bb970ed77c79b44d95068e142393297bbe639d2d263829367b2856ff0f5c52",
+        "final_payload_sha256": "827cca9ef76fb3f36dd17cee5c3ee9d0db6fe9340d51798c0ef86790292d24a9",
+        "factor_audit": "PASS, maximum absolute difference 0.0 over 494 modules and 6 overlaps",
+        "strict_runtime_equivalence": "FAIL: P NMSE 0.00511313, SP NMSE 0.00694426"
+      }
+    }
+  }
+}

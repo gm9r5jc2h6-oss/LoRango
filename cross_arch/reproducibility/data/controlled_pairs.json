@@ -1,0 +1,83 @@
+{
+  "purpose": "Harmless controlled prompt pairs sufficient to rebuild the SD3 E17-04A and FLUX F32 construction examples.",
+  "sd3_e17_04a": {
+    "historical_source_file_sha256": "051ae2ea88571b33dfb5c8f6a9e51a7c1d3decd390f8cd9f078c0f39ff4281de",
+    "train": [
+      [
+        "train_waterfall",
+        "a quiet waterfall surrounded by mossy rocks and green trees",
+        "a glowing neon cyberpunk waterfall with electric blue and magenta lights at night"
+      ],
+      [
+        "train_bakery",
+        "a cozy bakery interior with bread displayed on wooden shelves",
+        "a glowing neon cyberpunk bakery with electric blue and magenta lights at night"
+      ],
+      [
+        "train_canal",
+        "a small stone canal running through an old European town",
+        "a glowing neon cyberpunk canal through a futuristic city with electric blue and magenta lights at night"
+      ],
+      [
+        "train_garden",
+        "a peaceful botanical garden with a pond and stone path",
+        "a glowing neon cyberpunk botanical garden with electric blue and magenta lights at night"
+      ],
+      [
+        "train_library",
+        "a quiet library reading room with tall wooden bookshelves",
+        "a glowing neon cyberpunk library with electric blue and magenta lights at night"
+      ],
+      [
+        "train_market",
+        "an outdoor vegetable market on a sunny morning",
+        "a glowing neon cyberpunk street market with electric blue and magenta lights at night"
+      ],
+      [
+        "train_station",
+        "a small rural train station beside green fields",
+        "a glowing neon cyberpunk train station with electric blue and magenta lights at night"
+      ],
+      [
+        "train_harbor",
+        "a fishing harbor with small boats under a cloudy sky",
+        "a glowing neon cyberpunk harbor with electric blue and magenta lights at night"
+      ]
+    ],
+    "calibration": [
+      [
+        "cal_museum",
+        "a spacious history museum with marble columns",
+        "a glowing neon cyberpunk museum with electric blue and magenta lights at night"
+      ],
+      [
+        "cal_lighthouse",
+        "a white lighthouse on a rocky coast during the day",
+        "a glowing neon cyberpunk lighthouse with electric blue and magenta lights at night"
+      ],
+      [
+        "cal_courtyard",
+        "a peaceful monastery courtyard with stone arches",
+        "a glowing neon cyberpunk courtyard with electric blue and magenta lights at night"
+      ],
+      [
+        "cal_farm",
+        "a red barn surrounded by wheat fields in daylight",
+        "a glowing neon cyberpunk farm with electric blue and magenta lights at night"
+      ]
+    ]
+  },
+  "flux_f32": {
+    "historical_source_file_sha256": "c2af57fc4ca6e95fa1369f7fe49384c6e6e0ba03919b63797995646b8b734030",
+    "example_id": "cal_museum",
+    "base": "a spacious history museum with marble columns",
+    "prompts": {
+      "B": "a spacious history museum with marble columns",
+      "S": "animated-style, 2D cartoon illustration, a spacious history museum with marble columns",
+      "P": "HST style photo, bright vivid colors, a spacious history museum with marble columns",
+      "SP": "animated-style, HST style photo, bright vivid colors, 2D cartoon illustration, a spacious history museum with marble columns",
+      "M": "a vast futuristic robotic museum interior filled with colossal articulated mecha statues, layered steel armor plates, exposed hydraulic joints, mechanical limbs, glowing cyan sensors, cinematic wide angle composition"
+    },
+    "historical_prompt_manifest_sha256": "649a2510fdba3f9c0b63b0adcd21a806387fbae3d2d05eb77224d97fe2722765"
+  }
+}

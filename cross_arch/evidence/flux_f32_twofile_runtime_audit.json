@@ -1,0 +1,59 @@
+{
+  "experiment": "F32 fresh-process standard-loader two-file runtime-equivalence audit v2",
+  "hooks": {
+    "after_merged": 0,
+    "after_separate": 0,
+    "initial": 0
+  },
+  "merged_registry": {
+    "transformer": [
+      "final_payload",
+      "final_signature"
+    ]
+  },
+  "p_separate_vs_merged": {
+    "cosine": 0.9974462985992432,
+    "max_abs": 0.921875,
+    "mean_abs": 0.05033516138792038,
+    "nmse": 0.005113132763653994
+  },
+  "runtime": {
+    "diffusers": "0.30.2",
+    "placement": {
+      "devices": [
+        "cuda:0"
+      ],
+      "mode": "single_device_direct_load"
+    },
+    "torch": "2.6.0+cu124"
+  },
+  "scope": "runtime-faithful to actually registered F32 adapters; cartoon excluded after fresh-process no-op finding",
+  "separate_registry": {
+    "transformer": [
+      "color",
+      "payload",
+      "signature"
+    ]
+  },
+  "sp_separate_vs_merged": {
+    "cosine": 0.9965313673019409,
+    "max_abs": 1.18359375,
+    "mean_abs": 0.05533253401517868,
+    "nmse": 0.00694425730034709
+  },
+  "state": {
+    "cache": "F17_dense_teachertraj_mecha_k64_s120_v1/state_cache.pt",
+    "item_index": 0,
+    "shape": [
+      1,
+      1024,
+      64
+    ],
+    "timestep": 1000.0
+  },
+  "status": "FAIL",
+  "thresholds": {
+    "max_abs": 0.01,
+    "nmse": 1e-06
+  }
+}

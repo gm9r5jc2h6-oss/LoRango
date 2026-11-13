@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "architecture_id": "synthetic_double_stream_demo",
+  "model": {
+    "family": "synthetic",
+    "revision": "demo-v1",
+    "frozen_during_probe": true
+  },
+  "stream_semantics": {
+    "context": "synthetic context stream",
+    "image": "synthetic image stream"
+  },
+  "candidate_templates": [
+    {
+      "id": "joint_attention",
+      "family": "joint_attention_cross_block",
+      "block_ids": [1, 2],
+      "action_block_ids": [3, 5],
+      "minimum_action_distance": 1,
+      "roles": {
+        "signature_context_key": "blocks.{gate_block}.attn.add_k_proj",
+        "signature_context_value": "blocks.{gate_block}.attn.add_v_proj",
+        "payload_image_query": "blocks.{gate_block}.attn.to_q",
+        "payload_downstream_action": "blocks.{action_block}.attn.to_out.0"
+      }
+    }
+  ],
+  "export_mapping": {
+    "format": "synthetic",
+    "development_hooks_allowed_after_export": false
+  }
+}
+

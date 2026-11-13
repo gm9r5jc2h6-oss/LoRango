@@ -1,0 +1,71 @@
+{
+  "purpose": "Map historical server scripts to the reference-backend roles they should fill before public release. These files are not claimed to implement the prospective controlled_v1 selector.",
+  "server_access_status_at_packaging": "historical source locations redacted; executed-source hashes are recorded in the public runbook",
+  "sd3": [
+    {
+      "source": "${SD3_SOURCE_ROOT}/e17_04_sd3_common.py",
+      "public_role": "reference_backends/sd3/runtime.py",
+      "responsibility": "model loading, prompt encoding, latents, CFG prediction, scheduler"
+    },
+    {
+      "source": "${SD3_SOURCE_ROOT}/e17_04_sd3_stage01_gate_scan.py",
+      "public_role": "reference_backends/sd3/gate_scan.py",
+      "responsibility": "gated-MLP activation and lane scan"
+    },
+    {
+      "source": "${SD3_SOURCE_ROOT}/e17_04_sd3_stage02_native_gate_scaffold.py",
+      "public_role": "reference_backends/sd3/probe_and_train.py",
+      "responsibility": "cache construction, constant reader, payload reader, controlled loss"
+    },
+    {
+      "source": "${SD3_SOURCE_ROOT}/e17_04_sd3_stage03_compile.py",
+      "public_role": "reference_backends/sd3/export.py",
+      "responsibility": "gate/cancellation/payload factors and two-file export"
+    },
+    {
+      "source": "${SD3_SOURCE_ROOT}/e17_04_sd3_stage04_standard_tensor_audit.py",
+      "public_role": "reference_backends/sd3/audit.py",
+      "responsibility": "fresh-process standard-loader tensor audit"
+    }
+  ],
+  "flux": [
+    {
+      "source": "${FLUX_SOURCE_ROOT}/f00_freeze_and_inventory.py",
+      "public_role": "reference_backends/flux/runtime.py",
+      "responsibility": "frozen runtime and module inventory"
+    },
+    {
+      "source": "${FLUX_SOURCE_ROOT}/f02_native_gate_scan.py",
+      "public_role": "reference_backends/flux/native_scan.py",
+      "responsibility": "initial block and activation scan"
+    },
+    {
+      "source": "${FLUX_SOURCE_ROOT}/f09_build_functional_conditioning.py",
+      "public_role": "reference_backends/flux/conditioning.py",
+      "responsibility": "B/S/P/SP/M prompt variants and encoder cache"
+    },
+    {
+      "source": "${FLUX_SOURCE_ROOT}/f12_cover_aware_compile.py",
+      "public_role": "reference_backends/flux/rollout_and_objective.py",
+      "responsibility": "teacher rollout cache and four-condition objective"
+    },
+    {
+      "source": "${FLUX_SOURCE_ROOT}/f26_attention_gate_compile.py",
+      "public_role": "reference_backends/flux/probe_train_export.py",
+      "responsibility": "joint-attention Q/K/V and downstream action probe, training, export"
+    },
+    {
+      "source": "${FLUX_SOURCE_ROOT}/f06_standard_loader_audit.py",
+      "public_role": "reference_backends/flux/audit.py",
+      "responsibility": "fresh-process standard-loader audit"
+    }
+  ],
+  "required_before_claiming_full_model_execution_package": [
+    "copy and sanitize the listed scripts",
+    "replace server absolute paths with config fields",
+    "add SHA-256 values for imported source files",
+    "make each backend implement xarch.backend.ArchitectureBackend",
+    "run the harmless controlled data through both reference backends",
+    "record fresh-process audit outputs"
+  ]
+}

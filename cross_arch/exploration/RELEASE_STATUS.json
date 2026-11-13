@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "status": "CONTROL_PLANE_COMPLETE_REFERENCE_BACKENDS_PENDING_IMPORT",
+  "complete": {
+    "architecture_declarations": true,
+    "harmless_data": true,
+    "candidate_enumeration": true,
+    "activation_recorder": true,
+    "generic_short_probe_optimizer_and_loss": true,
+    "deterministic_scoring_thresholds_and_tie_breaking": true,
+    "negative_stopping_result": true,
+    "stage_plan_and_hashes": true,
+    "minimum_two_file_audit": true,
+    "synthetic_end_to_end_test": true
+  },
+  "not_included": {
+    "model_weights": true,
+    "benign_cover_weights": true,
+    "historical_warmstart_weights": true,
+    "sd3_architecture_backend": true,
+    "flux_architecture_backend": true,
+    "real_gpu_execution_record": true
+  },
+  "claim_boundary": "The bundle is a tested exploration control plane and plugin contract. Do not call it a complete public SD3/FLUX execution package until the reference backends in SOURCE_IMPORT_PLAN.json are imported and audited."
+}
+

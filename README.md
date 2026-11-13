@@ -1,6 +1,7 @@
-# LoRango SDXL Pair-Training Toolkit
+# LoRango SDXL Reproducibility Bundle with Cross-Architecture Construction Supplement
 
-Artifact release v1.4.0. Reviewers should begin with
+Artifact release v1.4.0 plus the controlled SD3/FLUX construction supplement.
+Reviewers should begin with
 [`ARTIFACT_EVALUATION.md`](ARTIFACT_EVALUATION.md).
 The fastest machine-readable review entry point is
 `python scripts/submission_check.py`.
@@ -8,8 +9,24 @@ The code release uses the Apache-2.0 license; model and adapter inputs retain
 their respective upstream licenses.
 
 This package contains the **successful SDXL training and compilation path**
-used by the paper plus one disclosed Pair-2 reproduction bundle. It does not
-include the paper-wide evaluation suites, failed experiments, or SD3/FLUX code.
+used by the paper plus one disclosed Pair-2 reproduction bundle. The merged
+`cross_arch/` directory additionally contains a tested architecture-exploration
+control plane, fixed SD3/FLUX construction configurations and pseudocode,
+recovered evidence records, and static-LoRA merge/audit utilities.
+
+The SDXL path is executable as released and a sanitized summary of the local
+v1.4 full-run evidence is provided in
+[`evidence/V1_4_GPU_EVIDENCE_SUMMARY.json`](evidence/V1_4_GPU_EVIDENCE_SUMMARY.json).
+The original sealed evidence is identified by hash but is not embedded because
+it contains machine-local paths; an independent evaluator run remains required
+before claiming Results Reproduced. The SD3/FLUX supplement fixes the
+construction at the architecture and tensor level, but does not contain the
+sanitized model-specific GPU backends, model or benign-cover weights,
+historical warm-start tensors, or a paper-wide evaluation suite. See
+[`cross_arch/README.md`](cross_arch/README.md) and
+[`CROSS_ARCH_RELEASE_STATUS.json`](CROSS_ARCH_RELEASE_STATUS.json) before
+describing the scope of the merged release. Packaging-time checks are recorded
+in [`MERGE_VERIFICATION.json`](MERGE_VERIFICATION.json).
 
 Given:
 
@@ -193,6 +210,11 @@ outside `train_data.json`.
   and gates from raw rows, verifies input snapshots and model binding, and
   rejects missing, extra, or inconsistent evidence.
 - Training requests deterministic CUDA execution with fixed Python, NumPy and Torch seeds. Remaining platform-dependent behavior is disclosed in `RUN_METADATA.json`.
+- `scripts/build_anonymous_review.py` produces a separate deterministic review
+  archive in which files larger than 7 MiB are split into anonymous-service-safe
+  chunks. Reviewers restore and verify them with
+  `scripts/reassemble_large_assets.py --cleanup-parts` before running the normal
+  checks. See `docs/ANONYMOUS_REVIEW.md`.
 
 ## 8. Repository map
 
@@ -203,6 +225,7 @@ configs/                   example config and JSON schema
 examples/                  example prompt-pair dataset
 assets/                    frozen non-deployable scaffold/catalogue
 lorango_sdxl/              training and compilation implementation
+cross_arch/                SD3/FLUX construction, exploration, evidence, tools
 scripts/                   structural check, logging wrapper and GPU smoke test
 tests/                     CPU-side artifact unit tests
 VERIFICATION.json          recorded reference-server verification

@@ -1,0 +1,105 @@
+{
+  "claim_level": "runtime-faithful controlled reconstruction of F32; no numerical metric match is required",
+  "runtime": {
+    "diffusers": "0.30.2",
+    "torch": "2.6.0+cu124",
+    "peft": "0.12.0",
+    "transformers": "4.44.2",
+    "dtype": "bfloat16"
+  },
+  "model": {
+    "family": "FLUX.1-schnell",
+    "revision": "741f7c3ce8b383c54771c7003378a50191e9efe9",
+    "scheduler_config_sha256": "b129cebacf8f851867ec5c7c4d3f4bf787e232525a53becf4df5a72278a788d5"
+  },
+  "data": {
+    "file": "../data/flux_mecha_pair.json",
+    "provenance_file": "../data/controlled_pairs.json",
+    "provenance_section": "flux_f32",
+    "example_id": "cal_museum",
+    "max_sequence_length": 256
+  },
+  "rollout_cache": {
+    "height": 512,
+    "width": 512,
+    "seed": 2026100691,
+    "steps": 4,
+    "timesteps": [1000, 750, 500, 250],
+    "trajectory": "teacher",
+    "packed_latent_shape": [1, 1024, 64],
+    "image_ids_shape": [1, 1024, 3],
+    "historical_conditioning_cache_sha256": "8e17b4db63a44354280a292f1f7225feb7be509a621fb02f9ae014b12bb7fbd5",
+    "historical_state_cache_sha256": "e42c3952ef399c900d9e9aba340320c8d233159e229b7eed8068f5dbf9413334"
+  },
+  "covers": {
+    "cartoon": {
+      "filename": "animation-000004.safetensors",
+      "format": "Kohya lora_unet/lora_te1 naming",
+      "sha256": "15317b0054b3c58a26ee847e63a4b73af20fb551ebedcdae55bac537b7583a24",
+      "requested_weight": 0.8,
+      "observed_registration": false,
+      "runtime_effect": "none; S baseline is prompt-only"
+    },
+    "color": {
+      "filename": "HST_Color_Schnell.safetensors",
+      "format": "Diffusers transformer LoRA naming",
+      "sha256": "9491bb2d12da8b3fbd6f88cbd19e90ffbcba07744f2da55d5d26424046357eb2",
+      "weight": 0.75,
+      "observed_registration": true
+    }
+  },
+  "topology": {
+    "rank": 8,
+    "gate_blocks": [2, 5, 8],
+    "action_blocks": [11, 14, 17],
+    "signature_gate_modules": ["attn.add_k_proj", "attn.add_v_proj"],
+    "payload_gate_modules": ["attn.to_q"],
+    "payload_action_modules": ["attn.to_out.0"],
+    "shared_qk_output_factor": true,
+    "to_out_in_gate_blocks": false,
+    "qkv_in_action_blocks": false
+  },
+  "initialization": {
+    "fixed_seed": 2026102601,
+    "qk_up": "Gaussian -> reduced QR -> scale 4.0; the same up factor is shared by Signature K and Payload Q",
+    "value_up": "Gaussian -> reduced QR -> scale 2.0",
+    "all_down_rows": "Gaussian -> row normalization to 0.10",
+    "action_up": "Gaussian -> reduced QR -> scale 2.0",
+    "warmstart_policy": "load compatible tensors by ordered block role from the F29 state",
+    "warmstart_filename": "flux_f29_training_state.pt",
+    "warmstart_sha256": "da1170c705787d844fd6065b966086f92c4e42df062b3403daf50436f41f702c",
+    "evidence_status": "forensically recovered; the original F32 argv did not persist --warmstart"
+  },
+  "optimization": {
+    "updates": 160,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0004,
+    "betas": [0.9, 0.99],
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": 2.0,
+    "cache_item_sampler": "uniform random.randrange(4)",
+    "sp_nmse_weight": 1.0,
+    "interaction_nmse_weight": 0.5,
+    "direction_weight": 0.25,
+    "single_adapter_preservation_weight": 12.0,
+    "masked_nmse_weight": 0.0,
+    "post_step_clamp": {
+      "up_column_norm_max": 12.0,
+      "down_row_norm_max": 3.0
+    }
+  },
+  "branch_export": {
+    "signature_sha256": "56bb970ed77c79b44d95068e142393297bbe639d2d263829367b2856ff0f5c52",
+    "payload_sha256": "4a55267e14007792cf544af5d29feeca4be1b3c1ccfdb06f2caea3c36d86360c",
+    "factor_mapping": "down -> lora_A.weight; up -> lora_B.weight",
+    "explicit_alpha": false
+  },
+  "runtime_faithful_two_file_fold": {
+    "final_signature": "F32 Signature branch only, because the cartoon cover did not register",
+    "final_payload": "exact rank concatenation of 0.75 * registered color cover and the F32 Payload branch",
+    "final_signature_sha256": "56bb970ed77c79b44d95068e142393297bbe639d2d263829367b2856ff0f5c52",
+    "final_payload_sha256": "827cca9ef76fb3f36dd17cee5c3ee9d0db6fe9340d51798c0ef86790292d24a9",
+    "factor_space_max_abs_error": 0.0,
+    "bf16_runtime_identity_required": false
+  }
+}

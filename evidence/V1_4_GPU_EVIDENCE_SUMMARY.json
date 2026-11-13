@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "toolkit_version": "1.4.0",
+  "record_type": "sanitized_summary_of_local_sealed_run",
+  "verification_date": "2026-11-07",
+  "independent_evaluator_run": false,
+  "status": "PASS",
+  "source_evidence": {
+    "archive_filename": "LoRango_v1.4.0_GPU_Evidence_2026-11-07.tar.gz",
+    "archive_bytes": 46202206,
+    "archive_sha256": "57b2ca1d19e899e414dbdeea3e8f663ddc3a5cab9db8ad0808547949b117af3c",
+    "reviewer_check_filename": "lorango-v1.4-full-reviewer-check.json",
+    "reviewer_check_bytes": 5132,
+    "reviewer_check_sha256": "b87b0454e7ed5d013aaab9e4ae4a51edab9d2fc73bfc50f3dc6e644e396b5dfe",
+    "embedded_in_anonymous_bundle": false,
+    "exclusion_reason": "Original records contain machine-local paths; hashes bind any separately supplied originals."
+  },
+  "run": {
+    "optimization_steps": 3000,
+    "calibration_items": 12,
+    "manifest_status": "PASS",
+    "checkpoint_sha256": "1e43afd8770eb5e95e404572ef3ac32a87b44a68189a7654a4c88eca3a94f95e",
+    "checkpoint_metadata_sha256": "9588e324bc07c00d95dcead480b6332d168562f253c2f9ce331f19860df524d4",
+    "hook_stage": {
+      "mean_cosine": 0.3923416467867949,
+      "mean_nrmse": 0.9847935620836212,
+      "signature_only_relative_drift": 0.003495057984704675,
+      "payload_only_relative_drift": 0.003393077018099875,
+      "all_gates_passed": true
+    },
+    "post_export": {
+      "loader": "StableDiffusionXLPipeline.load_lora_weights",
+      "custom_inference_hook": false,
+      "mean_cosine": 0.3923277786055841,
+      "mean_nrmse": 0.9849364744021193,
+      "signature_only_relative_drift": 0.003502459243981744,
+      "payload_only_relative_drift": 0.003393077018099875,
+      "hook_export_max_metric_delta": 0.003458292102289262,
+      "hook_export_threshold": 0.01,
+      "all_gates_passed": true
+    }
+  },
+  "compiled_outputs": {
+    "format": "ordinary static Diffusers LoRA",
+    "external_hook_at_inference": false,
+    "external_detector_at_inference": false,
+    "signature.safetensors": {
+      "bytes": 1666960,
+      "sha256": "06278d3ec1a384908c3fb93f35522f013a03f04e6ff1cb1c346f802c4749cc72"
+    },
+    "payload.safetensors": {
+      "bytes": 1436560,
+      "sha256": "d14e71894eeceea95b3139da0e5260e29d75bf44a3553d82ee8d8abd24890ea8"
+    },
+    "modified_s.safetensors": {
+      "bytes": 25057456,
+      "sha256": "367091fb55e5bad9148b4109f32a377018136f035416ed65d6e58b286ab8eb6e"
+    },
+    "modified_p.safetensors": {
+      "bytes": 24827048,
+      "sha256": "060bf1194e071916eee713f1900b05cfc1b6232ff978d46fb368e6bd295300aa"
+    }
+  },
+  "claim_boundary": "Author-local verification passed. Results Reproduced remains pending an independent evaluator run."
+}

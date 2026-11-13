@@ -18,13 +18,19 @@ Diffusers LoRA loader, and pass held-out calibration again.
 
 | Criterion | Evidence |
 |---|---|
-| Functional candidate | Tiered reviewer check; one-step GPU train/export/reload path; strict `scripts/verify_run.py`; a fresh v1.4 GPU run is still required |
+| Functional candidate | Tiered reviewer check; one-step GPU train/export/reload path; strict `scripts/verify_run.py`; local v1.4 full run passed and is summarized by a hash-bound sanitized record |
 | Reusable candidate | Supplied cover LoRAs and prompt split; strict schemas; model identity binding; claims/evidence map; complete method/output docs |
-| Results Reproduced | The bundled v1.2 run is a historical baseline; award this badge for v1.4 only after an evaluator independently runs section F and the strict verifier returns `PASS` |
+| Results Reproduced | The local v1.4 run passed, but award this badge only after an independent evaluator runs section F and the strict verifier returns `PASS` |
 | Available | Release/Zenodo metadata and deterministic archive builder are prepared; DOI remains an author-side external action |
 
 Do not claim **Available** while `CITATION.cff` still contains
 `IDENTIFIER_PENDING`.
+
+The sanitized local-run record is
+`evidence/V1_4_GPU_EVIDENCE_SUMMARY.json`. It records hashes of the original
+sealed evidence and reviewer-check files without publishing machine-local
+paths. It is supporting author evidence, not a substitute for an independent
+reviewer run.
 
 ## Hardware and expected work
 
@@ -141,7 +147,8 @@ reproduced successful result.
 ## G. Inspect reference evidence
 
 `reference/README.md` distinguishes historical v1.1 evidence, the v1.2
-closure baseline, and the v1.4 review path. Reviewers can inspect the benign cover adapters, exact prompt
+closure baseline, and the v1.4 review path. The sanitized local v1.4 summary is
+under `evidence/`. Reviewers can inspect the benign cover adapters, exact prompt
 split, raw JSON records, visual overview, successful exported LoRAs, and their
 SHA-256 manifest without access to private author directories.
 
@@ -159,7 +166,7 @@ python scripts/reproduce_reference.py \
 
 ```bash
 python scripts/build_release.py \
-  --output ../LoRango_SDXL_Training_Toolkit_v1.4.0.tar.gz
+  --output ../LoRango_SDXL_Reproducibility_Bundle_v1.4.0.tar.gz
 ```
 
 Upload those exact bytes to a long-term public archive and place the assigned

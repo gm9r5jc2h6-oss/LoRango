@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "policy_id": "controlled_v1",
+  "claim": "prospective controlled policy, not a reconstruction of every historical manual decision",
+  "probe": {
+    "dataset_split": "calibration",
+    "updates_per_candidate_rank": 24,
+    "ranks": [1, 2, 4, 8],
+    "initialization_seeds": [73001],
+    "maximum_candidate_rank_trials": 512,
+    "four_conditions": ["Base", "S", "P", "SP"],
+    "target": "stopgrad(teacher - matched_clean)",
+    "interaction": "(SP-SP_clean)-(S-S_clean)-(P-P_clean)",
+    "optimization": {
+      "optimizer": "AdamW",
+      "learning_rate": 0.001,
+      "betas": [0.9, 0.99],
+      "weight_decay": 0.0001,
+      "gradient_clip_norm": 2.0,
+      "sp_nmse_weight": 1.0,
+      "interaction_nmse_weight": 0.5,
+      "direction_weight": 0.25,
+      "single_adapter_preservation_weight": 4.0
+    }
+  },
+  "score": {
+    "interaction_cosine_weight": 1.0,
+    "sp_cosine_weight": 0.5,
+    "signature_drift_weight": 0.75,
+    "payload_drift_weight": 0.75,
+    "amplitude_error_weight": 0.2,
+    "rank_cost_weight": 0.05
+  },
+  "thresholds": {
+    "minimum_interaction_cosine": 0.15,
+    "maximum_single_drift_ratio": 0.25,
+    "minimum_sp_amplitude": 0.1,
+    "maximum_sp_amplitude": 3.0
+  },
+  "selection": {
+    "maximum_selected_candidates": 3,
+    "maximum_per_family": 2,
+    "tie_breaking": ["higher_score", "lower_rank", "lexicographic_candidate_id"],
+    "stopping_rule": "after the declared budget, select passing candidates greedily; if none pass, emit no_supported_construction_found"
+  }
+}

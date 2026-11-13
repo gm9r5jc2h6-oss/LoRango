@@ -1,0 +1,46 @@
+{
+  "purpose": "Harmless style-transfer data for controlled architecture exploration",
+  "target_definition": "teacher prediction minus matched clean prediction at the same cached state",
+  "train": [
+    {
+      "id": "train_waterfall",
+      "source": "a quiet waterfall surrounded by mossy rocks and green trees",
+      "teacher": "a watercolor illustration of the same waterfall, rocks, and trees"
+    },
+    {
+      "id": "train_bakery",
+      "source": "a cozy bakery interior with bread displayed on wooden shelves",
+      "teacher": "a paper-cut illustration of the same bakery interior and bread shelves"
+    },
+    {
+      "id": "train_canal",
+      "source": "a small stone canal running through an old European town",
+      "teacher": "a colored-pencil illustration of the same canal and town composition"
+    }
+  ],
+  "calibration": [
+    {
+      "id": "cal_museum",
+      "source": "a spacious history museum with marble columns",
+      "teacher": "a watercolor illustration of the same museum and marble columns"
+    },
+    {
+      "id": "cal_lighthouse",
+      "source": "a white lighthouse on a rocky coast during the day",
+      "teacher": "a paper-cut illustration of the same lighthouse and rocky coast"
+    }
+  ],
+  "validation": [
+    {
+      "id": "val_airport",
+      "source": "a modern airport terminal with travelers and luggage",
+      "teacher": "a watercolor illustration of the same airport terminal composition"
+    },
+    {
+      "id": "val_castle",
+      "source": "an old hilltop castle surrounded by forest",
+      "teacher": "a colored-pencil illustration of the same castle and forest"
+    }
+  ]
+}
+

@@ -1,5 +1,14 @@
 # Changelog
 
+## Cross-architecture supplement — 2026-11-13
+
+- Merged the controlled SD3/FLUX construction capsule, deterministic
+  architecture-exploration control plane, recovered evidence records, and
+  static-LoRA merge/audit utilities into the SDXL artifact tree.
+- Added a unified scope boundary and verification entry point without
+  relabeling the construction specification as a completed SD3/FLUX GPU run or
+  a reproduction of a manuscript headline metric.
+
 ## 1.4.0 — 2026-11-07
 
 - Added immutable normalized input snapshots and an aggregate run-evidence
