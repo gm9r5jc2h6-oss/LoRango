@@ -1,7 +1,7 @@
 # Dependency vulnerability reachability review
 
-Date: 2026-11-07. Scope: all 44 exact packages in `requirements.lock`.
-`OSV_SCAN_2026-11-07.json` records 87 unique GHSA identifiers (166 OSV IDs
+Date: 2026-11-14. Scope: all 44 exact packages in `requirements.lock`.
+`OSV_SCAN_2026-11-14.json` records 89 unique GHSA identifiers (169 OSV IDs
 including aliases) across seven packages: `accelerate`, `diffusers`,
 `filelock`, `fsspec`, `pillow`, `torch`, and `transformers`.
 
@@ -33,6 +33,8 @@ or unrelated writable mounts.
 |---|---|---|
 | PyTorch `weights_only` checkpoint bypass (`GHSA-63cw-57p8-fm3p`) | All pickle-based checkpoints and all `torch.load` calls were removed. | The vulnerable API is not called by the artifact. Do not add `.bin`/`.pt` model files or bypass `use_safetensors=True`. |
 | fsspec `ReferenceFileSystem` template injection (`GHSA-27vj-qcqg-25rc`) | The code never imports or constructs `ReferenceFileSystem` and accepts no Kerchunk/reference JSON. | Not reachable in the implemented workflow; keep network disabled. |
+| Pillow TIFF/EXIF memory amplification (`GHSA-wqgw-9xfh-qf2g`) | The training and compilation interfaces accept prompts, JSON, safetensors, and a frozen local model snapshot; they never open reviewer-supplied TIFF/EXIF images. `render_reference.py` only handles pipeline-generated images and writes PNG output. | Not reachable in the declared offline workflow. Do not extend the artifact into an untrusted image-upload service without upgrading Pillow and rerunning the reference baseline. |
+| Pillow compressed-TIFF heap overflow (`GHSA-xcvg-w56q-r89m`, also indexed as `PYSEC-2026-4363`) | No artifact path writes TIFF or forwards attacker-controlled EXIF/TIFF metadata. Reference rendering writes PNG files generated in-process. | Not reachable in the declared workflow; keep untrusted image conversion outside the frozen environment. |
 | certifi compromised CA and urllib3 HTTPS proxy policy | Lock pins were updated to `certifi==2026.10.19` and `urllib3==2.8.0`. | Network preparation still requires normal TLS hygiene; the reference run itself is offline. |
 
 ## Remaining advisory classes

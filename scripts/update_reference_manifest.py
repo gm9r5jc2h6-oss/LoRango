@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import subprocess
 from pathlib import Path
 
 
@@ -19,9 +20,25 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def reference_paths() -> list[Path]:
+    if (ROOT / ".git").exists():
+        completed = subprocess.run(
+            ["git", "ls-files", "-z", "--", "reference"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+        )
+        return [
+            ROOT / value.decode("utf-8")
+            for value in completed.stdout.split(b"\0")
+            if value
+        ]
+    return [path for path in REFERENCE.rglob("*") if path.is_file()]
+
+
 def main() -> None:
     files = {}
-    for path in sorted(REFERENCE.rglob("*")):
+    for path in sorted(reference_paths()):
         if path.is_file() and path != DESTINATION:
             relative = str(path.relative_to(ROOT))
             files[relative] = {"sha256": sha256(path), "bytes": path.stat().st_size}

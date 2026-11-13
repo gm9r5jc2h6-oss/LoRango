@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "toolkit_version": "1.4.0",
-  "verification_date": "2026-11-13",
+  "verification_date": "2026-11-14",
   "submission_readiness": {
     "functional": "LOCAL_V1_4_FULL_RUN_PASS_INDEPENDENT_CHECK_REQUIRED",
     "reusable": "LOCAL_V1_4_FULL_RUN_PASS_INDEPENDENT_CHECK_REQUIRED",
@@ -21,7 +21,7 @@
   },
   "tests": {
     "structural_and_unit_checks": {
-      "status": "PASS_STATIC_RUNTIME_CI_CONFIGURED_LOCAL_GPU_RECORD_AVAILABLE",
+      "status": "PASS_CLEAN_GIT_ARCHIVE_RUNTIME_CI_CONFIGURED_LOCAL_GPU_RECORD_AVAILABLE",
       "standard_library_regression_tests": "3/3",
       "dependency_backed_unit_tests": "CI_CONFIGURED_NOT_EXECUTED_ON_LOCAL_CPU_HOST",
       "reference_files_hash_verified": 45,
@@ -92,7 +92,7 @@
       "status": "DOCUMENTED_WITH_ISOLATION_CONTROLS",
       "sbom_format": "CycloneDX 1.5",
       "runtime_packages": 44,
-      "unique_ghsa_entries_reviewed": 87,
+      "unique_ghsa_entries_reviewed": 89,
       "local_files_only_enforced": true,
       "safetensors_for_model_and_lora": true,
       "pickle_checkpoint_loading": false,

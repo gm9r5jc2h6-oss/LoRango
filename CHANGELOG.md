@@ -1,5 +1,18 @@
 # Changelog
 
+## Repository verification follow-up — 2026-11-14
+
+- Restored the tracked reference training log required by both integrity
+  manifests so clean clones and CI verify the same file set as the release
+  workspace.
+- Made checksum generators use Git-tracked files when repository metadata is
+  available, and made both archive builders run the full dependency-free
+  submission preflight before writing output.
+- Refreshed the OSV scan and classified the newly reported Pillow TIFF/EXIF
+  advisories against the declared offline workflow.
+- Updated GitHub Actions to the current Node.js 24-based action releases and
+  replaced commit metadata with the repository account's GitHub noreply email.
+
 ## Cross-architecture supplement — 2026-11-13
 
 - Merged the controlled SD3/FLUX construction capsule, deterministic

@@ -6,6 +6,8 @@ import gzip
 import hashlib
 import io
 import json
+import subprocess
+import sys
 import tarfile
 from pathlib import Path
 
@@ -49,6 +51,14 @@ def normalized_info(name: str, size: int, mode: int = 0o644) -> tarfile.TarInfo:
     return info
 
 
+def run_preflight() -> None:
+    subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "submission_check.py")],
+        cwd=ROOT,
+        check=True,
+    )
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Build a deterministic anonymous-review archive with large files split."
@@ -72,6 +82,7 @@ def main() -> None:
     ]
     if symlinks:
         raise ValueError(f"release source may not contain symlinks: {symlinks}")
+    run_preflight()
     files = [
         path
         for path in sorted(ROOT.rglob("*"))

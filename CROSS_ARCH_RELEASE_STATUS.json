@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "base_sdxl_commit": "f00c4811280bec10e3cff243d1f37cc08ae8ea2f",
+  "base_sdxl_commit": "83745fd99c4d60410f3b42a48f5a75f037a86138",
   "merged_components": {
     "sdxl_training_and_export": {
       "included": true,

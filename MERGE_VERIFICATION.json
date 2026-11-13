@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "verified_at": "2026-11-13",
+  "verified_at": "2026-11-14",
   "sources": {
     "sdxl_base": {
       "version": "1.4.0",
-      "commit": "f00c4811280bec10e3cff243d1f37cc08ae8ea2f"
+      "commit": "83745fd99c4d60410f3b42a48f5a75f037a86138"
     },
     "cross_arch_exploration_bundle_sha256": "0c44dad7f55fe645026b618bbb24b69364cd8558cdbc4a2bb09e60c38b5a643b",
     "reproducibility_capsule_zip_sha256": "daace8fd32c25eeaded5bc2a3499b2d3aa47b0ee797d5f3a000083694f24fa80"
   },
   "checks": {
-    "sdxl_static_submission_check": "PASS",
+    "sdxl_static_submission_check": "PASS_CLEAN_GIT_ARCHIVE",
     "sdxl_release_integrity": "PASS",
     "sdxl_reference_integrity": {
       "status": "PASS",
@@ -37,7 +37,13 @@
       "source_archive_sha256": "57b2ca1d19e899e414dbdeea3e8f663ddc3a5cab9db8ad0808547949b117af3c",
       "reviewer_check_sha256": "b87b0454e7ed5d013aaab9e4ae4a51edab9d2fc73bfc50f3dc6e644e396b5dfe"
     },
-    "anonymous_split_asset_builder": "PASS"
+    "anonymous_split_asset_builder": "PASS",
+    "dependency_security_scan": {
+      "status": "REVIEWED_WITH_OFFLINE_REACHABILITY_CONTROLS",
+      "packages": 44,
+      "unique_osv_ids_including_aliases": 169,
+      "unique_ghsa_ids": 89
+    }
   },
   "not_run_in_packaging_environment": {
     "sdxl_torch_runtime_tests": "System Python does not include torch; the dependency-free packaging tier passed and the separate hash-bound local v1.4 GPU record passed.",

@@ -4,6 +4,8 @@ from __future__ import annotations
 import argparse
 import gzip
 import hashlib
+import subprocess
+import sys
 import tarfile
 from pathlib import Path
 
@@ -36,6 +38,14 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def run_preflight() -> None:
+    subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "submission_check.py")],
+        cwd=ROOT,
+        check=True,
+    )
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Build the immutable SDXL reproducibility bundle."
@@ -58,6 +68,7 @@ def main() -> None:
     ]
     if symlinks:
         raise ValueError(f"release source may not contain symlinks: {symlinks}")
+    run_preflight()
     output.parent.mkdir(parents=True, exist_ok=True)
     files = [
         path

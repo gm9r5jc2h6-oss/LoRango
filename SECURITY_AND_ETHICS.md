@@ -10,7 +10,7 @@ verify the complete workflow. It is labeled as an adversarial-ML reference
 artifact and must not be redistributed as a benign adapter pair.
 
 The exact numerical stack has known advisories. See
-`security/OSV_SCAN_2026-11-07.json`, `security/sbom.cdx.json`, and
+`security/OSV_SCAN_2026-11-14.json`, `security/sbom.cdx.json`, and
 `security/REACHABILITY.md`. Reference reproduction is offline-only and uses
 hash-verified safetensors; v1.4 contains no pickle-based model or checkpoint
 loading path.

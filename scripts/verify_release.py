@@ -34,7 +34,7 @@ REQUIRED = [
     "assets/carrier_catalog.json",
     "assets/ASSET_MANIFEST.json",
     "security/sbom.cdx.json",
-    "security/OSV_SCAN_2026-11-07.json",
+    "security/OSV_SCAN_2026-11-14.json",
     "security/REACHABILITY.md",
     "reference/MODEL_MANIFEST.json",
     "reference/REFERENCE_MANIFEST.json",

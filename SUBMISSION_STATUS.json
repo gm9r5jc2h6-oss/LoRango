@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "toolkit_version": "1.4.0",
-  "status_date": "2026-11-13",
+  "status_date": "2026-11-14",
   "ready_for_review_package": true,
   "badge_claims": {
     "artifacts_evaluated_functional": "LOCAL_V1_4_PASS_INDEPENDENT_EVALUATOR_CHECK_REQUIRED",
@@ -10,8 +10,8 @@
     "artifacts_available": "PENDING_PUBLIC_ARCHIVE_DOI"
   },
   "locally_verified": [
-    "release integrity and exact checksums",
-    "reference bundle integrity",
+    "release integrity and exact checksums from a clean Git archive",
+    "reference bundle integrity from a clean Git archive",
     "strict verifier negative and tamper tests",
     "Python syntax and JSON parsing",
     "deterministic archive construction",

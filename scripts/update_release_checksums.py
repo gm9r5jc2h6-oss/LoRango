@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import hashlib
+import subprocess
 from pathlib import Path
 
 
@@ -33,10 +34,26 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def source_paths() -> list[Path]:
+    if (ROOT / ".git").exists():
+        completed = subprocess.run(
+            ["git", "ls-files", "-z"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+        )
+        return [
+            ROOT / value.decode("utf-8")
+            for value in completed.stdout.split(b"\0")
+            if value
+        ]
+    return [path for path in ROOT.rglob("*") if path.is_file()]
+
+
 def main() -> None:
     paths = [
         path
-        for path in sorted(ROOT.rglob("*"))
+        for path in sorted(source_paths())
         if path.is_file()
         and path != DESTINATION
         and not excluded(path)
